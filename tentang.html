@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ==============================================================
-           RESET & ROOT — premium colors
+           RESET & ROOT — premium colors, lebih berani & elegan
            ============================================================== */
         *,
         *::before,
@@ -24,7 +24,6 @@
             --bg-deep: #010208;
             --bg-surface: #060a18;
             --bg-card: rgba(255, 255, 255, 0.006);
-            --bg-card-hover: rgba(0, 180, 255, 0.01);
             --border-subtle: rgba(255, 255, 255, 0.01);
             --border-glow: rgba(0, 180, 255, 0.035);
 
@@ -85,7 +84,7 @@
         }
 
         /* ==============================================================
-           AMBIENT BACKGROUND — cinematic
+           AMBIENT BACKGROUND — cinematic + partikel halus
            ============================================================== */
         .bg-ambient {
             position: fixed;
@@ -146,6 +145,16 @@
             animation-delay: 18s;
         }
 
+        /* partikel halus */
+        .bg-ambient .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 50%;
+            animation: particleFloat 18s infinite alternate ease-in-out;
+        }
+
         @keyframes orbFloat {
             0% {
                 transform: translate(0, 0) scale(1) rotate(0deg);
@@ -161,8 +170,19 @@
             }
         }
 
+        @keyframes particleFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.1;
+            }
+            100% {
+                transform: translate(30px, -40px) scale(1.5);
+                opacity: 0.6;
+            }
+        }
+
         /* ==============================================================
-           MAIN WRAPPER & CONTAINER — glass premium
+           MAIN WRAPPER & CONTAINER — glass premium + depth
            ============================================================== */
         .main-wrapper {
             max-width: 1200px;
@@ -184,7 +204,7 @@
             overflow: hidden;
         }
 
-        /* border glow multi-layer */
+        /* border glow multi-layer + animasi */
         .container::before {
             content: '';
             position: absolute;
@@ -222,7 +242,7 @@
             }
         }
 
-        /* inner ambient glow — 4 layers */
+        /* inner ambient glow — lebih banyak layer */
         .container .inner-ambient {
             position: absolute;
             border-radius: 50%;
@@ -295,7 +315,7 @@
         }
 
         /* ==============================================================
-           NAVBAR — clean, elegant
+           NAVBAR — clean, elegant, dengan efek hover premium
            ============================================================== */
         .navbar {
             display: flex;
@@ -438,7 +458,7 @@
         }
 
         /* ==============================================================
-           HERO
+           HERO — lebih dramatis
            ============================================================== */
         .hero-about {
             text-align: center;
@@ -623,7 +643,7 @@
         }
 
         /* ==============================================================
-           VISI MISI — upgraded with rich colors
+           VISI MISI — dengan efek glass dan warna kaya
            ============================================================== */
         .visi-misi {
             display: grid;
@@ -760,7 +780,7 @@
         }
 
         /* ==============================================================
-           STORY — upgraded
+           STORY — timeline dengan sentuhan premium
            ============================================================== */
         .story-section {
             margin: 2.5rem 0 2.5rem;
@@ -881,7 +901,7 @@
         }
 
         /* ==============================================================
-           VALUES — upgraded with rich colors
+           VALUES — grid dengan ikon berwarna
            ============================================================== */
         .values-section {
             margin: 2.5rem 0 2.5rem;
@@ -992,7 +1012,7 @@
         }
 
         /* ==============================================================
-           STATS — upgraded
+           STATS — dengan angka berwarna
            ============================================================== */
         .stats-section {
             margin: 2.5rem 0 2.5rem;
@@ -1097,7 +1117,7 @@
         }
 
         /* ==============================================================
-           CTA — upgraded with rich colors
+           CTA — dengan efek hover lebih dramatis
            ============================================================== */
         .cta-section {
             background: rgba(255, 255, 255, 0.005);
@@ -1329,6 +1349,7 @@
             border: 1px solid rgba(255, 255, 255, 0.006);
             background: rgba(255, 255, 255, 0.005);
             transition: var(--transition);
+            position: relative;
         }
 
         .footer .social a::after {
@@ -1642,13 +1663,20 @@
 <body>
 
     <!-- ============================================================== -->
-    <!-- AMBIENT BACKGROUND — 4 layers -->
+    <!-- AMBIENT BACKGROUND — 4 layers + partikel -->
     <!-- ============================================================== -->
     <div class="bg-ambient">
         <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
+        <!-- partikel halus -->
+        <div class="particle" style="top:10%; left:20%; animation-delay:0s;"></div>
+        <div class="particle" style="top:70%; left:80%; animation-delay:2s;"></div>
+        <div class="particle" style="top:40%; left:60%; animation-delay:4s;"></div>
+        <div class="particle" style="top:85%; left:15%; animation-delay:6s;"></div>
+        <div class="particle" style="top:20%; left:90%; animation-delay:8s;"></div>
+        <div class="particle" style="top:55%; left:30%; animation-delay:3s;"></div>
     </div>
 
     <!-- ============================================================== -->
