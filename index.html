@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ==============================================================
-           RESET & ROOT — premium dark UI
+           RESET & ROOT — ultra premium dark UI
            ============================================================== */
         *,
         *::before,
@@ -335,36 +335,63 @@
             text-decoration: none;
             flex-shrink: 0;
             position: relative;
+            gap: 14px;
         }
 
-        .logo::after {
+        .logo .logo-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: var(--blue-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 0 60px rgba(0, 180, 255, 0.15);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo .logo-icon::before {
             content: '';
             position: absolute;
-            inset: -10px;
-            border-radius: 24px;
-            background: radial-gradient(circle at center, rgba(0, 180, 255, 0.015), transparent 70%);
-            opacity: 0;
-            transition: var(--transition);
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.15), transparent 60%);
         }
 
-        .logo:hover::after {
-            opacity: 1;
-        }
-
-        .logo img {
-            height: clamp(56px, 7vw, 100px);
-            width: auto;
-            display: block;
-            filter: drop-shadow(0 0 50px rgba(0, 180, 255, 0.04));
-            transition: var(--transition);
-            border-radius: 16px;
+        .logo .logo-icon i {
             position: relative;
             z-index: 1;
+            filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.2));
         }
 
-        .logo img:hover {
-            filter: drop-shadow(0 0 100px rgba(0, 180, 255, 0.08));
-            transform: scale(1.04) rotate(-1deg);
+        .logo .logo-text {
+            font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: -0.5px;
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: var(--transition);
+        }
+
+        .logo .logo-text span {
+            -webkit-text-fill-color: var(--white);
+            font-weight: 300;
+        }
+
+        .logo:hover .logo-icon {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 0 80px rgba(0, 180, 255, 0.25);
+        }
+
+        .logo:hover .logo-text {
+            transform: scale(1.02);
         }
 
         .nav-links {
@@ -513,13 +540,6 @@
             position: relative;
         }
 
-        .hero-member h1 .gold-text {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
         .hero-member .sub {
             font-size: clamp(0.95rem, 1.2vw, 1.2rem);
             color: var(--gray-300);
@@ -640,6 +660,7 @@
             position: relative;
             overflow: hidden;
             text-align: center;
+            cursor: default;
         }
 
         .team-card::before {
@@ -678,20 +699,24 @@
         }
 
         .team-card .avatar {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             background: var(--blue-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--white);
             margin: 0 auto 0.8rem;
             box-shadow: 0 0 40px rgba(0, 180, 255, 0.05);
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.04);
+            transition: var(--transition);
+        }
+
+        .team-card:hover .avatar {
+            border-color: rgba(0, 180, 255, 0.15);
+            box-shadow: 0 0 60px rgba(0, 180, 255, 0.1);
         }
 
         .team-card .avatar img {
@@ -704,14 +729,14 @@
 
         .team-card .avatar .status-dot {
             position: absolute;
-            bottom: 2px;
-            right: 2px;
-            width: 16px;
-            height: 16px;
+            bottom: 4px;
+            right: 4px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: var(--green-accent);
             border: 2px solid var(--bg-deep);
-            box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);
+            box-shadow: 0 0 20px rgba(0, 230, 118, 0.3);
             animation: pulseDot 2s infinite;
         }
 
@@ -763,19 +788,21 @@
             color: var(--gray-500);
             font-size: 0.9rem;
             transition: var(--transition);
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.04);
             display: flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
         }
 
         .team-card .social-links a:hover {
             color: var(--cyan-accent);
             border-color: rgba(0, 180, 255, 0.1);
             transform: translateY(-2px);
+            background: rgba(0, 180, 255, 0.04);
         }
 
         /* ==============================================================
@@ -792,13 +819,14 @@
             background: rgba(255, 255, 255, 0.005);
             border: 1px solid rgba(255, 255, 255, 0.008);
             border-radius: var(--radius-md);
-            padding: 1.4rem 1rem;
+            padding: 1.6rem 1rem;
             text-align: center;
             transition: var(--transition);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             position: relative;
             overflow: hidden;
+            cursor: default;
         }
 
         .admin-card::before {
@@ -840,20 +868,23 @@
         }
 
         .admin-card .avatar-sm {
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             background: var(--blue-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--white);
-            margin: 0 auto 0.4rem;
+            margin: 0 auto 0.5rem;
             box-shadow: 0 0 30px rgba(0, 180, 255, 0.03);
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.04);
+            transition: var(--transition);
+        }
+
+        .admin-card:hover .avatar-sm {
+            border-color: rgba(0, 180, 255, 0.12);
         }
 
         .admin-card .avatar-sm img {
@@ -866,10 +897,10 @@
 
         .admin-card .avatar-sm .status-mini {
             position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 12px;
-            height: 12px;
+            bottom: 2px;
+            right: 2px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: var(--green-accent);
             border: 2px solid var(--bg-deep);
@@ -911,7 +942,7 @@
            ============================================================== */
         .member-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 0.8rem;
         }
 
@@ -951,20 +982,24 @@
         }
 
         .member-item .member-avatar {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: var(--blue-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--white);
-            margin: 0 auto 0.2rem;
-            opacity: 0.7;
+            margin: 0 auto 0.3rem;
+            opacity: 0.8;
             transition: var(--transition);
             overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .member-item:hover .member-avatar {
+            opacity: 1;
+            transform: scale(1.05);
+            border-color: rgba(0, 180, 255, 0.12);
         }
 
         .member-item .member-avatar img {
@@ -973,11 +1008,6 @@
             object-fit: cover;
             border-radius: 50%;
             display: block;
-        }
-
-        .member-item:hover .member-avatar {
-            opacity: 1;
-            transform: scale(1.05);
         }
 
         .member-item .member-name {
@@ -995,9 +1025,9 @@
             font-size: 0.55rem;
             color: var(--gray-500);
             font-weight: 500;
-            margin-top: 1px;
+            margin-top: 2px;
             display: inline-block;
-            padding: 0.05rem 0.6rem;
+            padding: 0.05rem 0.8rem;
             border-radius: 40px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.03);
@@ -1071,7 +1101,7 @@
            ============================================================== */
         .join-section {
             margin-top: 2.5rem;
-            padding: 2rem;
+            padding: 2.5rem;
             background: rgba(255, 255, 255, 0.005);
             border: 1px solid rgba(255, 255, 255, 0.006);
             border-radius: var(--radius-lg);
@@ -1276,7 +1306,8 @@
             border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.006);
             background: rgba(255, 255, 255, 0.005);
-            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
         }
 
         .footer .social a::after {
@@ -1325,7 +1356,7 @@
             }
 
             .member-grid {
-                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
 
             .bg-ambient .orb:nth-child(3),
@@ -1339,8 +1370,10 @@
                 display: none;
             }
 
-            .logo img {
-                height: clamp(48px, 6vw, 72px);
+            .logo .logo-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
             }
 
             .stats-bar {
@@ -1431,8 +1464,14 @@
                 display: none;
             }
 
-            .logo img {
-                height: clamp(36px, 5vw, 48px);
+            .logo .logo-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+
+            .logo .logo-text {
+                font-size: 1.1rem;
             }
 
             .stats-bar {
@@ -1449,14 +1488,13 @@
             }
 
             .team-card .avatar {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+                width: 70px;
+                height: 70px;
             }
 
             .team-card .avatar .status-dot {
-                width: 12px;
-                height: 12px;
+                width: 14px;
+                height: 14px;
             }
         }
 
@@ -1478,8 +1516,14 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .logo img {
+            .logo .logo-icon {
+                width: 30px;
                 height: 30px;
+                font-size: 13px;
+            }
+
+            .logo .logo-text {
+                font-size: 0.95rem;
             }
 
             .nav-links a {
@@ -1538,8 +1582,10 @@
                 padding-top: 0.8rem;
             }
 
-            .logo img {
-                height: clamp(40px, 5vw, 56px);
+            .logo .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
             }
 
             .bg-ambient .orb {
@@ -1560,8 +1606,10 @@
                 font-size: 4.8rem;
             }
 
-            .logo img {
-                height: 120px;
+            .logo .logo-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 34px;
             }
 
             .bg-ambient .orb:nth-child(1) {
@@ -1627,7 +1675,8 @@
             <!-- ========================================================== -->
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="assets/mongster.png" alt="MONGSTER Logo" />
+                    <div class="logo-icon"><i class="fas fa-dragon"></i></div>
+                    <div class="logo-text">MONGSTER<span>.</span></div>
                 </a>
                 <div class="nav-links">
                     <a href="index.html">Beranda</a>
@@ -1668,7 +1717,7 @@
             <div class="team-grid">
                 <div class="team-card">
                     <div class="avatar">
-                        <img src="https://i.pravatar.cc/200?img=12" alt="Dyix" />
+                        <img src="https://i.pravatar.cc/300?img=12" alt="Dyix" />
                         <span class="status-dot"></span>
                     </div>
                     <span class="role-badge"><i class="fas fa-crown"></i> Founder</span>
@@ -1681,7 +1730,7 @@
                 </div>
                 <div class="team-card">
                     <div class="avatar" style="background: var(--purple-gradient);">
-                        <img src="https://i.pravatar.cc/200?img=33" alt="Mas j" />
+                        <img src="https://i.pravatar.cc/300?img=33" alt="Mas j" />
                         <span class="status-dot"></span>
                     </div>
                     <span class="role-badge"><i class="fas fa-star"></i> Co-Captain</span>
@@ -1710,37 +1759,37 @@
 
             <div class="admin-grid">
                 <div class="admin-card">
-                    <div class="avatar-sm"><img src="https://i.pravatar.cc/100?img=1" alt="Flex" /><span class="status-mini"></span></div>
+                    <div class="avatar-sm"><img src="https://i.pravatar.cc/150?img=1" alt="Flex" /><span class="status-mini"></span></div>
                     <div class="admin-name">Flex</div>
                     <div class="admin-role">Admin 1</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--purple-gradient);"><img src="https://i.pravatar.cc/100?img=5" alt="Morz" /><span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--purple-gradient);"><img src="https://i.pravatar.cc/150?img=5" alt="Morz" /><span class="status-mini"></span></div>
                     <div class="admin-name">Morz</div>
                     <div class="admin-role">Admin 2</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--gold-gradient);"><img src="https://i.pravatar.cc/100?img=9" alt="Soo" /><span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--gold-gradient);"><img src="https://i.pravatar.cc/150?img=9" alt="Soo" /><span class="status-mini"></span></div>
                     <div class="admin-name">Soo</div>
                     <div class="admin-role">Admin 3</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--cyan-gradient);"><img src="https://i.pravatar.cc/100?img=15" alt="Gabut" /><span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--cyan-gradient);"><img src="https://i.pravatar.cc/150?img=15" alt="Gabut" /><span class="status-mini"></span></div>
                     <div class="admin-name">Gabut</div>
                     <div class="admin-role">Admin 4</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--pink-gradient);"><img src="https://i.pravatar.cc/100?img=20" alt="Nia" /><span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--pink-gradient);"><img src="https://i.pravatar.cc/150?img=20" alt="Nia" /><span class="status-mini"></span></div>
                     <div class="admin-name">Nia</div>
                     <div class="admin-role">Admin 5</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--orange-gradient);"><img src="https://i.pravatar.cc/100?img=25" alt="Kyzha" /><span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--orange-gradient);"><img src="https://i.pravatar.cc/150?img=25" alt="Kyzha" /><span class="status-mini"></span></div>
                     <div class="admin-name">Kyzha</div>
                     <div class="admin-role">Admin 6</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: linear-gradient(145deg, #22d3ee, #06b6d4);"><img src="https://i.pravatar.cc/100?img=30" alt="Admin 7" /><span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: linear-gradient(145deg, #22d3ee, #06b6d4);"><img src="https://i.pravatar.cc/150?img=30" alt="Rey" /><span class="status-mini"></span></div>
                     <div class="admin-name">Rey</div>
                     <div class="admin-role">Admin 7</div>
                 </div>
@@ -1762,93 +1811,123 @@
 
             <div class="member-grid">
                 <div class="member-item">
-                    <div class="member-avatar"><img src="https://i.pravatar.cc/100?img=3" alt="byy" /></div>
+                    <div class="member-avatar"><img src="https://i.pravatar.cc/150?img=3" alt="byy" /></div>
                     <div class="member-name">byy</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--purple-gradient);"><img src="https://i.pravatar.cc/100?img=7" alt="cahaya" /></div>
+                    <div class="member-avatar" style="background: var(--purple-gradient);"><img src="https://i.pravatar.cc/150?img=7" alt="cahaya" /></div>
                     <div class="member-name">cahaya</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--gold-gradient);"><img src="https://i.pravatar.cc/100?img=11" alt="vior" /></div>
+                    <div class="member-avatar" style="background: var(--gold-gradient);"><img src="https://i.pravatar.cc/150?img=11" alt="vior" /></div>
                     <div class="member-name">vior</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--cyan-gradient);"><img src="https://i.pravatar.cc/100?img=14" alt="phuwin" /></div>
+                    <div class="member-avatar" style="background: var(--cyan-gradient);"><img src="https://i.pravatar.cc/150?img=14" alt="phuwin" /></div>
                     <div class="member-name">phuwin</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--pink-gradient);"><img src="https://i.pravatar.cc/100?img=17" alt="Don" /></div>
+                    <div class="member-avatar" style="background: var(--pink-gradient);"><img src="https://i.pravatar.cc/150?img=17" alt="Don" /></div>
                     <div class="member-name">Don</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--orange-gradient);"><img src="https://i.pravatar.cc/100?img=19" alt="Nnad" /></div>
+                    <div class="member-avatar" style="background: var(--orange-gradient);"><img src="https://i.pravatar.cc/150?img=19" alt="Nnad" /></div>
                     <div class="member-name">Nnad</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #22d3ee, #06b6d4);"><img src="https://i.pravatar.cc/100?img=22" alt="Dan" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #22d3ee, #06b6d4);"><img src="https://i.pravatar.cc/150?img=22" alt="Dan" /></div>
                     <div class="member-name">Dan</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #a855f7, #7b2ffc);"><img src="https://i.pravatar.cc/100?img=24" alt="Fann" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #a855f7, #7b2ffc);"><img src="https://i.pravatar.cc/150?img=24" alt="Fann" /></div>
                     <div class="member-name">Fann</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #ec4899, #db2777);"><img src="https://i.pravatar.cc/100?img=26" alt="Avory" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #ec4899, #db2777);"><img src="https://i.pravatar.cc/150?img=26" alt="Avory" /></div>
                     <div class="member-name">Avory</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #fbbf24, #f59e0b);"><img src="https://i.pravatar.cc/100?img=28" alt="Gerard" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #fbbf24, #f59e0b);"><img src="https://i.pravatar.cc/150?img=28" alt="Gerard" /></div>
                     <div class="member-name">Gerard</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #00b4ff, #22d3ee);"><img src="https://i.pravatar.cc/100?img=31" alt="Zell" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #00b4ff, #22d3ee);"><img src="https://i.pravatar.cc/150?img=31" alt="Zell" /></div>
                     <div class="member-name">Zell is Here</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #7b2ffc, #a855f7);"><img src="https://i.pravatar.cc/100?img=34" alt="Azar" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #7b2ffc, #a855f7);"><img src="https://i.pravatar.cc/150?img=34" alt="Azar" /></div>
                     <div class="member-name">Azar</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #f97316, #fb923c);"><img src="https://i.pravatar.cc/100?img=36" alt="Pioo" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #f97316, #fb923c);"><img src="https://i.pravatar.cc/150?img=36" alt="Pioo" /></div>
                     <div class="member-name">Pioo</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #22d3ee, #67e8f9);"><img src="https://i.pravatar.cc/100?img=38" alt="Mputt" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #22d3ee, #67e8f9);"><img src="https://i.pravatar.cc/150?img=38" alt="Mputt" /></div>
                     <div class="member-name">Mputt</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #ec4899, #f472b6);"><img src="https://i.pravatar.cc/100?img=40" alt="Felin" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #ec4899, #f472b6);"><img src="https://i.pravatar.cc/150?img=40" alt="Felin" /></div>
                     <div class="member-name">Felin</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #a855f7, #c084fc);"><img src="https://i.pravatar.cc/100?img=42" alt="leo" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #a855f7, #c084fc);"><img src="https://i.pravatar.cc/150?img=42" alt="leo" /></div>
                     <div class="member-name">leo</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #00b4ff, #60a5fa);"><img src="https://i.pravatar.cc/100?img=44" alt="devano" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #00b4ff, #60a5fa);"><img src="https://i.pravatar.cc/150?img=44" alt="devano" /></div>
                     <div class="member-name">devano</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #fbbf24, #fcd34d);"><img src="https://i.pravatar.cc/100?img=46" alt="hinelle" /></div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #fbbf24, #fcd34d);"><img src="https://i.pravatar.cc/150?img=46" alt="hinelle" /></div>
                     <div class="member-name">hinelle</div>
+                    <span class="member-rank">Legend</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #ec4899, #f472b6);"><img src="https://i.pravatar.cc/150?img=48" alt="Raka" /></div>
+                    <div class="member-name">Raka</div>
+                    <span class="member-rank">Mythic</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #22d3ee, #67e8f9);"><img src="https://i.pravatar.cc/150?img=50" alt="Sasa" /></div>
+                    <div class="member-name">Sasa</div>
+                    <span class="member-rank">Epic</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #a855f7, #c084fc);"><img src="https://i.pravatar.cc/150?img=52" alt="Tama" /></div>
+                    <div class="member-name">Tama</div>
+                    <span class="member-rank">Legend</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #fbbf24, #fcd34d);"><img src="https://i.pravatar.cc/150?img=54" alt="Ucup" /></div>
+                    <div class="member-name">Ucup</div>
+                    <span class="member-rank">Mythic</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #00b4ff, #60a5fa);"><img src="https://i.pravatar.cc/150?img=56" alt="Vero" /></div>
+                    <div class="member-name">Vero</div>
+                    <span class="member-rank">Epic</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #f97316, #fb923c);"><img src="https://i.pravatar.cc/150?img=58" alt="Wawan" /></div>
+                    <div class="member-name">Wawan</div>
                     <span class="member-rank">Legend</span>
                 </div>
             </div>
