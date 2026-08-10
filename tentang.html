@@ -22,13 +22,13 @@
             --bg-primary: #040812;
             --bg-surface: #0a1428;
             --bg-card: rgba(255, 255, 255, 0.03);
-            --bg-card-hover: rgba(59, 130, 246, 0.07);
+            --bg-card-hover: rgba(59, 130, 246, 0.06);
             --border-light: rgba(255, 255, 255, 0.05);
-            --border-glow: rgba(59, 130, 246, 0.30);
+            --border-glow: rgba(59, 130, 246, 0.25);
             --blue: #3b82f6;
             --blue-light: #60a5fa;
             --blue-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6, #a855f7);
-            --blue-glow: rgba(59, 130, 246, 0.35);
+            --blue-glow: rgba(59, 130, 246, 0.30);
             --green: #22c55e;
             --yellow: #fbbf24;
             --pink: #ec4899;
@@ -41,7 +41,7 @@
             --radius-md: 16px;
             --radius-sm: 10px;
             --shadow-heavy: 0 40px 80px rgba(0, 0, 0, 0.6);
-            --transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
@@ -57,7 +57,7 @@
         }
 
         /* ==============================================================
-                   BACKGROUND OUTER - LIGHT EFFECT
+                   BACKGROUND OUTER
                    ============================================================== */
         .bg-outer {
             position: fixed;
@@ -68,77 +68,54 @@
             z-index: 0;
             pointer-events: none;
             background:
-                radial-gradient(ellipse at 15% 40%, rgba(59, 130, 246, 0.08), transparent 50%),
-                radial-gradient(ellipse at 85% 30%, rgba(139, 92, 246, 0.06), transparent 40%),
-                radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.04), transparent 40%),
-                radial-gradient(ellipse at 30% 70%, rgba(251, 191, 36, 0.03), transparent 30%);
-            animation: bg-pulse 12s ease-in-out infinite alternate;
-        }
-
-        @keyframes bg-pulse {
-            0% {
-                opacity: 0.6;
-            }
-            100% {
-                opacity: 1;
-            }
+                radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06), transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.05), transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.03), transparent 40%);
         }
 
         .bg-outer .orb-bg {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.30;
-            animation: orb-float 25s ease-in-out infinite alternate;
+            filter: blur(100px);
+            opacity: 0.25;
+            animation: orb-float 20s ease-in-out infinite alternate;
         }
         .bg-outer .orb-bg:nth-child(1) {
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            left: -150px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
-            animation-duration: 28s;
-        }
-        .bg-outer .orb-bg:nth-child(2) {
             width: 500px;
             height: 500px;
-            bottom: -200px;
-            right: -120px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%);
-            animation-duration: 32s;
-            animation-delay: 6s;
+            top: -150px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%);
+            animation-duration: 25s;
+        }
+        .bg-outer .orb-bg:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            right: -80px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.10), transparent 70%);
+            animation-duration: 30s;
+            animation-delay: 5s;
         }
         .bg-outer .orb-bg:nth-child(3) {
-            width: 350px;
-            height: 350px;
-            top: 25%;
-            right: 5%;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.08), transparent 70%);
-            animation-duration: 24s;
-            animation-delay: 12s;
-        }
-        .bg-outer .orb-bg:nth-child(4) {
             width: 300px;
             height: 300px;
-            bottom: 20%;
-            left: 10%;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.06), transparent 70%);
-            animation-duration: 26s;
-            animation-delay: 8s;
+            top: 30%;
+            right: 10%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.06), transparent 70%);
+            animation-duration: 22s;
+            animation-delay: 10s;
         }
 
         @keyframes orb-float {
             0% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
+                transform: translate(0, 0) scale(1);
             }
-            33% {
-                transform: translate(40px, -50px) scale(1.1) rotate(120deg);
-            }
-            66% {
-                transform: translate(-30px, 30px) scale(0.9) rotate(240deg);
+            50% {
+                transform: translate(30px, -40px) scale(1.1);
             }
             100% {
-                transform: translate(20px, -20px) scale(1.05) rotate(360deg);
+                transform: translate(-20px, 30px) scale(0.9);
             }
         }
 
@@ -153,33 +130,33 @@
             z-index: 1;
         }
 
-        /* ===== CONTAINER DENGAN LIGHT EFFECT ===== */
+        /* ===== CONTAINER DENGAN EFEK CAHAYA ===== */
         .container {
             background: var(--bg-surface);
             border-radius: var(--radius-xl);
             padding: clamp(1.2rem, 3vw, 3rem);
             border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-heavy), 0 0 100px rgba(59, 130, 246, 0.04);
+            box-shadow: var(--shadow-heavy), 0 0 80px rgba(59, 130, 246, 0.03);
             position: relative;
             overflow: hidden;
         }
 
-        /* === CONTAINER BORDER GLOW RING === */
+        /* === CONTAINER BORDER GLOW (cahaya di tepi) === */
         .container::before {
             content: '';
             position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
             border-radius: var(--radius-xl);
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), transparent 40%, rgba(139, 92, 246, 0.10), transparent 60%, rgba(59, 130, 246, 0.08));
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.10), transparent 40%, rgba(139, 92, 246, 0.08));
             z-index: -1;
             pointer-events: none;
-            animation: border-glow-pulse 5s ease-in-out infinite alternate;
+            animation: border-glow 6s ease-in-out infinite alternate;
         }
 
-        @keyframes border-glow-pulse {
+        @keyframes border-glow {
             0% {
                 opacity: 0.3;
             }
@@ -188,52 +165,8 @@
             }
         }
 
-        /* === CONTAINER INNER AMBIENT GLOW === */
-        .container .ambient-glow {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(100px);
-            opacity: 0.20;
-        }
-        .container .ambient-glow-1 {
-            top: -25%;
-            right: -15%;
-            width: 55%;
-            height: 55%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.18), transparent 70%);
-            animation: glow-pulse 6s ease-in-out infinite alternate;
-        }
-        .container .ambient-glow-2 {
-            bottom: -25%;
-            left: -15%;
-            width: 45%;
-            height: 45%;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%);
-            animation: glow-pulse 7s ease-in-out infinite alternate-reverse;
-        }
-        .container .ambient-glow-3 {
-            top: 40%;
-            left: 30%;
-            width: 30%;
-            height: 30%;
-            background: radial-gradient(circle, rgba(96, 165, 250, 0.06), transparent 70%);
-            animation: glow-pulse 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow-pulse {
-            0% {
-                opacity: 0.10;
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 0.25;
-                transform: scale(1.1);
-            }
-        }
-
         /* === LIGHT RAYS DI DALAM CONTAINER === */
-        .container .rays-container {
+        .container .rays-inner {
             position: absolute;
             top: 0;
             left: 0;
@@ -245,115 +178,140 @@
             border-radius: var(--radius-xl);
         }
 
-        .container .rays-container .ray {
+        .container .rays-inner .ray {
             position: absolute;
-            bottom: -15%;
+            bottom: -10%;
+            width: 3px;
+            background: linear-gradient(to top, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0));
             border-radius: 50%;
-            animation: ray-rise var(--duration, 10s) ease-in-out infinite;
-            filter: blur(3px);
+            animation: ray-rise var(--duration, 8s) ease-in-out infinite;
+            filter: blur(2px);
         }
 
-        .container .rays-container .ray:nth-child(1) {
-            left: 5%;
-            height: 280px;
-            width: 4px;
-            --duration: 8s;
+        .container .rays-inner .ray:nth-child(1) {
+            left: 8%;
+            height: 250px;
+            --duration: 7s;
             animation-delay: 0s;
-            background: linear-gradient(to top, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0));
-        }
-        .container .rays-container .ray:nth-child(2) {
-            left: 14%;
-            height: 380px;
-            width: 2px;
-            --duration: 10s;
-            animation-delay: 1.5s;
-            background: linear-gradient(to top, rgba(139, 92, 246, 0), rgba(139, 92, 246, 0.20), rgba(139, 92, 246, 0));
-        }
-        .container .rays-container .ray:nth-child(3) {
-            left: 25%;
-            height: 320px;
-            width: 5px;
-            --duration: 9s;
-            animation-delay: 3s;
-            background: linear-gradient(to top, rgba(96, 165, 250, 0), rgba(96, 165, 250, 0.22), rgba(96, 165, 250, 0));
-        }
-        .container .rays-container .ray:nth-child(4) {
-            left: 38%;
-            height: 450px;
-            width: 3px;
-            --duration: 12s;
-            animation-delay: 0.8s;
-            background: linear-gradient(to top, rgba(168, 85, 247, 0), rgba(168, 85, 247, 0.18), rgba(168, 85, 247, 0));
-        }
-        .container .rays-container .ray:nth-child(5) {
-            left: 50%;
-            height: 260px;
             width: 4px;
-            --duration: 7.5s;
-            animation-delay: 2s;
-            background: linear-gradient(to top, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0));
-        }
-        .container .rays-container .ray:nth-child(6) {
-            left: 62%;
-            height: 340px;
-            width: 2px;
-            --duration: 9.5s;
-            animation-delay: 4.5s;
-            background: linear-gradient(to top, rgba(236, 72, 153, 0), rgba(236, 72, 153, 0.16), rgba(236, 72, 153, 0));
-        }
-        .container .rays-container .ray:nth-child(7) {
-            left: 74%;
-            height: 240px;
-            width: 3px;
-            --duration: 8.5s;
-            animation-delay: 1.2s;
-            background: linear-gradient(to top, rgba(251, 191, 36, 0), rgba(251, 191, 36, 0.16), rgba(251, 191, 36, 0));
-        }
-        .container .rays-container .ray:nth-child(8) {
-            left: 84%;
-            height: 300px;
-            width: 3px;
-            --duration: 10.5s;
-            animation-delay: 3.8s;
             background: linear-gradient(to top, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.20), rgba(59, 130, 246, 0));
         }
-        .container .rays-container .ray:nth-child(9) {
+        .container .rays-inner .ray:nth-child(2) {
+            left: 18%;
+            height: 350px;
+            --duration: 9s;
+            animation-delay: 1.5s;
+            width: 2px;
+            background: linear-gradient(to top, rgba(139, 92, 246, 0), rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0));
+        }
+        .container .rays-inner .ray:nth-child(3) {
+            left: 30%;
+            height: 280px;
+            --duration: 8s;
+            animation-delay: 3s;
+            width: 5px;
+            background: linear-gradient(to top, rgba(96, 165, 250, 0), rgba(96, 165, 250, 0.18), rgba(96, 165, 250, 0));
+        }
+        .container .rays-inner .ray:nth-child(4) {
             left: 45%;
             height: 400px;
-            width: 8px;
-            --duration: 13s;
-            animation-delay: 2.8s;
-            background: linear-gradient(to top, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.10), rgba(59, 130, 246, 0));
-            filter: blur(6px);
-        }
-        .container .rays-container .ray:nth-child(10) {
-            left: 92%;
-            height: 220px;
+            --duration: 10s;
+            animation-delay: 0.5s;
             width: 3px;
-            --duration: 7.8s;
-            animation-delay: 4.2s;
-            background: linear-gradient(to top, rgba(139, 92, 246, 0), rgba(139, 92, 246, 0.22), rgba(139, 92, 246, 0));
+            background: linear-gradient(to top, rgba(168, 85, 247, 0), rgba(168, 85, 247, 0.12), rgba(168, 85, 247, 0));
+        }
+        .container .rays-inner .ray:nth-child(5) {
+            left: 58%;
+            height: 220px;
+            --duration: 6.5s;
+            animation-delay: 2s;
+            width: 4px;
+            background: linear-gradient(to top, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.20), rgba(59, 130, 246, 0));
+        }
+        .container .rays-inner .ray:nth-child(6) {
+            left: 70%;
+            height: 300px;
+            --duration: 8.5s;
+            animation-delay: 4s;
+            width: 2px;
+            background: linear-gradient(to top, rgba(236, 72, 153, 0), rgba(236, 72, 153, 0.12), rgba(236, 72, 153, 0));
+        }
+        .container .rays-inner .ray:nth-child(7) {
+            left: 82%;
+            height: 200px;
+            --duration: 7.5s;
+            animation-delay: 1s;
+            width: 3px;
+            background: linear-gradient(to top, rgba(251, 191, 36, 0), rgba(251, 191, 36, 0.12), rgba(251, 191, 36, 0));
+        }
+        .container .rays-inner .ray:nth-child(8) {
+            left: 92%;
+            height: 260px;
+            --duration: 9.5s;
+            animation-delay: 3.5s;
+            width: 3px;
+            background: linear-gradient(to top, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0));
+        }
+        .container .rays-inner .ray:nth-child(9) {
+            left: 50%;
+            height: 350px;
+            --duration: 11s;
+            animation-delay: 2.5s;
+            width: 6px;
+            background: linear-gradient(to top, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0));
+            filter: blur(4px);
+        }
+        .container .rays-inner .ray:nth-child(10) {
+            left: 25%;
+            height: 320px;
+            --duration: 8.2s;
+            animation-delay: 4.5s;
+            width: 2px;
+            background: linear-gradient(to top, rgba(139, 92, 246, 0), rgba(139, 92, 246, 0.18), rgba(139, 92, 246, 0));
         }
 
         @keyframes ray-rise {
             0% {
-                transform: translateY(0) scaleY(0.2);
+                transform: translateY(0) scaleY(0.3);
                 opacity: 0;
             }
             15% {
-                opacity: 0.9;
+                opacity: 0.8;
             }
             50% {
-                transform: translateY(-55vh) scaleY(1.3);
+                transform: translateY(-50vh) scaleY(1.2);
                 opacity: 1;
             }
             85% {
-                opacity: 0.9;
+                opacity: 0.8;
             }
             100% {
-                transform: translateY(-95vh) scaleY(0.4);
+                transform: translateY(-90vh) scaleY(0.5);
                 opacity: 0;
             }
+        }
+
+        /* === INNER GLOW CONTAINER === */
+        .container .inner-glow {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+        .container .inner-glow-1 {
+            top: -20%;
+            right: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
+        }
+        .container .inner-glow-2 {
+            bottom: -20%;
+            left: -10%;
+            width: 40%;
+            height: 40%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.10), transparent 70%);
         }
 
         /* ==============================================================
@@ -366,7 +324,7 @@
         }
 
         /* ==============================================================
-                   NAVBAR - DENGAN LIGHT EFFECT
+                   NAVBAR
                    ============================================================== */
         .navbar {
             display: flex;
@@ -378,15 +336,6 @@
             border-bottom: 1px solid var(--border-light);
             position: relative;
             z-index: 10;
-        }
-        .navbar::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
         }
 
         .logo {
@@ -405,19 +354,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            position: relative;
-        }
-        .logo span::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--blue-gradient);
-            border-radius: 4px;
-            opacity: 0.15;
-            filter: blur(6px);
         }
         .logo .badge {
             font-size: 0.4rem;
@@ -430,7 +366,6 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             -webkit-text-fill-color: var(--blue-light);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.04);
         }
 
         .nav-links {
@@ -459,7 +394,6 @@
             background: var(--blue-gradient);
             border-radius: 4px;
             transition: var(--transition);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
         }
         .nav-links a:hover {
             color: var(--white);
@@ -469,7 +403,7 @@
         }
         .nav-links a.active {
             color: var(--white);
-            text-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
         }
         .nav-links a.active::after {
             width: 100%;
@@ -483,7 +417,7 @@
             font-weight: 600;
             font-size: 0.8rem;
             transition: var(--transition);
-            box-shadow: 0 4px 30px var(--blue-glow);
+            box-shadow: 0 4px 24px var(--blue-glow);
             position: relative;
             overflow: hidden;
         }
@@ -494,7 +428,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.10), transparent 60%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 60%);
             opacity: 0;
             transition: var(--transition);
         }
@@ -502,27 +436,16 @@
             opacity: 1;
         }
         .btn-nav::after {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: -100%;
-            width: 300%;
-            height: 300%;
-            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.06), transparent 60%);
-            transform: rotate(45deg) translateY(100%);
-            transition: var(--transition);
-        }
-        .btn-nav:hover::after {
-            transform: rotate(45deg) translateY(-100%);
+            display: none !important;
         }
         .btn-nav:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 44px var(--blue-glow);
+            box-shadow: 0 8px 36px var(--blue-glow);
             color: #fff !important;
         }
 
         /* ==============================================================
-                   HERO - DENGAN LIGHT EFFECT
+                   HERO
                    ============================================================== */
         .hero-about {
             text-align: center;
@@ -544,12 +467,12 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0.8rem;
-            box-shadow: 0 0 50px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.04);
             transition: var(--transition);
         }
         .hero-about .tag:hover {
             background: rgba(59, 130, 246, 0.08);
-            box-shadow: 0 0 70px rgba(59, 130, 246, 0.06);
+            box-shadow: 0 0 60px rgba(59, 130, 246, 0.06);
         }
         .hero-about .tag .dot {
             width: 6px;
@@ -558,7 +481,7 @@
             border-radius: 50%;
             display: inline-block;
             animation: pulse-dot 2s infinite;
-            box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
         }
 
         @keyframes pulse-dot {
@@ -568,8 +491,8 @@
                 transform: scale(1);
             }
             50% {
-                opacity: 0.15;
-                transform: scale(0.6);
+                opacity: 0.2;
+                transform: scale(0.7);
             }
         }
 
@@ -579,7 +502,7 @@
             letter-spacing: -1.5px;
             line-height: 1.05;
             color: var(--white);
-            text-shadow: 0 0 80px rgba(59, 130, 246, 0.04);
+            text-shadow: 0 0 60px rgba(59, 130, 246, 0.04);
         }
 
         .hero-about h1 .gradient {
@@ -596,65 +519,20 @@
             max-width: 520px;
             margin: 0.8rem auto 0;
             line-height: 1.8;
-            text-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
         }
 
         /* ==============================================================
-                   SECTION TITLE - DENGAN LIGHT EFFECT
+                   VISI MISI - DENGAN EFEK CAHAYA
                    ============================================================== */
-        .section-label {
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--gray-500);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 0.3rem;
-        }
-        .section-label i {
-            color: var(--blue-light);
-            margin-right: 4px;
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+        .visi-misi {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.5rem 0 2.2rem;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 0.2rem;
-        }
-        .section-title span {
-            background: var(--blue-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
-        .section-title span::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--blue-gradient);
-            border-radius: 4px;
-            opacity: 0.10;
-            filter: blur(6px);
-        }
-
-        .section-sub {
-            text-align: center;
-            color: var(--gray-400);
-            font-size: 0.92rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* ==============================================================
-                   CARD DENGAN LIGHT EFFECT - BASE
-                   ============================================================== */
-        .card-light {
+        .vm-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-lg);
@@ -665,7 +543,8 @@
             position: relative;
             overflow: hidden;
         }
-        .card-light::before {
+        /* EFFECT CAHAYA DI CARD */
+        .vm-card::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -676,28 +555,28 @@
             pointer-events: none;
             transition: var(--transition);
         }
-        .card-light::after {
+        .vm-card::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
-            width: 0;
+            left: 0;
+            width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.25), transparent);
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+            opacity: 0;
             transition: var(--transition);
-            transform: translateX(-50%);
         }
-        .card-light:hover {
+        .vm-card:hover {
             border-color: var(--border-glow);
             background: var(--bg-card-hover);
             transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 80px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 60px rgba(59, 130, 246, 0.04);
         }
-        .card-light:hover::after {
-            width: 80%;
+        .vm-card:hover::after {
+            opacity: 1;
         }
 
-        .card-light .icon-wrap {
+        .vm-card .icon-wrap {
             width: 50px;
             height: 50px;
             background: rgba(59, 130, 246, 0.06);
@@ -708,32 +587,32 @@
             font-size: 1.4rem;
             color: var(--blue-light);
             margin-bottom: 0.6rem;
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.04);
             transition: var(--transition);
         }
-        .card-light:hover .icon-wrap {
+        .vm-card:hover .icon-wrap {
             background: rgba(59, 130, 246, 0.10);
-            box-shadow: 0 0 50px rgba(59, 130, 246, 0.08);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.08);
         }
 
-        .card-light h3 {
+        .vm-card h3 {
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--white);
             margin-bottom: 0.2rem;
         }
 
-        .card-light p {
+        .vm-card p {
             font-size: 0.92rem;
             color: var(--gray-300);
             line-height: 1.8;
         }
 
-        .card-light ul {
+        .vm-card ul {
             list-style: none;
             margin-top: 0.3rem;
         }
-        .card-light ul li {
+        .vm-card ul li {
             display: flex;
             align-items: flex-start;
             gap: 10px;
@@ -743,34 +622,62 @@
             line-height: 1.6;
             transition: var(--transition);
         }
-        .card-light ul li:hover {
+        .vm-card ul li:hover {
             color: var(--gray-200);
         }
-        .card-light ul li i {
+        .vm-card ul li i {
             color: var(--blue-light);
             font-size: 0.6rem;
             margin-top: 0.35rem;
             flex-shrink: 0;
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
         }
 
         /* ==============================================================
-                   VISI MISI
+                   STORY - DENGAN EFEK CAHAYA
                    ============================================================== */
-        .visi-misi {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            margin: 1.5rem 0 2.2rem;
+        .story-section {
+            margin: 2.2rem 0 2.2rem;
         }
 
-        .visi-misi .vm-card {
-            composes: card-light;
+        .story-section .label {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.3rem;
         }
 
-        /* ==============================================================
-                   STORY
-                   ============================================================== */
+        .story-section .label i {
+            color: var(--blue-light);
+            margin-right: 4px;
+        }
+
+        .story-section h2 {
+            text-align: center;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+        }
+
+        .story-section h2 span {
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .story-section .sub-story {
+            text-align: center;
+            color: var(--gray-400);
+            font-size: 0.92rem;
+            margin-bottom: 1.5rem;
+        }
+
         .story-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -778,10 +685,17 @@
         }
 
         .story-item {
-            composes: card-light;
-            padding: 1.5rem 1.6rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
+            padding: 1.5rem 1.6rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
+        /* EFFECT CAHAYA DI STORY CARD */
         .story-item::before {
             content: '';
             position: absolute;
@@ -792,12 +706,28 @@
             background: var(--blue-gradient);
             opacity: 0.3;
             border-radius: 4px 0 0 4px;
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
             transition: var(--transition);
+        }
+        .story-item::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04), transparent 70%);
+            pointer-events: none;
         }
         .story-item:hover::before {
             opacity: 0.6;
-            box-shadow: 0 0 60px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
+        }
+        .story-item:hover {
+            border-color: var(--border-glow);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25), 0 0 60px rgba(59, 130, 246, 0.04);
         }
 
         .story-item .year {
@@ -805,7 +735,7 @@
             font-size: 1.2rem;
             color: var(--blue-light);
             margin-bottom: 0.2rem;
-            text-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
         }
 
         .story-item .title {
@@ -824,7 +754,7 @@
         .story-item .highlight {
             color: var(--blue-light);
             font-weight: 600;
-            text-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
         }
 
         .story-item.soon {
@@ -839,7 +769,7 @@
         }
         .story-item.soon .year {
             color: var(--yellow);
-            text-shadow: 0 0 40px rgba(251, 191, 36, 0.1);
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
         }
 
         .soon-badge {
@@ -856,35 +786,98 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 0.4rem;
-            box-shadow: 0 0 40px rgba(251, 191, 36, 0.04);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.04);
             transition: var(--transition);
         }
         .soon-badge:hover {
             background: rgba(251, 191, 36, 0.12);
-            box-shadow: 0 0 50px rgba(251, 191, 36, 0.06);
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.06);
         }
 
         /* ==============================================================
-                   VALUES & STATS - DENGAN LIGHT EFFECT
+                   VALUES - DENGAN EFEK CAHAYA
                    ============================================================== */
+        .values-section {
+            margin: 2.2rem 0 2.2rem;
+        }
+
+        .values-section .label {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.3rem;
+        }
+
+        .values-section .label i {
+            color: var(--blue-light);
+            margin-right: 4px;
+        }
+
+        .values-section h2 {
+            text-align: center;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
         .values-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+        .value-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.3rem 1rem;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+        /* EFFECT CAHAYA DI VALUE CARD */
+        .value-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .value-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        .value-item:hover::before {
+            opacity: 1;
+        }
+        .value-item:hover::after {
+            width: 80%;
+        }
+        .value-item:hover {
+            border-color: var(--border-glow);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2), 0 0 60px rgba(59, 130, 246, 0.04);
         }
 
-        .value-item {
-            composes: card-light;
-            padding: 1.3rem 1rem;
-            border-radius: var(--radius-md);
-            text-align: center;
-        }
         .value-item .icon {
             width: 46px;
             height: 46px;
@@ -897,13 +890,14 @@
             color: var(--blue-light);
             margin: 0 auto 0.5rem;
             transition: var(--transition);
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.02);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.02);
         }
         .value-item:hover .icon {
             background: rgba(59, 130, 246, 0.12);
-            box-shadow: 0 0 50px rgba(59, 130, 246, 0.08);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.08);
             transform: scale(1.05);
         }
+
         .value-item h4 {
             font-weight: 700;
             font-size: 0.92rem;
@@ -916,12 +910,67 @@
             line-height: 1.5;
         }
 
-        .stats-item {
-            composes: card-light;
-            padding: 1.3rem 1rem;
-            border-radius: var(--radius-md);
-            text-align: center;
+        /* ==============================================================
+                   STATS - DENGAN EFEK CAHAYA
+                   ============================================================== */
+        .stats-section {
+            margin: 2.2rem 0 2.2rem;
         }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .stats-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.3rem 1rem;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+        /* EFFECT CAHAYA DI STATS CARD */
+        .stats-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .stats-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.25), transparent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        .stats-item:hover::before {
+            opacity: 1;
+        }
+        .stats-item:hover::after {
+            width: 70%;
+        }
+        .stats-item:hover {
+            border-color: var(--border-glow);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2), 0 0 60px rgba(59, 130, 246, 0.04);
+        }
+
         .stats-item .number {
             font-weight: 900;
             font-size: clamp(1.8rem, 3vw, 2.8rem);
@@ -930,7 +979,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.1;
-            text-shadow: 0 0 80px rgba(59, 130, 246, 0.1);
+            text-shadow: 0 0 60px rgba(59, 130, 246, 0.1);
         }
         .stats-item .label {
             color: var(--gray-500);
@@ -940,14 +989,22 @@
         }
 
         /* ==============================================================
-                   CTA - DENGAN LIGHT EFFECT
+                   CTA - DENGAN EFEK CAHAYA
                    ============================================================== */
         .cta-section {
-            composes: card-light;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
             padding: clamp(1.8rem, 3.5vw, 2.8rem);
             margin: 1.5rem 0 0.5rem;
             text-align: center;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
+        /* EFFECT CAHAYA DI CTA */
         .cta-section::before {
             content: '';
             position: absolute;
@@ -968,13 +1025,18 @@
             background: radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.04), transparent 50%);
             pointer-events: none;
         }
+        .cta-section:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 80px rgba(59, 130, 246, 0.04);
+            transform: translateY(-2px);
+        }
 
         .cta-section .icon-big {
             font-size: 2.4rem;
             color: var(--blue-light);
             margin-bottom: 0.5rem;
             display: block;
-            text-shadow: 0 0 80px rgba(59, 130, 246, 0.2);
+            text-shadow: 0 0 60px rgba(59, 130, 246, 0.2);
             animation: float-icon 3s ease-in-out infinite;
         }
 
@@ -1017,6 +1079,7 @@
             z-index: 2;
         }
 
+        /* BUTTON DENGAN EFEK CAHAYA */
         .btn-primary {
             background: var(--blue-gradient);
             color: #fff;
@@ -1031,7 +1094,7 @@
             text-decoration: none;
             transition: var(--transition);
             cursor: pointer;
-            box-shadow: 0 6px 40px var(--blue-glow);
+            box-shadow: 0 6px 32px var(--blue-glow);
             position: relative;
             overflow: hidden;
         }
@@ -1042,7 +1105,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 60%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.10), transparent 60%);
             opacity: 0;
             transition: var(--transition);
         }
@@ -1053,7 +1116,7 @@
             left: -100%;
             width: 300%;
             height: 300%;
-            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.08), transparent 60%);
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.05), transparent 60%);
             transform: rotate(45deg) translateY(100%);
             transition: var(--transition);
         }
@@ -1065,7 +1128,7 @@
         }
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 56px var(--blue-glow);
+            box-shadow: 0 12px 48px var(--blue-glow);
         }
 
         .btn-secondary {
@@ -1092,7 +1155,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent 60%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06), transparent 60%);
             opacity: 0;
             transition: var(--transition);
         }
@@ -1104,11 +1167,10 @@
             color: var(--white);
             background: rgba(59, 130, 246, 0.06);
             transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.04);
         }
 
         /* ==============================================================
-                   FOOTER - DENGAN LIGHT EFFECT
+                   FOOTER
                    ============================================================== */
         .footer {
             margin-top: clamp(2rem, 4vw, 3.5rem);
@@ -1122,15 +1184,6 @@
             position: relative;
             z-index: 10;
         }
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.10), transparent);
-        }
 
         .footer .copy {
             color: var(--gray-500);
@@ -1143,7 +1196,6 @@
         }
         .footer .copy .tag:hover {
             color: var(--blue);
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
         }
 
         .footer .social {
@@ -1168,7 +1220,6 @@
             border-radius: 4px;
             transition: var(--transition);
             transform: translateX(-50%);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
         }
         .footer .social a:hover::after {
             width: 60%;
@@ -1176,7 +1227,7 @@
         .footer .social a:hover {
             color: var(--blue-light);
             transform: translateY(-2px);
-            text-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
         }
 
         /* ==============================================================
@@ -1197,19 +1248,15 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .container .rays-container .ray:nth-child(2),
-            .container .rays-container .ray:nth-child(4),
-            .container .rays-container .ray:nth-child(6),
-            .container .rays-container .ray:nth-child(7),
-            .container .rays-container .ray:nth-child(9),
-            .container .rays-container .ray:nth-child(10) {
+            .container .rays-inner .ray:nth-child(2),
+            .container .rays-inner .ray:nth-child(4),
+            .container .rays-inner .ray:nth-child(6),
+            .container .rays-inner .ray:nth-child(7),
+            .container .rays-inner .ray:nth-child(9),
+            .container .rays-inner .ray:nth-child(10) {
                 display: none;
             }
-            .bg-outer .orb-bg:nth-child(3),
-            .bg-outer .orb-bg:nth-child(4) {
-                display: none;
-            }
-            .container .ambient-glow-3 {
+            .bg-outer .orb-bg:nth-child(3) {
                 display: none;
             }
         }
@@ -1276,16 +1323,16 @@
                 justify-content: center;
             }
 
-            .container .rays-container .ray {
+            .container .rays-inner .ray {
                 display: none !important;
             }
-            .container .ambient-glow-1,
-            .container .ambient-glow-2 {
+            .container .inner-glow-1,
+            .container .inner-glow-2 {
                 display: none;
             }
             .bg-outer .orb-bg {
                 filter: blur(60px);
-                opacity: 0.12;
+                opacity: 0.15;
             }
             .bg-outer .orb-bg:nth-child(1),
             .bg-outer .orb-bg:nth-child(2) {
@@ -1322,7 +1369,7 @@
                 font-size: 0.5rem;
                 padding: 0.15rem 0.6rem;
             }
-            .card-light {
+            .vm-card {
                 padding: 1.2rem;
             }
             .story-item {
@@ -1330,9 +1377,6 @@
             }
             .bg-outer .orb-bg {
                 display: none !important;
-            }
-            .bg-outer {
-                opacity: 0.3;
             }
         }
 
@@ -1346,23 +1390,11 @@
             .hero-about h1 {
                 font-size: 4.4rem;
             }
-            .container .rays-container .ray {
-                height: 450px !important;
+            .container .rays-inner .ray {
+                height: 400px !important;
             }
-            .container .rays-container .ray:nth-child(4) {
-                height: 550px !important;
-            }
-            .container .rays-container .ray:nth-child(9) {
+            .container .rays-inner .ray:nth-child(9) {
                 height: 500px !important;
-                width: 10px !important;
-            }
-            .bg-outer .orb-bg:nth-child(1) {
-                width: 800px;
-                height: 800px;
-            }
-            .bg-outer .orb-bg:nth-child(2) {
-                width: 700px;
-                height: 700px;
             }
         }
     </style>
@@ -1370,10 +1402,9 @@
 <body>
 
     <!-- ============================================================== -->
-    <!-- BACKGROUND OUTER - LIGHT EFFECT -->
+    <!-- BACKGROUND OUTER -->
     <!-- ============================================================== -->
     <div class="bg-outer">
-        <div class="orb-bg"></div>
         <div class="orb-bg"></div>
         <div class="orb-bg"></div>
         <div class="orb-bg"></div>
@@ -1387,7 +1418,7 @@
         <div class="container">
 
             <!-- ===== LIGHT RAYS DI DALAM CONTAINER ===== -->
-            <div class="rays-container">
+            <div class="rays-inner">
                 <div class="ray"></div>
                 <div class="ray"></div>
                 <div class="ray"></div>
@@ -1400,10 +1431,9 @@
                 <div class="ray"></div>
             </div>
 
-            <!-- ===== AMBIENT GLOW DI DALAM CONTAINER ===== -->
-            <div class="ambient-glow ambient-glow-1"></div>
-            <div class="ambient-glow ambient-glow-2"></div>
-            <div class="ambient-glow ambient-glow-3"></div>
+            <!-- ===== INNER GLOW ===== -->
+            <div class="inner-glow inner-glow-1"></div>
+            <div class="inner-glow inner-glow-2"></div>
 
             <!-- ========================================================== -->
             <!-- NAVBAR -->
@@ -1439,7 +1469,7 @@
 
                 <!-- ===== VISI MISI ===== -->
                 <div class="visi-misi">
-                    <div class="vm-card card-light">
+                    <div class="vm-card">
                         <div class="icon-wrap"><i class="fas fa-eye"></i></div>
                         <h3>Visi</h3>
                         <p>
@@ -1448,7 +1478,7 @@
                             anggota bisa berkembang dalam skill dan persahabatan.
                         </p>
                     </div>
-                    <div class="vm-card card-light">
+                    <div class="vm-card">
                         <div class="icon-wrap"><i class="fas fa-bullseye"></i></div>
                         <h3>Misi</h3>
                         <ul>
@@ -1461,10 +1491,10 @@
                 </div>
 
                 <!-- ===== STORY ===== -->
-                <div class="story-section" style="margin:2.2rem 0 2.2rem;">
-                    <div class="section-label"><i class="fas fa-clock"></i> Perjalanan</div>
-                    <h2 class="section-title">Awal <span>MONGSTER</span></h2>
-                    <p class="section-sub">Masih baru, tapi kami punya rencana besar ke depan.</p>
+                <div class="story-section">
+                    <div class="label"><i class="fas fa-clock"></i> Perjalanan</div>
+                    <h2>Awal <span>MONGSTER</span></h2>
+                    <p class="sub-story">Masih baru, tapi kami punya rencana besar ke depan.</p>
 
                     <div class="story-grid">
                         <div class="story-item">
@@ -1496,9 +1526,9 @@
                 </div>
 
                 <!-- ===== VALUES ===== -->
-                <div class="values-section" style="margin:2.2rem 0 2.2rem;">
-                    <div class="section-label"><i class="fas fa-heart"></i> Nilai Kami</div>
-                    <h2 class="section-title">Yang Kami <span>Pegang</span></h2>
+                <div class="values-section">
+                    <div class="label"><i class="fas fa-heart"></i> Nilai Kami</div>
+                    <h2>Yang Kami <span>Pegang</span></h2>
 
                     <div class="values-grid">
                         <div class="value-item">
@@ -1525,7 +1555,7 @@
                 </div>
 
                 <!-- ===== STATS ===== -->
-                <div class="stats-section" style="margin:2.2rem 0 2.2rem;">
+                <div class="stats-section">
                     <div class="stats-grid">
                         <div class="stats-item">
                             <div class="number">5</div>
