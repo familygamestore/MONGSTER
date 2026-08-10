@@ -126,30 +126,31 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
         }
 
         .logo img {
-            height: clamp(36px, 4vw, 48px);
+            height: clamp(48px, 5.5vw, 72px);
             width: auto;
             display: block;
-            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.15));
+            filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.20));
             transition: var(--transition);
+            border-radius: 8px;
         }
         .logo img:hover {
-            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.25));
-            transform: scale(1.02);
+            filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.35));
+            transform: scale(1.04);
         }
 
         .logo .logo-text {
             font-weight: 900;
-            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
             letter-spacing: -0.5px;
             color: var(--white);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         .logo .logo-text span {
             background: var(--blue-gradient);
@@ -158,16 +159,17 @@
             background-clip: text;
         }
         .logo .badge {
-            font-size: 0.4rem;
-            background: rgba(59, 130, 246, 0.12);
+            font-size: 0.45rem;
+            background: rgba(59, 130, 246, 0.14);
             color: var(--blue-light);
-            padding: 0.1rem 0.7rem;
+            padding: 0.15rem 0.8rem;
             border-radius: 40px;
             font-weight: 700;
-            border: 1px solid rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.15);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             -webkit-text-fill-color: var(--blue-light);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.05);
         }
 
         .nav-links {
@@ -811,6 +813,12 @@
             .hero-card .item .info .desc {
                 font-size: 0.65rem;
             }
+            .logo img {
+                height: clamp(40px, 5vw, 56px);
+            }
+            .logo .logo-text {
+                font-size: clamp(1.3rem, 3.5vw, 2rem);
+            }
         }
 
         @media (max-width: 640px) {
@@ -912,6 +920,16 @@
             }
             .scrim-tags {
                 justify-content: center;
+            }
+            .logo img {
+                height: clamp(32px, 4.5vw, 44px);
+            }
+            .logo .logo-text {
+                font-size: clamp(1.1rem, 3vw, 1.6rem);
+            }
+            .logo .badge {
+                font-size: 0.35rem;
+                padding: 0.08rem 0.5rem;
             }
         }
 
@@ -1021,7 +1039,10 @@
                 grid-template-columns: repeat(3, 1fr);
             }
             .logo img {
-                height: 56px;
+                height: 80px;
+            }
+            .logo .logo-text {
+                font-size: 3rem;
             }
         }
 
@@ -1034,6 +1055,9 @@
             }
             .hero-card {
                 padding: 1.5rem;
+            }
+            .logo img {
+                height: clamp(44px, 4.5vw, 60px);
             }
         }
     </style>
@@ -1053,6 +1077,10 @@
             <nav class="navbar">
                 <a href="index.html" class="logo">
                     <img src="assets/mongster.png" alt="MONGSTER Logo" />
+                    <span class="logo-text">
+                        MONG<span>STER</span>
+                        <span class="badge">MLBB</span>
+                    </span>
                 </a>
                 <div class="nav-links">
                     <a href="index.html" class="active">Beranda</a>
