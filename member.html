@@ -22,12 +22,10 @@
 
         :root {
             --bg-deep: #060b18;
-            --bg-surface: #0c1428;
             --bg-card: rgba(255, 255, 255, 0.015);
-            --bg-card-hover: rgba(0, 180, 255, 0.025);
+            --bg-card-hover: rgba(59, 130, 246, 0.025);
 
             --blue: #3b82f6;
-            --blue-dark: #1d4ed8;
             --blue-light: #60a5fa;
             --blue-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
             --blue-glow: rgba(59, 130, 246, 0.12);
@@ -42,11 +40,9 @@
             --gold: #fbbf24;
 
             --white: #ffffff;
-            --gray-200: #d1d9e8;
             --gray-300: #94a3b8;
             --gray-400: #7a8aaa;
             --gray-500: #64748b;
-            --gray-600: #475569;
 
             --radius-xl: 48px;
             --radius-lg: 32px;
@@ -54,9 +50,6 @@
             --radius-sm: 14px;
 
             --shadow-heavy: 0 40px 80px rgba(0, 0, 0, 0.6);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --shadow-glow: 0 0 60px rgba(59, 130, 246, 0.04);
-
             --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
@@ -231,41 +224,18 @@
             flex-shrink: 0;
         }
 
-        .logo .logo-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: var(--blue-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            color: #fff;
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.10);
+        .logo img {
+            height: clamp(42px, 5vw, 56px);
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.08));
             transition: var(--transition);
+            border-radius: 12px;
         }
 
-        .logo .logo-icon i {
-            filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.15));
-        }
-
-        .logo .logo-text {
-            font-size: clamp(1.2rem, 2vw, 1.8rem);
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -0.5px;
-        }
-
-        .logo .logo-text span {
-            background: var(--blue-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .logo:hover .logo-icon {
-            transform: scale(1.04);
-            box-shadow: 0 0 60px rgba(59, 130, 246, 0.18);
+        .logo img:hover {
+            filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.15));
+            transform: scale(1.03);
         }
 
         .nav-links {
@@ -363,7 +333,6 @@
             border-radius: 50%;
             display: inline-block;
             animation: pulseDot 2.4s infinite;
-            box-shadow: 0 0 12px rgba(34, 197, 94, 0.10);
         }
 
         @keyframes pulseDot {
@@ -548,7 +517,6 @@
             border-radius: 50%;
             background: var(--green);
             border: 2px solid var(--bg-deep);
-            box-shadow: 0 0 16px rgba(34, 197, 94, 0.15);
             animation: pulseDot 2s infinite;
         }
 
@@ -682,6 +650,7 @@
             border: 2px solid var(--bg-deep);
         }
 
+        /* Admin avatar color variants */
         .admin-card:nth-child(2) .avatar-sm {
             background: var(--purple-gradient);
         }
@@ -791,6 +760,7 @@
             border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
+        /* Rank color variants */
         .member-item:nth-child(1) .member-rank {
             color: var(--gold);
             border-color: rgba(251, 191, 36, 0.06);
@@ -1004,25 +974,15 @@
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
-
             .admin-grid {
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
-
             .member-grid {
                 grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
             }
-
             .bg-ambient .orb:nth-child(3) {
                 display: none;
             }
-
-            .logo .logo-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
-            }
-
             .stats-bar {
                 gap: 1.5rem;
             }
@@ -1032,108 +992,81 @@
             body {
                 padding: 0.6rem;
             }
-
             .container {
                 padding: 1rem;
                 border-radius: 32px;
             }
-
             .navbar {
                 flex-direction: column;
                 align-items: stretch;
                 gap: 0.5rem;
                 padding-bottom: 1rem;
             }
-
             .nav-links {
                 justify-content: space-between;
                 width: 100%;
                 gap: 0.2rem;
             }
-
             .nav-links a {
                 font-size: 0.6rem;
             }
-
             .btn-nav {
                 font-size: 0.6rem;
                 padding: 0.2rem 0.8rem;
             }
-
             .hero-member h1 {
                 font-size: 1.8rem;
             }
-
             .hero-member .sub {
                 font-size: 0.85rem;
             }
-
             .admin-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-
             .member-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-
             .section-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .join-section {
                 padding: 1.2rem;
             }
-
             .join-section .btn-group {
                 flex-direction: column;
                 align-items: center;
             }
-
             .join-section .btn-group .btn-primary,
             .join-section .btn-group .btn-secondary {
                 width: 100%;
                 justify-content: center;
             }
-
             .footer {
                 flex-direction: column;
                 text-align: center;
                 gap: 0.6rem;
             }
-
             .footer .social {
                 justify-content: center;
             }
-
-            .logo .logo-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 14px;
+            .logo img {
+                height: clamp(32px, 5vw, 40px);
             }
-
-            .logo .logo-text {
-                font-size: 1rem;
-            }
-
             .stats-bar {
                 gap: 1rem;
                 padding: 0.8rem;
             }
-
             .stats-bar .stat-item .num {
                 font-size: 1.2rem;
             }
-
             .team-card {
                 padding: 1.4rem;
             }
-
             .team-card .avatar {
                 width: 64px;
                 height: 64px;
             }
-
             .team-card .avatar .status-dot {
                 width: 14px;
                 height: 14px;
@@ -1145,38 +1078,25 @@
                 padding: 0.7rem;
                 border-radius: 24px;
             }
-
             .hero-member h1 {
                 font-size: 1.4rem;
             }
-
             .admin-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .member-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .logo .logo-icon {
-                width: 28px;
+            .logo img {
                 height: 28px;
-                font-size: 12px;
             }
-
-            .logo .logo-text {
-                font-size: 0.85rem;
-            }
-
             .nav-links a {
                 font-size: 0.5rem;
             }
-
             .btn-nav {
                 font-size: 0.5rem;
                 padding: 0.15rem 0.6rem;
             }
-
             .bg-ambient .orb {
                 display: none !important;
             }
@@ -1186,50 +1106,35 @@
             .hero-member {
                 padding: 0.8rem 0;
             }
-
             .hero-member h1 {
                 font-size: 1.6rem;
             }
-
             .hero-member .sub {
                 font-size: 0.75rem;
                 margin: 0.3rem auto 0;
             }
-
             .team-grid {
                 grid-template-columns: 1fr 1fr;
             }
-
             .admin-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
-
             .member-grid {
                 grid-template-columns: repeat(5, 1fr);
             }
-
             .stats-bar {
                 padding: 0.5rem;
                 margin-top: 0.8rem;
                 gap: 0.8rem;
             }
-
             .join-section {
                 padding: 0.8rem;
                 margin-top: 1rem;
             }
-
             .footer {
                 margin-top: 1rem;
                 padding-top: 0.6rem;
             }
-
-            .logo .logo-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
-            }
-
             .bg-ambient .orb {
                 opacity: 0.03;
             }
@@ -1239,21 +1144,15 @@
             .main-wrapper {
                 max-width: 1360px;
             }
-
             .container {
                 padding: 4.5rem;
             }
-
             .hero-member h1 {
                 font-size: 4.5rem;
             }
-
-            .logo .logo-icon {
-                width: 64px;
-                height: 64px;
-                font-size: 28px;
+            .logo img {
+                height: 72px;
             }
-
             .bg-ambient .orb:nth-child(1) {
                 width: 800px;
                 height: 800px;
