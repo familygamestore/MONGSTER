@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Tentang MONGSTER · MLBB Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ==============================================================
+                   RESET & ROOT VARIABLES (sama dengan index)
+                   ============================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #050a18;
+            --bg-surface: #0a1428;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(59, 130, 246, 0.06);
+            --border-light: rgba(255, 255, 255, 0.05);
+            --border-glow: rgba(59, 130, 246, 0.20);
+            --blue: #3b82f6;
+            --blue-dark: #1d4ed8;
+            --blue-light: #60a5fa;
+            --blue-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --blue-glow: rgba(59, 130, 246, 0.30);
+            --green: #22c55e;
+            --white: #ffffff;
+            --gray-100: #e8edf5;
+            --gray-300: #94a3b8;
+            --gray-500: #64748b;
+            --gray-700: #334155;
+            --radius-xl: 44px;
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+            --shadow-heavy: 0 40px 80px rgba(0, 0, 0, 0.7);
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background: var(--bg-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .main-wrapper {
+            max-width: 1160px;
+            width: 100%;
+            position: relative;
+        }
+
+        .container {
+            background: var(--bg-surface);
+            border-radius: var(--radius-xl);
+            padding: clamp(1.2rem, 3.5vw, 3.2rem);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-heavy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ORBS */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            right: -150px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%);
+        }
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 70%);
+        }
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04), transparent 70%);
+        }
+
+        /* ==============================================================
+                   NAVBAR
+                   ============================================================== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem 2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border-light);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+            letter-spacing: -0.5px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo span {
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo .badge {
+            font-size: 0.45rem;
+            background: rgba(59, 130, 246, 0.12);
+            color: var(--blue-light);
+            padding: 0.15rem 0.7rem;
+            border-radius: 40px;
+            font-weight: 700;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            -webkit-text-fill-color: var(--blue-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: clamp(1rem, 2.2vw, 2.8rem);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-300);
+            font-weight: 500;
+            font-size: clamp(0.8rem, 1vw, 0.95rem);
+            transition: var(--transition);
+            position: relative;
+            padding: 0.2rem 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: var(--blue-gradient);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--white);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: var(--white);
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .btn-nav {
+            background: var(--blue-gradient);
+            color: #fff !important;
+            padding: 0.45rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 24px var(--blue-glow);
+        }
+        .btn-nav::after {
+            display: none !important;
+        }
+        .btn-nav:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 36px var(--blue-glow);
+            color: #fff !important;
+        }
+
+        /* ==============================================================
+                   TENTANG KAMI - CONTENT
+                   ============================================================== */
+        .about-section {
+            margin: clamp(2rem, 4vw, 3.5rem) 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: clamp(2rem, 4vw, 3.5rem);
+        }
+
+        .about-header .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.12);
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+            font-weight: 600;
+            color: var(--blue-light);
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .about-header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1.05;
+            color: var(--white);
+        }
+
+        .about-header h1 .gradient {
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-header p {
+            font-size: clamp(1rem, 1.3vw, 1.2rem);
+            color: var(--gray-300);
+            max-width: 600px;
+            margin: 1rem auto 0;
+            line-height: 1.8;
+        }
+
+        /* ——— ABOUT GRID ——— */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            margin-top: 1.5rem;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: clamp(1.5rem, 2.5vw, 2.5rem);
+            transition: var(--transition);
+        }
+        .about-card:hover {
+            border-color: var(--border-glow);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+        }
+
+        .about-card .icon {
+            width: clamp(52px, 5.5vw, 64px);
+            height: clamp(52px, 5.5vw, 64px);
+            background: rgba(59, 130, 246, 0.06);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.4rem, 2vw, 2rem);
+            color: var(--blue-light);
+            margin-bottom: 1rem;
+        }
+
+        .about-card h3 {
+            font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+
+        .about-card p {
+            font-size: clamp(0.9rem, 1vw, 1.05rem);
+            color: var(--gray-300);
+            line-height: 1.7;
+        }
+
+        .about-card ul {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+        .about-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.3rem 0;
+            color: var(--gray-300);
+            font-size: clamp(0.85rem, 0.95vw, 0.95rem);
+        }
+        .about-card ul li i {
+            color: var(--blue-light);
+            font-size: 0.8rem;
+        }
+
+        /* ——— FULL WIDTH CARD ——— */
+        .about-full {
+            grid-column: 1 / -1;
+        }
+
+        /* ——— MILESTONE ——— */
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .milestone-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: clamp(1.2rem, 1.8vw, 2rem);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .milestone-item:hover {
+            border-color: var(--border-glow);
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+        }
+
+        .milestone-item .number {
+            font-weight: 900;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .milestone-item .label {
+            color: var(--gray-500);
+            font-size: clamp(0.7rem, 0.8vw, 0.85rem);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        /* ==============================================================
+                   CTA BACK
+                   ============================================================== */
+        .cta-back {
+            display: flex;
+            justify-content: center;
+            margin-top: clamp(2.5rem, 4vw, 3.5rem);
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--gray-300);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.8rem 2.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1vw, 1rem);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .btn-back:hover {
+            border-color: var(--blue);
+            color: var(--white);
+            background: rgba(59, 130, 246, 0.06);
+            transform: translateY(-2px);
+        }
+
+        /* ==============================================================
+                   FOOTER
+                   ============================================================== */
+        .footer {
+            margin-top: clamp(2.8rem, 5vw, 4.5rem);
+            padding-top: clamp(1.2rem, 2vw, 2rem);
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer .copy {
+            color: var(--gray-500);
+            font-size: clamp(0.7rem, 0.8vw, 0.85rem);
+        }
+        .footer .copy .tag {
+            color: var(--blue-light);
+            font-weight: 500;
+        }
+
+        .footer .social {
+            display: flex;
+            gap: clamp(0.8rem, 1.2vw, 1.5rem);
+            flex-wrap: wrap;
+        }
+        .footer .social a {
+            color: var(--gray-500);
+            font-size: clamp(1rem, 1.3vw, 1.4rem);
+            transition: var(--transition);
+        }
+        .footer .social a:hover {
+            color: var(--blue-light);
+            transform: translateY(-3px);
+        }
+
+        /* ==============================================================
+                   RESPONSIVE
+                   ============================================================== */
+        @media (max-width: 820px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .milestone-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 0.5rem;
+            }
+            .container {
+                padding: 1rem;
+                border-radius: 28px;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.6rem;
+            }
+            .nav-links {
+                justify-content: space-between;
+                width: 100%;
+                gap: 0.3rem;
+            }
+            .nav-links a {
+                font-size: 0.7rem;
+            }
+            .btn-nav {
+                font-size: 0.65rem;
+                padding: 0.25rem 0.8rem;
+            }
+            .about-header h1 {
+                font-size: 1.8rem;
+            }
+            .milestone-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.6rem;
+            }
+            .footer .social {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 0.8rem;
+                border-radius: 20px;
+            }
+            .about-header h1 {
+                font-size: 1.5rem;
+            }
+            .milestone-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+            .logo .badge {
+                font-size: 0.35rem;
+                padding: 0.1rem 0.5rem;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .main-wrapper {
+                max-width: 1350px;
+            }
+            .container {
+                padding: 4rem;
+            }
+            .about-header h1 {
+                font-size: 4.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="container">
+
+            <!-- ===== ORBS ===== -->
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+
+            <!-- ========================================================== -->
+            <!-- NAVBAR -->
+            <!-- ========================================================== -->
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    MONG<span>STER</span>
+                    <span class="badge">MLBB</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Beranda</a>
+                    <a href="tentang.html" class="active">Tentang</a>
+                    <a href="#">Jadwal</a>
+                    <a href="#">Member</a>
+                    <a href="#" class="btn-nav"><i class="fas fa-user-plus" style="margin-right:4px;"></i> Gabung</a>
+                </div>
+            </nav>
+
+            <!-- ========================================================== -->
+            <!-- TENTANG KAMI -->
+            <!-- ========================================================== -->
+            <section class="about-section">
+
+                <div class="about-header">
+                    <div class="tag"><i class="fas fa-info-circle"></i> Tentang Kami</div>
+                    <h1>Kenalan dengan <span class="gradient">MONGSTER</span></h1>
+                    <p>Komunitas MLBB yang lahir dari kecintaan terhadap game dan persahabatan. Kami adalah rumah bagi para pemain yang ingin berkembang bersama.</p>
+                </div>
+
+                <div class="about-grid">
+
+                    <!-- VISI -->
+                    <div class="about-card">
+                        <div class="icon"><i class="fas fa-eye"></i></div>
+                        <h3>Visi</h3>
+                        <p>Menjadi komunitas MLBB terbaik di Indonesia yang tidak hanya fokus pada kemenangan, tapi juga pada kebersamaan dan pembelajaran.</p>
+                    </div>
+
+                    <!-- MISI -->
+                    <div class="about-card">
+                        <div class="icon"><i class="fas fa-bullseye"></i></div>
+                        <h3>Misi</h3>
+                        <ul>
+                            <li><i class="fas fa-chevron-right"></i> Menyelenggarakan scrim rutin 4x sebulan</li>
+                            <li><i class="fas fa-chevron-right"></i> Membangun lingkungan yang ramah untuk semua rank</li>
+                            <li><i class="fas fa-chevron-right"></i> Menjadi tempat belajar dan berbagi strategi MLBB</li>
+                            <li><i class="fas fa-chevron-right"></i> Menciptakan persahabatan yang solid di Litmatch</li>
+                        </ul>
+                    </div>
+
+                    <!-- SEJARAH -->
+                    <div class="about-card about-full">
+                        <div class="icon"><i class="fas fa-history"></i></div>
+                        <h3>Sejarah Kami</h3>
+                        <p>
+                            MONGSTER lahir dari sekelompok kecil pemain MLBB yang ingin bermain bersama tanpa tekanan.
+                            Berawal dari 5 orang yang sering mabar di Litmatch, komunitas ini perlahan tumbuh.
+                            Kini kami memiliki 30+ member aktif yang selalu siap scrim dan berbagi tips.
+                            Kami percaya bahwa setiap pemain, dari Epic sampai Mythic, punya tempat di sini.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- ===== MILESTONE ===== -->
+                <div style="margin-top: clamp(2.5rem, 4vw, 3.5rem);">
+                    <h3 style="font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 800; text-align: center; margin-bottom: 1rem;">
+                        Perjalanan <span style="background:var(--blue-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">MONGSTER</span>
+                    </h3>
+
+                    <div class="milestone-grid">
+                        <div class="milestone-item">
+                            <div class="number">5</div>
+                            <div class="label">Member pertama</div>
+                        </div>
+                        <div class="milestone-item">
+                            <div class="number">30+</div>
+                            <div class="label">Member aktif</div>
+                        </div>
+                        <div class="milestone-item">
+                            <div class="number">4x</div>
+                            <div class="label">Scrim / bulan</div>
+                        </div>
+                        <div class="milestone-item">
+                            <div class="number">24/7</div>
+                            <div class="label">Online tiap hari</div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ========================================================== -->
+            <!-- CTA BACK -->
+            <!-- ========================================================== -->
+            <div class="cta-back">
+                <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            </div>
+
+            <!-- ========================================================== -->
+            <!-- FOOTER -->
+            <!-- ========================================================== -->
+            <footer class="footer">
+                <span class="copy">
+                    <i class="fas fa-shield-alt" style="color:var(--blue); margin-right:4px;"></i>
+                    © 2026 MONGSTER ·
+                    <span class="tag">30+ member</span> ·
+                    <span class="tag">24/7</span> ·
+                    <span class="tag">4x scrim/bulan</span>
+                </span>
+                <div class="social">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+</body>
+</html>
