@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* ============================================================ */
-        /* RESET & ROOT */
-        /* ============================================================ */
+        /* ==============================================================
+                   RESET & ROOT VARIABLES
+                   ============================================================== */
         * {
             margin: 0;
             padding: 0;
@@ -19,32 +19,34 @@
         }
 
         :root {
-            --bg-deep: #060b18;
-            --bg-surface: #0d1628;
+            --bg-primary: #050a18;
+            --bg-surface: #0a1428;
             --bg-card: rgba(255, 255, 255, 0.03);
-            --border-subtle: rgba(255, 255, 255, 0.05);
-            --border-glow: rgba(59, 130, 246, 0.15);
+            --bg-card-hover: rgba(59, 130, 246, 0.06);
+            --border-light: rgba(255, 255, 255, 0.05);
+            --border-glow: rgba(59, 130, 246, 0.20);
             --blue: #3b82f6;
             --blue-dark: #1d4ed8;
             --blue-light: #60a5fa;
-            --blue-glow: rgba(59, 130, 246, 0.25);
+            --blue-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --blue-glow: rgba(59, 130, 246, 0.30);
             --green: #22c55e;
             --white: #ffffff;
             --gray-100: #e8edf5;
             --gray-300: #94a3b8;
             --gray-500: #64748b;
             --gray-700: #334155;
-            --radius-xl: 40px;
+            --radius-xl: 44px;
             --radius-lg: 28px;
-            --radius-md: 20px;
-            --radius-sm: 14px;
-            --shadow-heavy: 0 40px 80px rgba(0, 0, 0, 0.6);
+            --radius-md: 18px;
+            --radius-sm: 12px;
+            --shadow-heavy: 0 40px 80px rgba(0, 0, 0, 0.7);
             --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            background: var(--bg-deep);
+            background: var(--bg-primary);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--white);
             min-height: 100vh;
@@ -53,66 +55,65 @@
             justify-content: center;
             padding: 1rem;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ============================================================ */
-        /* MAIN WRAPPER */
-        /* ============================================================ */
+        /* ==============================================================
+                   MAIN WRAPPER
+                   ============================================================== */
         .main-wrapper {
-            max-width: 1140px;
+            max-width: 1160px;
             width: 100%;
             position: relative;
         }
 
-        /* ============================================================ */
-        /* CONTAINER */
-        /* ============================================================ */
+        /* ==============================================================
+                   CONTAINER
+                   ============================================================== */
         .container {
             background: var(--bg-surface);
             border-radius: var(--radius-xl);
-            padding: clamp(1.2rem, 3vw, 3rem);
-            border: 1px solid var(--border-subtle);
+            padding: clamp(1.2rem, 3.5vw, 3.2rem);
+            border: 1px solid var(--border-light);
             box-shadow: var(--shadow-heavy);
             position: relative;
             overflow: hidden;
         }
 
-        /* ——— DECORATIVE GLOW ——— */
-        .container .glow-1 {
+        /* ——— DECORATIVE ORBS ——— */
+        .orb {
             position: absolute;
-            top: -30%;
-            right: -15%;
-            width: 50%;
-            height: 50%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.4;
         }
-        .container .glow-2 {
-            position: absolute;
-            bottom: -30%;
-            left: -15%;
-            width: 40%;
-            height: 40%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            right: -150px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%);
         }
-        .container .glow-3 {
-            position: absolute;
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 70%);
+        }
+        .orb-3 {
+            width: 300px;
+            height: 300px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.02) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04), transparent 70%);
         }
 
-        /* ============================================================ */
-        /* NAVBAR */
-        /* ============================================================ */
+        /* ==============================================================
+                   NAVBAR
+                   ============================================================== */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -120,25 +121,28 @@
             flex-wrap: wrap;
             gap: 0.8rem 2rem;
             padding-bottom: 1.2rem;
-            border-bottom: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-light);
             position: relative;
-            z-index: 5;
+            z-index: 10;
         }
 
         .logo {
             font-weight: 900;
-            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-size: clamp(1.6rem, 3.8vw, 2.4rem);
             letter-spacing: -0.5px;
             color: var(--white);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         .logo span {
-            color: var(--blue);
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .logo .chip {
-            font-size: 0.5rem;
+        .logo .badge {
+            font-size: 0.45rem;
             background: rgba(59, 130, 246, 0.12);
             color: var(--blue-light);
             padding: 0.15rem 0.7rem;
@@ -147,11 +151,12 @@
             border: 1px solid rgba(59, 130, 246, 0.15);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            -webkit-text-fill-color: var(--blue-light);
         }
 
         .nav-links {
             display: flex;
-            gap: clamp(1rem, 2vw, 2.5rem);
+            gap: clamp(1rem, 2.2vw, 2.8rem);
             align-items: center;
             flex-wrap: wrap;
         }
@@ -171,8 +176,8 @@
             bottom: -4px;
             left: 0;
             width: 0;
-            height: 2px;
-            background: var(--blue);
+            height: 2.5px;
+            background: var(--blue-gradient);
             border-radius: 4px;
             transition: var(--transition);
         }
@@ -190,35 +195,34 @@
         }
 
         .btn-nav {
-            background: var(--blue);
+            background: var(--blue-gradient);
             color: #fff !important;
-            padding: 0.4rem 1.6rem;
+            padding: 0.45rem 1.8rem;
             border-radius: 40px;
             font-weight: 600;
             font-size: 0.85rem;
             transition: var(--transition);
-            box-shadow: 0 4px 20px var(--blue-glow);
+            box-shadow: 0 4px 24px var(--blue-glow);
         }
         .btn-nav::after {
             display: none !important;
         }
         .btn-nav:hover {
-            background: var(--blue-dark) !important;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 36px var(--blue-glow);
             color: #fff !important;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px var(--blue-glow);
         }
 
-        /* ============================================================ */
-        /* HERO SECTION */
-        /* ============================================================ */
+        /* ==============================================================
+                   HERO
+                   ============================================================== */
         .hero {
             display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: clamp(2rem, 4vw, 4rem);
-            margin: clamp(2rem, 4vw, 3.5rem) 0;
+            grid-template-columns: 1fr 300px;
+            gap: clamp(2rem, 5vw, 4.5rem);
+            margin: clamp(2rem, 4.5vw, 4rem) 0;
             position: relative;
-            z-index: 5;
+            z-index: 10;
             align-items: center;
         }
 
@@ -233,12 +237,13 @@
             gap: 8px;
             background: rgba(59, 130, 246, 0.08);
             border: 1px solid rgba(59, 130, 246, 0.12);
-            padding: 0.2rem 1.1rem;
+            padding: 0.2rem 1.2rem;
             border-radius: 40px;
             font-size: clamp(0.7rem, 0.9vw, 0.8rem);
             font-weight: 600;
             color: var(--blue-light);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.3px;
         }
         .hero-tag .dot {
             width: 6px;
@@ -253,32 +258,34 @@
             0%,
             100% {
                 opacity: 1;
+                transform: scale(1);
             }
             50% {
-                opacity: 0.2;
+                opacity: 0.3;
+                transform: scale(0.8);
             }
         }
 
         .hero h1 {
-            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-size: clamp(2.4rem, 6.5vw, 4.2rem);
             font-weight: 900;
-            letter-spacing: -1.5px;
-            line-height: 1.05;
+            letter-spacing: -2px;
+            line-height: 1.02;
             color: var(--white);
         }
 
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, var(--blue-light), var(--blue));
+        .hero h1 .gradient {
+            background: var(--blue-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .hero p {
-            font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+            font-size: clamp(0.95rem, 1.3vw, 1.2rem);
             color: var(--gray-300);
-            max-width: 480px;
-            margin: 1rem 0 1.8rem;
+            max-width: 500px;
+            margin: 1.2rem 0 2rem;
             line-height: 1.8;
         }
 
@@ -290,31 +297,31 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            background: var(--blue-gradient);
             color: #fff;
             border: none;
-            padding: clamp(0.75rem, 1.2vw, 0.95rem) clamp(1.8rem, 3vw, 2.8rem);
+            padding: clamp(0.8rem, 1.2vw, 1rem) clamp(2rem, 3.2vw, 3rem);
             border-radius: 50px;
             font-weight: 700;
-            font-size: clamp(0.85rem, 1vw, 1rem);
+            font-size: clamp(0.85rem, 1vw, 1.05rem);
             display: inline-flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
             transition: var(--transition);
             cursor: pointer;
-            box-shadow: 0 8px 32px var(--blue-glow);
+            box-shadow: 0 8px 36px var(--blue-glow);
         }
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 44px var(--blue-glow);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 48px var(--blue-glow);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.04);
+        .btn-outline {
+            background: transparent;
             color: var(--gray-300);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: clamp(0.7rem, 1vw, 0.9rem) clamp(1.4rem, 2vw, 2rem);
+            border: 1.5px solid rgba(255, 255, 255, 0.06);
+            padding: clamp(0.75rem, 1vw, 0.95rem) clamp(1.5rem, 2.2vw, 2.2rem);
             border-radius: 50px;
             font-weight: 600;
             font-size: clamp(0.8rem, 0.9vw, 0.95rem);
@@ -325,17 +332,18 @@
             transition: var(--transition);
             cursor: pointer;
         }
-        .btn-secondary:hover {
+        .btn-outline:hover {
             border-color: var(--blue);
             color: var(--white);
             background: rgba(59, 130, 246, 0.06);
+            transform: translateY(-2px);
         }
 
-        /* ——— HERO STATS ROW ——— */
+        /* ——— HERO STATS ——— */
         .hero-stats {
             display: flex;
-            gap: clamp(1.5rem, 3vw, 3.5rem);
-            margin-top: clamp(1.8rem, 3vw, 3rem);
+            gap: clamp(1.8rem, 3.5vw, 4rem);
+            margin-top: clamp(2rem, 3vw, 3.2rem);
             flex-wrap: wrap;
         }
 
@@ -345,135 +353,140 @@
         }
         .hero-stats .stat .num {
             font-weight: 900;
-            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-size: clamp(1.8rem, 3.2vw, 2.8rem);
             color: var(--white);
             display: flex;
             align-items: center;
             gap: 6px;
         }
         .hero-stats .stat .num i {
-            color: var(--blue);
-            font-size: clamp(1rem, 1.4vw, 1.4rem);
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: clamp(1rem, 1.5vw, 1.6rem);
         }
         .hero-stats .stat .label {
             font-size: clamp(0.7rem, 0.8vw, 0.85rem);
             color: var(--gray-500);
             font-weight: 500;
             margin-top: 2px;
+            letter-spacing: 0.3px;
         }
 
-        /* ——— HERO RIGHT (CARD) ——— */
+        /* ——— HERO RIGHT CARD ——— */
         .hero-card {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-light);
             border-radius: var(--radius-lg);
             padding: clamp(1.2rem, 2vw, 2rem);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             transition: var(--transition);
         }
         .hero-card:hover {
             border-color: var(--border-glow);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.04);
         }
 
-        .hero-card .card-item {
+        .hero-card .item {
             display: flex;
             align-items: center;
             gap: 14px;
             padding: 0.7rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
-        .hero-card .card-item:last-child {
+        .hero-card .item:last-child {
             border-bottom: none;
         }
 
-        .hero-card .card-item .icon {
-            width: clamp(40px, 4vw, 48px);
-            height: clamp(40px, 4vw, 48px);
+        .hero-card .item .icon {
+            width: clamp(42px, 4.5vw, 50px);
+            height: clamp(42px, 4.5vw, 50px);
             background: rgba(59, 130, 246, 0.08);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            font-size: clamp(1rem, 1.2vw, 1.3rem);
             color: var(--blue-light);
             flex-shrink: 0;
         }
 
-        .hero-card .card-item .info .title {
+        .hero-card .item .info .title {
             font-weight: 700;
-            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+            font-size: clamp(0.95rem, 1.1vw, 1.15rem);
             color: var(--white);
         }
-        .hero-card .card-item .info .desc {
+        .hero-card .item .info .desc {
             font-size: clamp(0.65rem, 0.7vw, 0.75rem);
             color: var(--gray-500);
         }
 
-        /* ============================================================ */
-        /* SECTION HEADER */
-        /* ============================================================ */
+        /* ==============================================================
+                   SECTION HEADER
+                   ============================================================== */
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             flex-wrap: wrap;
             gap: 0.8rem 1.5rem;
-            margin-top: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: clamp(0.8rem, 1.5vw, 1.2rem);
+            margin-top: clamp(2.8rem, 5.5vw, 4.5rem);
+            margin-bottom: clamp(1rem, 1.8vw, 1.5rem);
             position: relative;
-            z-index: 5;
+            z-index: 10;
         }
 
         .section-header .left h2 {
-            font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+            font-size: clamp(1.5rem, 3vw, 2.4rem);
             font-weight: 800;
             color: var(--white);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         .section-header .left h2 i {
-            color: var(--blue);
-            font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
         }
         .section-header .left p {
             color: var(--gray-300);
-            font-size: clamp(0.85rem, 1vw, 1rem);
-            margin-top: 2px;
+            font-size: clamp(0.85rem, 1vw, 1.05rem);
+            margin-top: 4px;
         }
 
-        .section-header .right {
-            flex-shrink: 0;
-        }
-        .section-header .right .badge-count {
-            background: rgba(59, 130, 246, 0.10);
+        .section-header .right .chip {
+            background: rgba(59, 130, 246, 0.08);
             color: var(--blue-light);
-            padding: 0.2rem 1.2rem;
+            padding: 0.25rem 1.4rem;
             border-radius: 40px;
             font-size: clamp(0.7rem, 0.8vw, 0.8rem);
             font-weight: 600;
-            border: 1px solid rgba(59, 130, 246, 0.10);
+            border: 1px solid rgba(59, 130, 246, 0.08);
             display: inline-flex;
             align-items: center;
             gap: 6px;
             white-space: nowrap;
         }
 
-        /* ============================================================ */
-        /* SCRIM GRID */
-        /* ============================================================ */
+        /* ==============================================================
+                   SCRIM GRID
+                   ============================================================== */
         .scrim-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 16vw, 200px), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(clamp(160px, 18vw, 210px), 1fr));
             gap: clamp(0.8rem, 1.2vw, 1.2rem);
             position: relative;
-            z-index: 5;
+            z-index: 10;
         }
 
         .scrim-item {
             background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
             padding: clamp(1rem, 1.5vw, 1.6rem) clamp(0.8rem, 1.2vw, 1.2rem);
             display: flex;
@@ -484,13 +497,14 @@
         }
         .scrim-item:hover {
             border-color: var(--border-glow);
-            background: rgba(59, 130, 246, 0.04);
-            transform: translateY(-3px);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .scrim-item .day-icon {
-            width: clamp(40px, 4vw, 48px);
-            height: clamp(40px, 4vw, 48px);
+        .scrim-item .icon {
+            width: clamp(42px, 4.5vw, 50px);
+            height: clamp(42px, 4.5vw, 50px);
             background: rgba(59, 130, 246, 0.06);
             border-radius: var(--radius-sm);
             display: flex;
@@ -501,119 +515,145 @@
             flex-shrink: 0;
         }
 
-        .scrim-item .day-info .day {
+        .scrim-item .info .day {
             font-weight: 700;
             font-size: clamp(0.85rem, 1vw, 1rem);
             color: var(--white);
         }
-        .scrim-item .day-info .time {
+        .scrim-item .info .time {
             font-size: clamp(0.7rem, 0.75vw, 0.8rem);
             color: var(--gray-500);
         }
 
-        /* ============================================================ */
-        /* FEATURES GRID */
-        /* ============================================================ */
+        .scrim-tags {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 1.2rem;
+            position: relative;
+            z-index: 10;
+        }
+        .scrim-tags span {
+            background: rgba(59, 130, 246, 0.06);
+            color: var(--gray-300);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: clamp(0.65rem, 0.7vw, 0.75rem);
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .scrim-tags span i {
+            color: var(--blue-light);
+            margin-right: 4px;
+        }
+
+        /* ==============================================================
+                   FEATURES GRID
+                   ============================================================== */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(170px, 18vw, 220px), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 20vw, 240px), 1fr));
             gap: clamp(0.8rem, 1.5vw, 1.5rem);
             position: relative;
-            z-index: 5;
-            margin-top: 0.5rem;
+            z-index: 10;
         }
 
-        .feature-card {
+        .feature {
             background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
-            padding: clamp(1.4rem, 2vw, 2rem) clamp(1rem, 1.5vw, 1.6rem);
+            padding: clamp(1.4rem, 2vw, 2.2rem) clamp(1rem, 1.5vw, 1.6rem);
             transition: var(--transition);
         }
-        .feature-card:hover {
+        .feature:hover {
             border-color: var(--border-glow);
-            background: rgba(59, 130, 246, 0.04);
-            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
 
-        .feature-card .f-icon {
-            width: clamp(46px, 5vw, 56px);
-            height: clamp(46px, 5vw, 56px);
+        .feature .icon {
+            width: clamp(50px, 5.5vw, 60px);
+            height: clamp(50px, 5.5vw, 60px);
             background: rgba(59, 130, 246, 0.06);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+            font-size: clamp(1.4rem, 2vw, 2rem);
             color: var(--blue-light);
             margin-bottom: 0.6rem;
         }
-        .feature-card h4 {
+        .feature h4 {
             font-weight: 700;
-            font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+            font-size: clamp(1rem, 1.1vw, 1.15rem);
             color: var(--white);
             margin-bottom: 0.1rem;
         }
-        .feature-card p {
+        .feature p {
             font-size: clamp(0.8rem, 0.9vw, 0.95rem);
             color: var(--gray-300);
             line-height: 1.6;
         }
 
-        /* ============================================================ */
-        /* ACTIVITY FEED */
-        /* ============================================================ */
-        .activity-box {
+        /* ==============================================================
+                   ACTIVITY FEED
+                   ============================================================== */
+        .activity {
             background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-light);
             border-radius: var(--radius-lg);
             padding: clamp(1.2rem, 2.5vw, 2.2rem);
-            margin-top: clamp(1.5rem, 3vw, 2.5rem);
+            margin-top: clamp(1.8rem, 3.5vw, 2.8rem);
             position: relative;
-            z-index: 5;
+            z-index: 10;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
 
-        .activity-box .feed-header {
+        .activity .head {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 0.8rem;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
-        .activity-box .feed-header h3 {
-            font-size: clamp(1.2rem, 2vw, 1.6rem);
+        .activity .head h3 {
+            font-size: clamp(1.2rem, 2.2vw, 1.7rem);
             font-weight: 800;
             color: var(--white);
         }
-        .activity-box .feed-header h3 span {
-            color: var(--blue);
+        .activity .head h3 span {
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .activity-box .feed-header .live-badge {
-            background: rgba(34, 197, 94, 0.10);
+        .activity .head .live {
+            background: rgba(34, 197, 94, 0.08);
             color: #4ade80;
             padding: 0.2rem 1rem;
             border-radius: 40px;
             font-size: clamp(0.6rem, 0.7vw, 0.75rem);
             font-weight: 600;
-            border: 1px solid rgba(34, 197, 94, 0.10);
+            border: 1px solid rgba(34, 197, 94, 0.08);
             display: inline-flex;
             align-items: center;
             gap: 6px;
         }
-        .activity-box .feed-header .live-badge .dot {
+        .activity .head .live .dot {
             width: 5px;
             height: 5px;
             background: #4ade80;
             border-radius: 50%;
             display: inline-block;
+            animation: pulse-dot 1.5s infinite;
         }
 
-        .activity-box .feed-sub {
+        .activity .sub {
             color: var(--gray-300);
             font-size: clamp(0.85rem, 1vw, 0.95rem);
             margin-bottom: 1.2rem;
@@ -630,9 +670,9 @@
             border-bottom: none;
         }
 
-        .feed-item .feed-icon {
-            width: clamp(36px, 3.5vw, 42px);
-            height: clamp(36px, 3.5vw, 42px);
+        .feed-item .icon {
+            width: clamp(38px, 4vw, 44px);
+            height: clamp(38px, 4vw, 44px);
             background: rgba(59, 130, 246, 0.06);
             border-radius: var(--radius-sm);
             display: flex;
@@ -643,21 +683,21 @@
             flex-shrink: 0;
         }
 
-        .feed-item .feed-content {
+        .feed-item .content {
             flex: 1;
             min-width: 80px;
         }
-        .feed-item .feed-content .name {
+        .feed-item .content .name {
             font-weight: 600;
             color: var(--white);
             font-size: clamp(0.85rem, 0.9vw, 0.95rem);
         }
-        .feed-item .feed-content .action {
+        .feed-item .content .action {
             color: var(--gray-500);
             font-size: clamp(0.7rem, 0.75vw, 0.85rem);
         }
 
-        .feed-item .feed-time {
+        .feed-item .time {
             color: var(--gray-700);
             font-size: clamp(0.6rem, 0.65vw, 0.75rem);
             font-weight: 500;
@@ -665,10 +705,10 @@
         }
 
         .btn-more {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.03);
             color: var(--gray-300);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0.5rem 1.8rem;
+            padding: 0.5rem 2rem;
             border-radius: 40px;
             font-weight: 600;
             font-size: clamp(0.8rem, 0.9vw, 0.9rem);
@@ -686,20 +726,20 @@
             color: var(--white);
         }
 
-        /* ============================================================ */
-        /* FOOTER */
-        /* ============================================================ */
+        /* ==============================================================
+                   FOOTER
+                   ============================================================== */
         .footer {
-            margin-top: clamp(2.5rem, 4vw, 4rem);
+            margin-top: clamp(2.8rem, 5vw, 4.5rem);
             padding-top: clamp(1.2rem, 2vw, 2rem);
-            border-top: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 0.8rem;
             position: relative;
-            z-index: 5;
+            z-index: 10;
         }
 
         .footer .copy {
@@ -708,32 +748,33 @@
         }
         .footer .copy .tag {
             color: var(--blue-light);
+            font-weight: 500;
         }
 
-        .footer .social-links {
+        .footer .social {
             display: flex;
             gap: clamp(0.8rem, 1.2vw, 1.5rem);
             flex-wrap: wrap;
         }
-        .footer .social-links a {
+        .footer .social a {
             color: var(--gray-500);
             font-size: clamp(1rem, 1.3vw, 1.4rem);
             transition: var(--transition);
         }
-        .footer .social-links a:hover {
+        .footer .social a:hover {
             color: var(--blue-light);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
-        /* ============================================================ */
-        /* RESPONSIVE BREAKPOINTS */
-        /* ============================================================ */
+        /* ==============================================================
+                   RESPONSIVE
+                   ============================================================== */
 
         /* Tablet */
         @media (max-width: 860px) {
             .hero {
                 grid-template-columns: 1fr;
-                gap: 1.8rem;
+                gap: 2rem;
             }
 
             .hero-card {
@@ -742,27 +783,27 @@
                 gap: 0.5rem;
                 padding: 1.2rem;
             }
-            .hero-card .card-item {
+            .hero-card .item {
                 flex-direction: column;
                 text-align: center;
                 border-bottom: none;
                 padding: 0.4rem 0;
-                gap: 6px;
+                gap: 4px;
             }
-            .hero-card .card-item .icon {
+            .hero-card .item .icon {
                 width: 40px;
                 height: 40px;
                 margin: 0 auto;
             }
-            .hero-card .card-item .info .title {
+            .hero-card .item .info .title {
                 font-size: 0.9rem;
             }
-            .hero-card .card-item .info .desc {
+            .hero-card .item .info .desc {
                 font-size: 0.65rem;
             }
         }
 
-        /* HP besar */
+        /* HP */
         @media (max-width: 640px) {
             body {
                 padding: 0.5rem;
@@ -780,18 +821,18 @@
             .nav-links {
                 justify-content: space-between;
                 width: 100%;
-                gap: 0.5rem;
+                gap: 0.3rem;
             }
             .nav-links a {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
             .btn-nav {
-                font-size: 0.7rem;
-                padding: 0.3rem 1rem;
+                font-size: 0.65rem;
+                padding: 0.25rem 0.8rem;
             }
 
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .hero p {
                 font-size: 0.9rem;
@@ -801,7 +842,7 @@
                 width: 100%;
             }
             .hero-actions .btn-primary,
-            .hero-actions .btn-secondary {
+            .hero-actions .btn-outline {
                 width: 100%;
                 justify-content: center;
             }
@@ -818,15 +859,15 @@
                 padding: 0.8rem;
                 gap: 0.3rem;
             }
-            .hero-card .card-item .icon {
+            .hero-card .item .icon {
                 width: 32px;
                 height: 32px;
                 font-size: 0.8rem;
             }
-            .hero-card .card-item .info .title {
+            .hero-card .item .info .title {
                 font-size: 0.75rem;
             }
-            .hero-card .card-item .info .desc {
+            .hero-card .item .info .desc {
                 font-size: 0.55rem;
             }
 
@@ -842,10 +883,10 @@
                 align-items: flex-start;
             }
 
-            .activity-box {
+            .activity {
                 padding: 1rem;
             }
-            .activity-box .feed-header {
+            .activity .head {
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -854,10 +895,10 @@
                 gap: 10px;
                 flex-wrap: wrap;
             }
-            .feed-item .feed-content .name {
+            .feed-item .content .name {
                 font-size: 0.8rem;
             }
-            .feed-item .feed-content .action {
+            .feed-item .content .action {
                 font-size: 0.7rem;
             }
 
@@ -866,7 +907,11 @@
                 text-align: center;
                 gap: 0.6rem;
             }
-            .footer .social-links {
+            .footer .social {
+                justify-content: center;
+            }
+
+            .scrim-tags {
                 justify-content: center;
             }
         }
@@ -878,7 +923,7 @@
                 border-radius: 20px;
             }
             .hero h1 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             .scrim-grid {
                 grid-template-columns: 1fr;
@@ -886,25 +931,25 @@
             .hero-card {
                 grid-template-columns: 1fr 1fr;
             }
-            .hero-card .card-item:nth-child(3) {
+            .hero-card .item:nth-child(3) {
                 grid-column: span 2;
             }
             .nav-links {
-                gap: 0.3rem;
+                gap: 0.2rem;
             }
             .nav-links a {
-                font-size: 0.65rem;
+                font-size: 0.6rem;
             }
             .logo {
                 font-size: 1.2rem;
             }
-            .logo .chip {
-                font-size: 0.4rem;
+            .logo .badge {
+                font-size: 0.35rem;
                 padding: 0.1rem 0.5rem;
             }
             .btn-nav {
-                font-size: 0.6rem;
-                padding: 0.2rem 0.7rem;
+                font-size: 0.55rem;
+                padding: 0.2rem 0.6rem;
             }
         }
 
@@ -915,11 +960,11 @@
                 gap: 1.2rem;
             }
             .hero h1 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             .hero p {
                 font-size: 0.8rem;
-                margin: 0.3rem 0 0.8rem;
+                margin: 0.4rem 0 0.8rem;
             }
             .hero-stats {
                 margin-top: 0.8rem;
@@ -939,7 +984,7 @@
             .features-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            .activity-box {
+            .activity {
                 padding: 0.8rem;
                 margin-top: 1rem;
             }
@@ -952,23 +997,23 @@
         /* Layar besar */
         @media (min-width: 1600px) {
             .main-wrapper {
-                max-width: 1300px;
+                max-width: 1350px;
             }
             .container {
-                padding: 3.5rem 4rem;
+                padding: 4rem;
             }
             .hero h1 {
-                font-size: 4.2rem;
+                font-size: 4.6rem;
             }
             .hero p {
-                font-size: 1.25rem;
-                max-width: 560px;
+                font-size: 1.3rem;
+                max-width: 580px;
             }
             .hero-stats .stat .num {
-                font-size: 2.6rem;
+                font-size: 2.8rem;
             }
             .section-header .left h2 {
-                font-size: 2.4rem;
+                font-size: 2.6rem;
             }
             .scrim-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -984,7 +1029,7 @@
                 padding: 2.5rem;
             }
             .hero h1 {
-                font-size: 3rem;
+                font-size: 3.2rem;
             }
             .hero-card {
                 padding: 1.5rem;
@@ -996,10 +1041,10 @@
     <div class="main-wrapper">
         <div class="container">
 
-            <!-- ===== DECORATIVE GLOWS ===== -->
-            <div class="glow-1"></div>
-            <div class="glow-2"></div>
-            <div class="glow-3"></div>
+            <!-- ===== ORBS ===== -->
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
 
             <!-- ========================================================== -->
             <!-- NAVBAR -->
@@ -1007,7 +1052,7 @@
             <nav class="navbar">
                 <div class="logo">
                     MONG<span>STER</span>
-                    <span class="chip">MLBB</span>
+                    <span class="badge">MLBB</span>
                 </div>
                 <div class="nav-links">
                     <a href="#" class="active">Beranda</a>
@@ -1029,14 +1074,14 @@
                         <span class="dot"></span>
                         Komunitas MLBB · 24/7 Aktif
                     </div>
-                    <h1>MONGSTER · <span class="gradient-text">MLBB</span> <br />Community</h1>
+                    <h1>MONGSTER · <span class="gradient">MLBB</span> <br />Community</h1>
                     <p>
                         Komunitas MLBB yang solid. Scrim rutin, cari tim, dan nongkrong di Litmatch.
                         Dari Epic sampai Mythic, semua diterima.
                     </p>
                     <div class="hero-actions">
                         <a href="#" class="btn-primary"><i class="fas fa-rocket"></i> Gabung sekarang</a>
-                        <a href="#" class="btn-secondary"><i class="fas fa-calendar-alt"></i> Lihat jadwal</a>
+                        <a href="#" class="btn-outline"><i class="fas fa-calendar-alt"></i> Lihat jadwal</a>
                     </div>
 
                     <div class="hero-stats">
@@ -1057,21 +1102,21 @@
 
                 <!-- RIGHT CARD -->
                 <div class="hero-card">
-                    <div class="card-item">
+                    <div class="item">
                         <div class="icon"><i class="fas fa-gamepad"></i></div>
                         <div class="info">
                             <div class="title">MLBB</div>
                             <div class="desc">Game utama</div>
                         </div>
                     </div>
-                    <div class="card-item">
+                    <div class="item">
                         <div class="icon"><i class="fas fa-comment-dots"></i></div>
                         <div class="info">
                             <div class="title">Litmatch</div>
                             <div class="desc">Tempat ngumpul</div>
                         </div>
                     </div>
-                    <div class="card-item">
+                    <div class="item">
                         <div class="icon"><i class="fas fa-calendar-check"></i></div>
                         <div class="info">
                             <div class="title">4x / bulan</div>
@@ -1083,7 +1128,7 @@
             </section>
 
             <!-- ========================================================== -->
-            <!-- SCRIM SECTION -->
+            <!-- SCRIM -->
             <!-- ========================================================== -->
             <div class="section-header">
                 <div class="left">
@@ -1091,45 +1136,51 @@
                     <p>4x scrim setiap bulan — 1x setiap minggu. Semua member bisa ikut.</p>
                 </div>
                 <div class="right">
-                    <span class="badge-count"><i class="fas fa-flag"></i> 4 scrim tersedia</span>
+                    <span class="chip"><i class="fas fa-flag"></i> 4 scrim tersedia</span>
                 </div>
             </div>
 
             <div class="scrim-grid">
                 <div class="scrim-item">
-                    <div class="day-icon"><i class="fas fa-calendar-day"></i></div>
-                    <div class="day-info">
+                    <div class="icon"><i class="fas fa-calendar-day"></i></div>
+                    <div class="info">
                         <div class="day">Minggu 1</div>
                         <div class="time">Minggu · 19.00</div>
                     </div>
                 </div>
                 <div class="scrim-item">
-                    <div class="day-icon"><i class="fas fa-calendar-day"></i></div>
-                    <div class="day-info">
+                    <div class="icon"><i class="fas fa-calendar-day"></i></div>
+                    <div class="info">
                         <div class="day">Minggu 2</div>
                         <div class="time">Minggu · 19.00</div>
                     </div>
                 </div>
                 <div class="scrim-item">
-                    <div class="day-icon"><i class="fas fa-calendar-day"></i></div>
-                    <div class="day-info">
+                    <div class="icon"><i class="fas fa-calendar-day"></i></div>
+                    <div class="info">
                         <div class="day">Minggu 3</div>
                         <div class="time">Minggu · 19.00</div>
                     </div>
                 </div>
                 <div class="scrim-item">
-                    <div class="day-icon"><i class="fas fa-calendar-day"></i></div>
-                    <div class="day-info">
+                    <div class="icon"><i class="fas fa-calendar-day"></i></div>
+                    <div class="info">
                         <div class="day">Minggu 4</div>
                         <div class="time">Minggu · 19.00</div>
                     </div>
                 </div>
             </div>
 
+            <div class="scrim-tags">
+                <span><i class="fas fa-trophy"></i> 4x scrim / bulan</span>
+                <span><i class="fas fa-clock"></i> Setiap Minggu jam 19.00</span>
+                <span><i class="fas fa-users"></i> Semua rank boleh ikut</span>
+            </div>
+
             <!-- ========================================================== -->
             <!-- FEATURES -->
             <!-- ========================================================== -->
-            <div class="section-header" style="margin-top: clamp(2.5rem, 5vw, 4rem);">
+            <div class="section-header" style="margin-top: clamp(2.8rem, 5.5vw, 4.5rem);">
                 <div class="left">
                     <h2><i class="fas fa-star"></i> Kenapa gabung?</h2>
                     <p>Kegiatan seru setiap hari buat member MONGSTER.</p>
@@ -1137,64 +1188,64 @@
             </div>
 
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="f-icon"><i class="fas fa-crosshairs"></i></div>
+                <div class="feature">
+                    <div class="icon"><i class="fas fa-crosshairs"></i></div>
                     <h4>Scrim rutin</h4>
                     <p>4x sebulan, cari tim atau ikut sebagai subs.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="f-icon"><i class="fas fa-users"></i></div>
+                <div class="feature">
+                    <div class="icon"><i class="fas fa-users"></i></div>
                     <h4>Cari duo / tim</h4>
                     <p>Butuh tank, mage, atau gold? tinggal chat di grup.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="f-icon"><i class="fas fa-comment-dots"></i></div>
+                <div class="feature">
+                    <div class="icon"><i class="fas fa-comment-dots"></i></div>
                     <h4>Nongkrong di Litmatch</h4>
                     <p>Voice chat, ngobrol santai, atau sekedar rebahan.</p>
                 </div>
             </div>
 
             <!-- ========================================================== -->
-            <!-- ACTIVITY FEED -->
+            <!-- ACTIVITY -->
             <!-- ========================================================== -->
-            <div class="activity-box">
-                <div class="feed-header">
+            <div class="activity">
+                <div class="head">
                     <h3>Aktivitas <span>MONGSTER</span></h3>
-                    <span class="live-badge"><span class="dot"></span> 24/7 Aktif</span>
+                    <span class="live"><span class="dot"></span> 24/7 Aktif</span>
                 </div>
-                <p class="feed-sub">Yang lagi rame hari ini — member selalu online.</p>
+                <p class="sub">Yang lagi rame hari ini — member selalu online.</p>
 
                 <div class="feed-item">
-                    <div class="feed-icon"><i class="fas fa-crosshairs"></i></div>
-                    <div class="feed-content">
+                    <div class="icon"><i class="fas fa-crosshairs"></i></div>
+                    <div class="content">
                         <span class="name">Rangga_ML</span>
                         <span class="action">cari 1 orang untuk scrim minggu ini</span>
                     </div>
-                    <span class="feed-time">5m</span>
+                    <span class="time">5m</span>
                 </div>
                 <div class="feed-item">
-                    <div class="feed-icon"><i class="fas fa-comment"></i></div>
-                    <div class="feed-content">
+                    <div class="icon"><i class="fas fa-comment"></i></div>
+                    <div class="content">
                         <span class="name">Voice chat Litmatch</span>
                         <span class="action">lagi rame 12 orang ngobrol &amp; cari tim</span>
                     </div>
-                    <span class="feed-time">12m</span>
+                    <span class="time">12m</span>
                 </div>
                 <div class="feed-item">
-                    <div class="feed-icon"><i class="fas fa-trophy"></i></div>
-                    <div class="feed-content">
+                    <div class="icon"><i class="fas fa-trophy"></i></div>
+                    <div class="content">
                         <span class="name">Scrim Minggu ini</span>
                         <span class="action">slot masih tersisa 2 tim</span>
                     </div>
-                    <span class="feed-time">1j</span>
+                    <span class="time">1j</span>
                 </div>
                 <div class="feed-item">
-                    <div class="feed-icon"><i class="fas fa-user-plus"></i></div>
-                    <div class="feed-content">
+                    <div class="icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="content">
                         <span class="name">3 member baru</span>
                         <span class="action">gabung hari ini, selamat datang!</span>
                     </div>
-                    <span class="feed-time">2j</span>
+                    <span class="time">2j</span>
                 </div>
 
                 <a href="#" class="btn-more"><i class="fas fa-arrow-right"></i> Lihat semua aktivitas</a>
@@ -1211,7 +1262,7 @@
                     <span class="tag">24/7</span> ·
                     <span class="tag">4x scrim/bulan</span>
                 </span>
-                <div class="social-links">
+                <div class="social">
                     <a href="#"><i class="fab fa-discord"></i></a>
                     <a href="#"><i class="fab fa-tiktok"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
