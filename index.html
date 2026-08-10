@@ -691,6 +691,15 @@
             margin: 0 auto 0.8rem;
             box-shadow: 0 0 40px rgba(0, 180, 255, 0.05);
             position: relative;
+            overflow: hidden;
+        }
+
+        .team-card .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
         }
 
         .team-card .avatar .status-dot {
@@ -844,6 +853,15 @@
             margin: 0 auto 0.4rem;
             box-shadow: 0 0 30px rgba(0, 180, 255, 0.03);
             position: relative;
+            overflow: hidden;
+        }
+
+        .admin-card .avatar-sm img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
         }
 
         .admin-card .avatar-sm .status-mini {
@@ -946,6 +964,15 @@
             margin: 0 auto 0.2rem;
             opacity: 0.7;
             transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .member-item .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
         }
 
         .member-item:hover .member-avatar {
@@ -1641,7 +1668,7 @@
             <div class="team-grid">
                 <div class="team-card">
                     <div class="avatar">
-                        D
+                        <img src="https://i.pravatar.cc/200?img=12" alt="Dyix" />
                         <span class="status-dot"></span>
                     </div>
                     <span class="role-badge"><i class="fas fa-crown"></i> Founder</span>
@@ -1654,7 +1681,7 @@
                 </div>
                 <div class="team-card">
                     <div class="avatar" style="background: var(--purple-gradient);">
-                        M
+                        <img src="https://i.pravatar.cc/200?img=33" alt="Mas j" />
                         <span class="status-dot"></span>
                     </div>
                     <span class="role-badge"><i class="fas fa-star"></i> Co-Captain</span>
@@ -1683,38 +1710,38 @@
 
             <div class="admin-grid">
                 <div class="admin-card">
-                    <div class="avatar-sm">F<span class="status-mini"></span></div>
+                    <div class="avatar-sm"><img src="https://i.pravatar.cc/100?img=1" alt="Flex" /><span class="status-mini"></span></div>
                     <div class="admin-name">Flex</div>
                     <div class="admin-role">Admin 1</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--purple-gradient);">M<span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--purple-gradient);"><img src="https://i.pravatar.cc/100?img=5" alt="Morz" /><span class="status-mini"></span></div>
                     <div class="admin-name">Morz</div>
                     <div class="admin-role">Admin 2</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--gold-gradient);">S<span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--gold-gradient);"><img src="https://i.pravatar.cc/100?img=9" alt="Soo" /><span class="status-mini"></span></div>
                     <div class="admin-name">Soo</div>
                     <div class="admin-role">Admin 3</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--cyan-gradient);">G<span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--cyan-gradient);"><img src="https://i.pravatar.cc/100?img=15" alt="Gabut" /><span class="status-mini"></span></div>
                     <div class="admin-name">Gabut</div>
                     <div class="admin-role">Admin 4</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--pink-gradient);">N<span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--pink-gradient);"><img src="https://i.pravatar.cc/100?img=20" alt="Nia" /><span class="status-mini"></span></div>
                     <div class="admin-name">Nia</div>
                     <div class="admin-role">Admin 5</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: var(--orange-gradient);">K<span class="status-mini"></span></div>
+                    <div class="avatar-sm" style="background: var(--orange-gradient);"><img src="https://i.pravatar.cc/100?img=25" alt="Kyzha" /><span class="status-mini"></span></div>
                     <div class="admin-name">Kyzha</div>
                     <div class="admin-role">Admin 6</div>
                 </div>
                 <div class="admin-card">
-                    <div class="avatar-sm" style="background: linear-gradient(145deg, #22d3ee, #06b6d4);">+<span class="status-mini"></span></div>
-                    <div class="admin-name">...</div>
+                    <div class="avatar-sm" style="background: linear-gradient(145deg, #22d3ee, #06b6d4);"><img src="https://i.pravatar.cc/100?img=30" alt="Admin 7" /><span class="status-mini"></span></div>
+                    <div class="admin-name">Rey</div>
                     <div class="admin-role">Admin 7</div>
                 </div>
             </div>
@@ -1735,92 +1762,92 @@
 
             <div class="member-grid">
                 <div class="member-item">
-                    <div class="member-avatar">B</div>
+                    <div class="member-avatar"><img src="https://i.pravatar.cc/100?img=3" alt="byy" /></div>
                     <div class="member-name">byy</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--purple-gradient);">C</div>
+                    <div class="member-avatar" style="background: var(--purple-gradient);"><img src="https://i.pravatar.cc/100?img=7" alt="cahaya" /></div>
                     <div class="member-name">cahaya</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--gold-gradient);">V</div>
+                    <div class="member-avatar" style="background: var(--gold-gradient);"><img src="https://i.pravatar.cc/100?img=11" alt="vior" /></div>
                     <div class="member-name">vior</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--cyan-gradient);">P</div>
+                    <div class="member-avatar" style="background: var(--cyan-gradient);"><img src="https://i.pravatar.cc/100?img=14" alt="phuwin" /></div>
                     <div class="member-name">phuwin</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--pink-gradient);">D</div>
+                    <div class="member-avatar" style="background: var(--pink-gradient);"><img src="https://i.pravatar.cc/100?img=17" alt="Don" /></div>
                     <div class="member-name">Don</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: var(--orange-gradient);">N</div>
+                    <div class="member-avatar" style="background: var(--orange-gradient);"><img src="https://i.pravatar.cc/100?img=19" alt="Nnad" /></div>
                     <div class="member-name">Nnad</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #22d3ee, #06b6d4);">D</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #22d3ee, #06b6d4);"><img src="https://i.pravatar.cc/100?img=22" alt="Dan" /></div>
                     <div class="member-name">Dan</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #a855f7, #7b2ffc);">F</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #a855f7, #7b2ffc);"><img src="https://i.pravatar.cc/100?img=24" alt="Fann" /></div>
                     <div class="member-name">Fann</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #ec4899, #db2777);">A</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #ec4899, #db2777);"><img src="https://i.pravatar.cc/100?img=26" alt="Avory" /></div>
                     <div class="member-name">Avory</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #fbbf24, #f59e0b);">G</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #fbbf24, #f59e0b);"><img src="https://i.pravatar.cc/100?img=28" alt="Gerard" /></div>
                     <div class="member-name">Gerard</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #00b4ff, #22d3ee);">Z</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #00b4ff, #22d3ee);"><img src="https://i.pravatar.cc/100?img=31" alt="Zell" /></div>
                     <div class="member-name">Zell is Here</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #7b2ffc, #a855f7);">A</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #7b2ffc, #a855f7);"><img src="https://i.pravatar.cc/100?img=34" alt="Azar" /></div>
                     <div class="member-name">Azar</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #f97316, #fb923c);">P</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #f97316, #fb923c);"><img src="https://i.pravatar.cc/100?img=36" alt="Pioo" /></div>
                     <div class="member-name">Pioo</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #22d3ee, #67e8f9);">M</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #22d3ee, #67e8f9);"><img src="https://i.pravatar.cc/100?img=38" alt="Mputt" /></div>
                     <div class="member-name">Mputt</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #ec4899, #f472b6);">F</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #ec4899, #f472b6);"><img src="https://i.pravatar.cc/100?img=40" alt="Felin" /></div>
                     <div class="member-name">Felin</div>
                     <span class="member-rank">Legend</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #a855f7, #c084fc);">L</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #a855f7, #c084fc);"><img src="https://i.pravatar.cc/100?img=42" alt="leo" /></div>
                     <div class="member-name">leo</div>
                     <span class="member-rank">Mythic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #00b4ff, #60a5fa);">D</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #00b4ff, #60a5fa);"><img src="https://i.pravatar.cc/100?img=44" alt="devano" /></div>
                     <div class="member-name">devano</div>
                     <span class="member-rank">Epic</span>
                 </div>
                 <div class="member-item">
-                    <div class="member-avatar" style="background: linear-gradient(145deg, #fbbf24, #fcd34d);">H</div>
+                    <div class="member-avatar" style="background: linear-gradient(145deg, #fbbf24, #fcd34d);"><img src="https://i.pravatar.cc/100?img=46" alt="hinelle" /></div>
                     <div class="member-name">hinelle</div>
                     <span class="member-rank">Legend</span>
                 </div>
