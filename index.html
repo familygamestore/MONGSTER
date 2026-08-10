@@ -58,9 +58,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ==============================================================
-                   MAIN WRAPPER
-                   ============================================================== */
         .main-wrapper {
             max-width: 1160px;
             width: 100%;
@@ -134,6 +131,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
         .logo span {
             background: var(--blue-gradient);
@@ -226,7 +224,6 @@
             align-items: center;
         }
 
-        /* ——— HERO LEFT ——— */
         .hero-left {
             min-width: 0;
         }
@@ -339,7 +336,6 @@
             transform: translateY(-2px);
         }
 
-        /* ——— HERO STATS ——— */
         .hero-stats {
             display: flex;
             gap: clamp(1.8rem, 3.5vw, 4rem);
@@ -374,7 +370,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* ——— HERO RIGHT CARD ——— */
         .hero-card {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(16px);
@@ -769,14 +764,11 @@
         /* ==============================================================
                    RESPONSIVE
                    ============================================================== */
-
-        /* Tablet */
         @media (max-width: 860px) {
             .hero {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-
             .hero-card {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -803,7 +795,6 @@
             }
         }
 
-        /* HP */
         @media (max-width: 640px) {
             body {
                 padding: 0.5rem;
@@ -812,7 +803,6 @@
                 padding: 1rem;
                 border-radius: 28px;
             }
-
             .navbar {
                 flex-direction: column;
                 align-items: stretch;
@@ -830,7 +820,6 @@
                 font-size: 0.65rem;
                 padding: 0.25rem 0.8rem;
             }
-
             .hero h1 {
                 font-size: 2rem;
             }
@@ -846,14 +835,12 @@
                 width: 100%;
                 justify-content: center;
             }
-
             .hero-stats {
                 gap: 1.2rem;
             }
             .hero-stats .stat .num {
                 font-size: 1.4rem;
             }
-
             .hero-card {
                 grid-template-columns: repeat(3, 1fr);
                 padding: 0.8rem;
@@ -870,19 +857,16 @@
             .hero-card .item .info .desc {
                 font-size: 0.55rem;
             }
-
             .scrim-grid {
                 grid-template-columns: 1fr 1fr;
             }
             .features-grid {
                 grid-template-columns: 1fr;
             }
-
             .section-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .activity {
                 padding: 1rem;
             }
@@ -890,7 +874,6 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .feed-item {
                 gap: 10px;
                 flex-wrap: wrap;
@@ -901,7 +884,6 @@
             .feed-item .content .action {
                 font-size: 0.7rem;
             }
-
             .footer {
                 flex-direction: column;
                 text-align: center;
@@ -910,13 +892,11 @@
             .footer .social {
                 justify-content: center;
             }
-
             .scrim-tags {
                 justify-content: center;
             }
         }
 
-        /* HP kecil */
         @media (max-width: 400px) {
             .container {
                 padding: 0.8rem;
@@ -953,7 +933,6 @@
             }
         }
 
-        /* Landscape HP */
         @media (max-height: 500px) and (orientation: landscape) {
             .hero {
                 margin: 1rem 0;
@@ -994,7 +973,6 @@
             }
         }
 
-        /* Layar besar */
         @media (min-width: 1600px) {
             .main-wrapper {
                 max-width: 1350px;
@@ -1023,7 +1001,6 @@
             }
         }
 
-        /* iPad Pro landscape */
         @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
             .container {
                 padding: 2.5rem;
@@ -1050,15 +1027,15 @@
             <!-- NAVBAR -->
             <!-- ========================================================== -->
             <nav class="navbar">
-                <div class="logo">
+                <a href="index.html" class="logo">
                     MONG<span>STER</span>
                     <span class="badge">MLBB</span>
-                </div>
+                </a>
                 <div class="nav-links">
-                    <a href="#" class="active">Beranda</a>
+                    <a href="index.html" class="active">Beranda</a>
+                    <a href="tentang.html">Tentang</a>
                     <a href="#">Jadwal</a>
                     <a href="#">Member</a>
-                    <a href="#">Tentang</a>
                     <a href="#" class="btn-nav"><i class="fas fa-user-plus" style="margin-right:4px;"></i> Gabung</a>
                 </div>
             </nav>
@@ -1081,7 +1058,7 @@
                     </p>
                     <div class="hero-actions">
                         <a href="#" class="btn-primary"><i class="fas fa-rocket"></i> Gabung sekarang</a>
-                        <a href="#" class="btn-outline"><i class="fas fa-calendar-alt"></i> Lihat jadwal</a>
+                        <a href="tentang.html" class="btn-outline"><i class="fas fa-info-circle"></i> Tentang Kami</a>
                     </div>
 
                     <div class="hero-stats">
