@@ -33,7 +33,6 @@
             --yellow: #fbbf24;
             --pink: #ec4899;
             --white: #ffffff;
-            --gray-200: #d1d9e8;
             --gray-300: #94a3b8;
             --gray-400: #7a8aaa;
             --gray-500: #64748b;
@@ -58,7 +57,7 @@
         }
 
         /* ==============================================================
-                   BACKGROUND (di luar container)
+                   BACKGROUND OUTER
                    ============================================================== */
         .bg-outer {
             position: fixed;
@@ -69,9 +68,9 @@
             z-index: 0;
             pointer-events: none;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
-                radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.03) 0%, transparent 40%);
+                radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06), transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.05), transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.03), transparent 40%);
         }
 
         .bg-outer .orb-bg {
@@ -121,7 +120,7 @@
         }
 
         /* ==============================================================
-                   CONTAINER DENGAN LIGHT RAYS DI DALAM
+                   MAIN WRAPPER & CONTAINER
                    ============================================================== */
         .main-wrapper {
             max-width: 1060px;
@@ -131,17 +130,42 @@
             z-index: 1;
         }
 
+        /* ===== CONTAINER DENGAN EFEK CAHAYA ===== */
         .container {
             background: var(--bg-surface);
             border-radius: var(--radius-xl);
             padding: clamp(1.2rem, 3vw, 3rem);
             border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-heavy);
+            box-shadow: var(--shadow-heavy), 0 0 80px rgba(59, 130, 246, 0.03);
             position: relative;
             overflow: hidden;
         }
 
-        /* ===== LIGHT RAYS DI DALAM CONTAINER ===== */
+        /* === CONTAINER BORDER GLOW (cahaya di tepi) === */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: var(--radius-xl);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.10), transparent 40%, rgba(139, 92, 246, 0.08));
+            z-index: -1;
+            pointer-events: none;
+            animation: border-glow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes border-glow {
+            0% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* === LIGHT RAYS DI DALAM CONTAINER === */
         .container .rays-inner {
             position: absolute;
             top: 0;
@@ -267,7 +291,7 @@
             }
         }
 
-        /* ===== CONTAINER INNER GLOW ===== */
+        /* === INNER GLOW CONTAINER === */
         .container .inner-glow {
             position: absolute;
             border-radius: 50%;
@@ -288,30 +312,6 @@
             width: 40%;
             height: 40%;
             background: radial-gradient(circle, rgba(139, 92, 246, 0.10), transparent 70%);
-        }
-
-        /* ===== CONTAINER BORDER GLOW ===== */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: var(--radius-xl);
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), transparent 40%, rgba(139, 92, 246, 0.08));
-            z-index: -1;
-            pointer-events: none;
-            animation: border-glow 6s ease-in-out infinite alternate;
-        }
-
-        @keyframes border-glow {
-            0% {
-                opacity: 0.4;
-            }
-            100% {
-                opacity: 1;
-            }
         }
 
         /* ==============================================================
@@ -523,7 +523,7 @@
         }
 
         /* ==============================================================
-                   VISI MISI
+                   VISI MISI - DENGAN EFEK CAHAYA
                    ============================================================== */
         .visi-misi {
             display: grid;
@@ -543,11 +543,37 @@
             position: relative;
             overflow: hidden;
         }
+        /* EFFECT CAHAYA DI CARD */
+        .vm-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06), transparent 70%);
+            pointer-events: none;
+            transition: var(--transition);
+        }
+        .vm-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
         .vm-card:hover {
             border-color: var(--border-glow);
             background: var(--bg-card-hover);
             transform: translateY(-4px);
             box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 60px rgba(59, 130, 246, 0.04);
+        }
+        .vm-card:hover::after {
+            opacity: 1;
         }
 
         .vm-card .icon-wrap {
@@ -608,7 +634,7 @@
         }
 
         /* ==============================================================
-                   STORY
+                   STORY - DENGAN EFEK CAHAYA
                    ============================================================== */
         .story-section {
             margin: 2.2rem 0 2.2rem;
@@ -669,6 +695,7 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
+        /* EFFECT CAHAYA DI STORY CARD */
         .story-item::before {
             content: '';
             position: absolute;
@@ -681,6 +708,16 @@
             border-radius: 4px 0 0 4px;
             box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
             transition: var(--transition);
+        }
+        .story-item::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04), transparent 70%);
+            pointer-events: none;
         }
         .story-item:hover::before {
             opacity: 0.6;
@@ -758,7 +795,7 @@
         }
 
         /* ==============================================================
-                   VALUES
+                   VALUES - DENGAN EFEK CAHAYA
                    ============================================================== */
         .values-section {
             margin: 2.2rem 0 2.2rem;
@@ -805,6 +842,35 @@
             position: relative;
             overflow: hidden;
         }
+        /* EFFECT CAHAYA DI VALUE CARD */
+        .value-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .value-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        .value-item:hover::before {
+            opacity: 1;
+        }
+        .value-item:hover::after {
+            width: 80%;
+        }
         .value-item:hover {
             border-color: var(--border-glow);
             background: var(--bg-card-hover);
@@ -845,7 +911,7 @@
         }
 
         /* ==============================================================
-                   STATS
+                   STATS - DENGAN EFEK CAHAYA
                    ============================================================== */
         .stats-section {
             margin: 2.2rem 0 2.2rem;
@@ -868,6 +934,35 @@
             -webkit-backdrop-filter: blur(8px);
             position: relative;
             overflow: hidden;
+        }
+        /* EFFECT CAHAYA DI STATS CARD */
+        .stats-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .stats-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.25), transparent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        .stats-item:hover::before {
+            opacity: 1;
+        }
+        .stats-item:hover::after {
+            width: 70%;
         }
         .stats-item:hover {
             border-color: var(--border-glow);
@@ -894,7 +989,7 @@
         }
 
         /* ==============================================================
-                   CTA
+                   CTA - DENGAN EFEK CAHAYA
                    ============================================================== */
         .cta-section {
             background: var(--bg-card);
@@ -908,6 +1003,27 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+        }
+        /* EFFECT CAHAYA DI CTA */
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.06), transparent 50%);
+            pointer-events: none;
+        }
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.04), transparent 50%);
+            pointer-events: none;
         }
         .cta-section:hover {
             border-color: var(--border-glow);
@@ -963,6 +1079,7 @@
             z-index: 2;
         }
 
+        /* BUTTON DENGAN EFEK CAHAYA */
         .btn-primary {
             background: var(--blue-gradient);
             color: #fff;
@@ -988,12 +1105,26 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 60%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.10), transparent 60%);
             opacity: 0;
+            transition: var(--transition);
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.05), transparent 60%);
+            transform: rotate(45deg) translateY(100%);
             transition: var(--transition);
         }
         .btn-primary:hover::before {
             opacity: 1;
+        }
+        .btn-primary:hover::after {
+            transform: rotate(45deg) translateY(-100%);
         }
         .btn-primary:hover {
             transform: translateY(-3px);
@@ -1016,6 +1147,20 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+        }
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .btn-secondary:hover::before {
+            opacity: 1;
         }
         .btn-secondary:hover {
             border-color: var(--blue);
@@ -1257,7 +1402,7 @@
 <body>
 
     <!-- ============================================================== -->
-    <!-- BACKGROUND OUTER (di belakang container) -->
+    <!-- BACKGROUND OUTER -->
     <!-- ============================================================== -->
     <div class="bg-outer">
         <div class="orb-bg"></div>
