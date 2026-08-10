@@ -54,12 +54,241 @@
             min-height: 100vh;
             padding: 1rem;
             -webkit-font-smoothing: antialiased;
+            position: relative;
         }
 
+        /* ==============================================================
+                   ANIMATED BACKGROUND
+                   ============================================================== */
+
+        /* Gradient mesh background */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-mesh .mesh-layer {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: mesh-float 20s ease-in-out infinite alternate;
+        }
+
+        .bg-mesh .mesh-layer:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%);
+            animation-delay: 0s;
+        }
+        .bg-mesh .mesh-layer:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            bottom: -200px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.10), transparent 70%);
+            animation-delay: 5s;
+        }
+        .bg-mesh .mesh-layer:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            top: 40%;
+            left: 50%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.06), transparent 70%);
+            animation-delay: 10s;
+        }
+        .bg-mesh .mesh-layer:nth-child(4) {
+            width: 350px;
+            height: 350px;
+            top: 10%;
+            right: 20%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.05), transparent 70%);
+            animation-delay: 15s;
+        }
+        .bg-mesh .mesh-layer:nth-child(5) {
+            width: 450px;
+            height: 450px;
+            bottom: 10%;
+            left: 20%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.04), transparent 70%);
+            animation-delay: 7s;
+        }
+
+        @keyframes mesh-float {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -40px) scale(1.05) rotate(5deg);
+            }
+            50% {
+                transform: translate(-20px, 30px) scale(0.95) rotate(-3deg);
+            }
+            75% {
+                transform: translate(40px, 20px) scale(1.02) rotate(4deg);
+            }
+            100% {
+                transform: translate(-30px, -30px) scale(0.98) rotate(-2deg);
+            }
+        }
+
+        /* Animated grid lines */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: grid-scroll 30s linear infinite;
+        }
+
+        @keyframes grid-scroll {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(60px, 60px);
+            }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: particle-float var(--duration, 15s) ease-in-out infinite alternate;
+        }
+
+        .particle:nth-child(1) {
+            width: 4px;
+            height: 4px;
+            background: var(--blue-light);
+            top: 10%;
+            left: 15%;
+            --duration: 18s;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        .particle:nth-child(2) {
+            width: 6px;
+            height: 6px;
+            background: #a855f7;
+            top: 25%;
+            right: 20%;
+            --duration: 22s;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+        }
+        .particle:nth-child(3) {
+            width: 3px;
+            height: 3px;
+            background: var(--yellow);
+            bottom: 30%;
+            left: 10%;
+            --duration: 20s;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+        }
+        .particle:nth-child(4) {
+            width: 5px;
+            height: 5px;
+            background: var(--pink);
+            top: 60%;
+            right: 15%;
+            --duration: 25s;
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.3);
+        }
+        .particle:nth-child(5) {
+            width: 3px;
+            height: 3px;
+            background: var(--green);
+            top: 45%;
+            left: 45%;
+            --duration: 16s;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+        }
+        .particle:nth-child(6) {
+            width: 7px;
+            height: 7px;
+            background: var(--blue-light);
+            bottom: 15%;
+            right: 30%;
+            --duration: 28s;
+            box-shadow: 0 0 35px rgba(59, 130, 246, 0.2);
+        }
+        .particle:nth-child(7) {
+            width: 4px;
+            height: 4px;
+            background: #f472b6;
+            top: 75%;
+            left: 60%;
+            --duration: 19s;
+            box-shadow: 0 0 20px rgba(244, 114, 182, 0.3);
+        }
+        .particle:nth-child(8) {
+            width: 5px;
+            height: 5px;
+            background: #34d399;
+            top: 5%;
+            left: 70%;
+            --duration: 24s;
+            box-shadow: 0 0 25px rgba(52, 211, 153, 0.2);
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.2;
+            }
+            25% {
+                transform: translate(30px, -50px) scale(1.5);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-20px, -80px) scale(0.8);
+                opacity: 0.3;
+            }
+            75% {
+                transform: translate(50px, -30px) scale(1.3);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-30px, -60px) scale(1);
+                opacity: 0.2;
+            }
+        }
+
+        /* ==============================================================
+                   CONTAINER
+                   ============================================================== */
         .main-wrapper {
             max-width: 1060px;
             width: 100%;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .container {
@@ -70,138 +299,30 @@
             box-shadow: var(--shadow-heavy);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
         }
 
-        /* ==============================================================
-                   LIGHTING & GLOW EFFECTS
-                   ============================================================== */
-
-        /* Main ambient glow */
-        .ambient-glow {
+        /* Container inner glow */
+        .container::before {
+            content: '';
             position: absolute;
-            border-radius: 50%;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.03), transparent 50%);
             pointer-events: none;
-            filter: blur(120px);
-            opacity: 0.5;
-            animation: pulse-glow 6s ease-in-out infinite alternate;
         }
-        .ambient-glow-1 {
-            width: 500px;
-            height: 500px;
-            top: -200px;
-            right: -180px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
-            animation-delay: 0s;
-        }
-        .ambient-glow-2 {
-            width: 400px;
-            height: 400px;
-            bottom: -180px;
-            left: -150px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%);
-            animation-delay: 2s;
-        }
-        .ambient-glow-3 {
-            width: 300px;
-            height: 300px;
-            top: 30%;
-            right: 10%;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.08), transparent 70%);
-            animation-delay: 4s;
-        }
-        .ambient-glow-4 {
-            width: 250px;
-            height: 250px;
-            bottom: 20%;
-            left: 20%;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.06), transparent 70%);
-            animation-delay: 1s;
-        }
-
-        @keyframes pulse-glow {
-            0% {
-                opacity: 0.3;
-                transform: scale(0.95);
-            }
-            100% {
-                opacity: 0.6;
-                transform: scale(1.05);
-            }
-        }
-
-        /* Floating particles / sparkles */
-        .sparkle {
+        .container::after {
+            content: '';
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--blue-light);
-            border-radius: 50%;
+            bottom: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.02), transparent 50%);
             pointer-events: none;
-            box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
-            animation: float-sparkle 8s ease-in-out infinite;
-        }
-        .sparkle:nth-child(1) {
-            top: 10%;
-            left: 15%;
-            animation-delay: 0s;
-            width: 3px;
-            height: 3px;
-        }
-        .sparkle:nth-child(2) {
-            top: 25%;
-            right: 20%;
-            animation-delay: 1.5s;
-            width: 5px;
-            height: 5px;
-            background: #a855f7;
-            box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);
-        }
-        .sparkle:nth-child(3) {
-            bottom: 30%;
-            left: 10%;
-            animation-delay: 3s;
-            width: 3px;
-            height: 3px;
-            background: #fbbf24;
-            box-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
-        }
-        .sparkle:nth-child(4) {
-            top: 60%;
-            right: 15%;
-            animation-delay: 4.5s;
-            width: 4px;
-            height: 4px;
-            background: #ec4899;
-            box-shadow: 0 0 14px rgba(236, 72, 153, 0.4);
-        }
-        .sparkle:nth-child(5) {
-            top: 45%;
-            left: 45%;
-            animation-delay: 2.5s;
-            width: 2px;
-            height: 2px;
-            background: var(--blue-light);
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-        }
-
-        @keyframes float-sparkle {
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-                opacity: 0.4;
-            }
-            25% {
-                transform: translate(20px, -30px) scale(1.5);
-                opacity: 1;
-            }
-            50% {
-                transform: translate(-10px, -50px) scale(0.8);
-                opacity: 0.6;
-            }
-            75% {
-                transform: translate(30px, -20px) scale(1.2);
-                opacity: 0.8;
-            }
         }
 
         /* ==============================================================
@@ -248,18 +369,6 @@
             letter-spacing: 0.5px;
             -webkit-text-fill-color: var(--blue-light);
         }
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60%;
-            height: 2px;
-            background: var(--blue-gradient);
-            border-radius: 4px;
-            opacity: 0.3;
-            filter: blur(4px);
-        }
 
         .nav-links {
             display: flex;
@@ -296,7 +405,7 @@
         }
         .nav-links a.active {
             color: var(--white);
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
         }
         .nav-links a.active::after {
             width: 100%;
@@ -369,7 +478,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0.8rem;
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.04);
         }
         .hero-about .tag .dot {
             width: 5px;
@@ -378,6 +487,7 @@
             border-radius: 50%;
             display: inline-block;
             animation: pulse-dot 2s infinite;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
         }
 
         @keyframes pulse-dot {
@@ -385,12 +495,10 @@
             100% {
                 opacity: 1;
                 transform: scale(1);
-                box-shadow: 0 0 6px rgba(34, 197, 94, 0.4);
             }
             50% {
                 opacity: 0.2;
                 transform: scale(0.7);
-                box-shadow: 0 0 0px rgba(34, 197, 94, 0);
             }
         }
 
@@ -400,7 +508,7 @@
             letter-spacing: -1.5px;
             line-height: 1.05;
             color: var(--white);
-            text-shadow: 0 0 40px rgba(59, 130, 246, 0.08);
+            text-shadow: 0 0 60px rgba(59, 130, 246, 0.06);
         }
 
         .hero-about h1 .gradient {
@@ -410,18 +518,6 @@
             background-clip: text;
             position: relative;
         }
-        .hero-about h1 .gradient::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: var(--blue-gradient);
-            border-radius: 4px;
-            opacity: 0.15;
-            filter: blur(8px);
-        }
 
         .hero-about .sub {
             font-size: clamp(0.95rem, 1.2vw, 1.1rem);
@@ -429,7 +525,7 @@
             max-width: 520px;
             margin: 0.6rem auto 0;
             line-height: 1.7;
-            text-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
         }
 
         /* ==============================================================
@@ -467,7 +563,7 @@
             border-color: var(--border-glow);
             background: var(--bg-card-hover);
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 40px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(59, 130, 246, 0.04);
         }
 
         .vm-card .icon-wrap {
@@ -481,11 +577,11 @@
             font-size: 1.3rem;
             color: var(--blue-light);
             margin-bottom: 0.6rem;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.04);
         }
         .vm-card:hover .icon-wrap {
             background: rgba(59, 130, 246, 0.10);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.08);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.08);
         }
 
         .vm-card h3 {
@@ -519,7 +615,7 @@
             font-size: 0.6rem;
             margin-top: 0.35rem;
             flex-shrink: 0;
-            text-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
         }
 
         /* ==============================================================
@@ -594,7 +690,7 @@
             background: var(--blue-gradient);
             opacity: 0.3;
             border-radius: 4px 0 0 4px;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
         }
         .story-item::after {
             content: '';
@@ -610,7 +706,7 @@
             border-color: var(--border-glow);
             background: var(--bg-card-hover);
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), 0 0 40px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), 0 0 60px rgba(59, 130, 246, 0.04);
         }
 
         .story-item .year {
@@ -618,7 +714,7 @@
             font-size: 1.2rem;
             color: var(--blue-light);
             margin-bottom: 0.2rem;
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
         }
 
         .story-item .title {
@@ -637,7 +733,7 @@
         .story-item .highlight {
             color: var(--blue-light);
             font-weight: 600;
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
         }
 
         .story-item.soon {
@@ -649,7 +745,7 @@
         }
         .story-item.soon .year {
             color: var(--yellow);
-            text-shadow: 0 0 20px rgba(251, 191, 36, 0.1);
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
         }
 
         .soon-badge {
@@ -666,7 +762,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 0.4rem;
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.04);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.04);
         }
         .soon-badge i {
             font-size: 0.45rem;
@@ -738,7 +834,7 @@
             border-color: var(--border-glow);
             background: var(--bg-card-hover);
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 60px rgba(59, 130, 246, 0.04);
         }
 
         .value-item .icon {
@@ -753,11 +849,11 @@
             color: var(--blue-light);
             margin: 0 auto 0.5rem;
             transition: var(--transition);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.02);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.02);
         }
         .value-item:hover .icon {
             background: rgba(59, 130, 246, 0.12);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.08);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.08);
         }
 
         .value-item h4 {
@@ -815,7 +911,7 @@
             border-color: var(--border-glow);
             background: var(--bg-card-hover);
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 60px rgba(59, 130, 246, 0.04);
         }
 
         .stats-item .number {
@@ -826,7 +922,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.1;
-            text-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+            text-shadow: 0 0 60px rgba(59, 130, 246, 0.1);
         }
         .stats-item .label {
             color: var(--gray-500);
@@ -858,7 +954,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.04), transparent 50%);
+            background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.05), transparent 50%);
             pointer-events: none;
         }
         .cta-section::after {
@@ -873,7 +969,7 @@
         }
         .cta-section:hover {
             border-color: var(--border-glow);
-            box-shadow: 0 0 60px rgba(59, 130, 246, 0.04);
+            box-shadow: 0 0 80px rgba(59, 130, 246, 0.04);
         }
 
         .cta-section .icon-big {
@@ -881,7 +977,7 @@
             color: var(--blue-light);
             margin-bottom: 0.5rem;
             display: block;
-            text-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+            text-shadow: 0 0 60px rgba(59, 130, 246, 0.2);
             animation: float-icon 3s ease-in-out infinite;
         }
 
@@ -1037,7 +1133,7 @@
         .footer .social a:hover {
             color: var(--blue-light);
             transform: translateY(-2px);
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
         }
 
         /* ==============================================================
@@ -1058,13 +1154,15 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .ambient-glow-1,
-            .ambient-glow-2 {
-                width: 300px;
-                height: 300px;
+            .bg-mesh .mesh-layer:nth-child(3),
+            .bg-mesh .mesh-layer:nth-child(4),
+            .bg-mesh .mesh-layer:nth-child(5) {
+                display: none;
             }
-            .ambient-glow-3,
-            .ambient-glow-4 {
+            .particles .particle:nth-child(4),
+            .particles .particle:nth-child(6),
+            .particles .particle:nth-child(7),
+            .particles .particle:nth-child(8) {
                 display: none;
             }
         }
@@ -1131,17 +1229,20 @@
                 justify-content: center;
             }
 
-            .ambient-glow-1,
-            .ambient-glow-2 {
-                width: 200px;
-                height: 200px;
+            .bg-mesh .mesh-layer {
                 filter: blur(60px);
+                opacity: 0.3;
             }
-            .ambient-glow-3,
-            .ambient-glow-4 {
-                display: none;
+            .bg-mesh .mesh-layer:nth-child(1),
+            .bg-mesh .mesh-layer:nth-child(2) {
+                width: 250px;
+                height: 250px;
             }
-            .sparkle {
+            .bg-grid {
+                background-size: 30px 30px;
+            }
+            .particles .particle:nth-child(3),
+            .particles .particle:nth-child(5) {
                 display: none;
             }
         }
@@ -1180,6 +1281,15 @@
             .story-item {
                 padding: 1rem;
             }
+            .bg-mesh .mesh-layer {
+                display: none !important;
+            }
+            .bg-grid {
+                display: none;
+            }
+            .particles {
+                display: none;
+            }
         }
 
         @media (min-width: 1600px) {
@@ -1192,33 +1302,53 @@
             .hero-about h1 {
                 font-size: 4.2rem;
             }
-            .ambient-glow-1 {
-                width: 600px;
-                height: 600px;
+            .bg-mesh .mesh-layer:nth-child(1) {
+                width: 800px;
+                height: 800px;
             }
-            .ambient-glow-2 {
-                width: 500px;
-                height: 500px;
+            .bg-mesh .mesh-layer:nth-child(2) {
+                width: 700px;
+                height: 700px;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- ============================================================== -->
+    <!-- ANIMATED BACKGROUND -->
+    <!-- ============================================================== -->
+
+    <!-- Gradient Mesh -->
+    <div class="bg-mesh">
+        <div class="mesh-layer"></div>
+        <div class="mesh-layer"></div>
+        <div class="mesh-layer"></div>
+        <div class="mesh-layer"></div>
+        <div class="mesh-layer"></div>
+    </div>
+
+    <!-- Animated Grid -->
+    <div class="bg-grid"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================================================== -->
+
     <div class="main-wrapper">
         <div class="container">
-
-            <!-- ===== AMBIENT GLOW ===== -->
-            <div class="ambient-glow ambient-glow-1"></div>
-            <div class="ambient-glow ambient-glow-2"></div>
-            <div class="ambient-glow ambient-glow-3"></div>
-            <div class="ambient-glow ambient-glow-4"></div>
-
-            <!-- ===== SPARKLES ===== -->
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
 
             <!-- ========================================================== -->
             <!-- NAVBAR -->
@@ -1396,5 +1526,6 @@
 
         </div>
     </div>
+
 </body>
 </html>
