@@ -231,6 +231,19 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
+        .about-hero .tag .dot {
+            width: 5px;
+            height: 5px;
+            background: var(--green);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.8); }
+        }
 
         .about-hero h1 {
             font-size: clamp(2.4rem, 5.5vw, 4rem);
@@ -331,7 +344,7 @@
         }
 
         /* ==============================================================
-                   STORY / SEJARAH
+                   STORY / SEJARAH — FOKUS 2026 & SOON
                    ============================================================== */
         .story-section {
             margin: clamp(2.5rem, 4vw, 3.5rem) 0;
@@ -354,13 +367,20 @@
             font-size: clamp(1.6rem, 3vw, 2.4rem);
             font-weight: 800;
             color: var(--white);
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
         }
         .story-section h2 span {
             background: var(--blue-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .story-section .sub-story {
+            text-align: center;
+            color: var(--gray-400);
+            font-size: clamp(0.9rem, 1vw, 1.05rem);
+            margin-bottom: 2rem;
         }
 
         .story-grid {
@@ -418,6 +438,37 @@
         .story-item .highlight {
             color: var(--blue-light);
             font-weight: 600;
+        }
+
+        /* ——— SOON BADGE ——— */
+        .soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(251, 191, 36, 0.10);
+            color: #fbbf24;
+            padding: 0.15rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            border: 1px solid rgba(251, 191, 36, 0.10);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.4rem;
+        }
+        .soon-badge i {
+            font-size: 0.5rem;
+        }
+
+        .story-item.soon {
+            border-color: rgba(251, 191, 36, 0.08);
+        }
+        .story-item.soon::before {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            opacity: 0.4;
+        }
+        .story-item.soon:hover {
+            border-color: rgba(251, 191, 36, 0.15);
         }
 
         /* ==============================================================
@@ -493,7 +544,7 @@
         }
 
         /* ==============================================================
-                   STATS / MILESTONE
+                   STATS
                    ============================================================== */
         .stats-section {
             margin: clamp(2.5rem, 4vw, 3.5rem) 0;
@@ -807,12 +858,11 @@
             <!-- ABOUT HERO -->
             <!-- ========================================================== -->
             <section class="about-hero">
-                <div class="tag"><i class="fas fa-info-circle"></i> Tentang Kami</div>
+                <div class="tag"><span class="dot"></span> Baru Mulai · 2026</div>
                 <h1>Kenalan dengan <span class="gradient">MONGSTER</span></h1>
                 <p class="subtitle">
-                    Komunitas MLBB yang lahir dari kecintaan terhadap game dan persahabatan.
-                    Kami adalah rumah bagi para pemain yang ingin berkembang bersama,
-                    dari Epic sampai Mythic.
+                    Komunitas MLBB yang baru lahir di tahun 2026. Masih kecil, tapi punya mimpi besar.
+                    Kami adalah rumah bagi para pemain yang ingin berkembang bersama.
                 </p>
             </section>
 
@@ -826,16 +876,16 @@
                     <p>
                         Menjadi komunitas MLBB yang <strong style="color:var(--blue-light);">inklusif</strong>
                         dan <strong style="color:var(--blue-light);">berkualitas</strong> di Indonesia,
-                        di mana setiap anggota bisa berkembang, baik dari segi skill maupun
-                        persahabatan.
+                        tempat setiap anggota bisa berkembang, baik dari segi skill
+                        maupun persahabatan.
                     </p>
                 </div>
                 <div class="about-card">
                     <div class="icon"><i class="fas fa-bullseye"></i></div>
                     <h3>Misi</h3>
                     <ul>
-                        <li><i class="fas fa-chevron-right"></i> Menyelenggarakan scrim rutin 4x sebulan</li>
                         <li><i class="fas fa-chevron-right"></i> Membangun lingkungan yang ramah dan suportif</li>
+                        <li><i class="fas fa-chevron-right"></i> Menyelenggarakan scrim rutin 4x sebulan</li>
                         <li><i class="fas fa-chevron-right"></i> Menjadi wadah belajar dan berbagi strategi</li>
                         <li><i class="fas fa-chevron-right"></i> Menciptakan persahabatan yang tahan lama</li>
                     </ul>
@@ -843,37 +893,38 @@
             </div>
 
             <!-- ========================================================== -->
-            <!-- STORY / SEJARAH -->
+            <!-- STORY — FOKUS 2026 & SOON -->
             <!-- ========================================================== -->
             <div class="story-section">
                 <div class="label"><i class="fas fa-clock"></i> Perjalanan Kami</div>
-                <h2>Sejarah <span>MONGSTER</span></h2>
+                <h2>Awal <span>MONGSTER</span></h2>
+                <p class="sub-story">Masih baru, tapi kami punya rencana besar ke depan.</p>
 
                 <div class="story-grid">
                     <div class="story-item">
-                        <div class="year">2024</div>
-                        <div class="title">Awal Mula</div>
+                        <div class="year">2026</div>
+                        <div class="title">🌱 Awal Mula</div>
                         <div class="desc">
                             Berawal dari <span class="highlight">5 orang</span> yang sering mabar MLBB
-                            dan ngobrol di Litmatch. Kami sadar butuh wadah yang lebih serius.
-                        </div>
-                    </div>
-                    <div class="story-item">
-                        <div class="year">2025</div>
-                        <div class="title">Mulai Berkembang</div>
-                        <div class="desc">
-                            Komunitas tumbuh. Scrim pertama digelar dan member bertambah
-                            hingga <span class="highlight">15+</span> orang.
+                            dan ngobrol di Litmatch. Dari situlah MONGSTER mulai terbentuk.
                         </div>
                     </div>
                     <div class="story-item">
                         <div class="year">2026</div>
-                        <div class="title">MONGSTER Hari Ini</div>
+                        <div class="title">🚀 Mulai Tumbuh</div>
                         <div class="desc">
-                            <span class="highlight">30+ member</span> aktif <span class="highlight">24/7</span>,
-                            dengan <span class="highlight">4x scrim</span> setiap bulan.
-                            Kami bukan sekadar komunitas — kami keluarga.
+                            Komunitas mulai merekrut member baru. Saat ini kami punya
+                            <span class="highlight">30+ member</span> yang aktif <span class="highlight">24/7</span>.
                         </div>
+                    </div>
+                    <div class="story-item soon">
+                        <div class="year">Soon</div>
+                        <div class="title">🌟 Rencana ke Depan</div>
+                        <div class="desc">
+                            Turnamen internal, coaching session, dan kolaborasi dengan
+                            komunitas lain. <span class="highlight">Masih dalam proses</span>.
+                        </div>
+                        <span class="soon-badge"><i class="fas fa-clock"></i> Coming Soon</span>
                     </div>
                 </div>
             </div>
@@ -938,7 +989,7 @@
             <!-- ========================================================== -->
             <div class="cta-section">
                 <h3>Bergabung dengan <span>MONGSTER</span></h3>
-                <p>Kami selalu terbuka untuk pemain baru. Dari Epic sampai Mythic, semua punya tempat di sini.</p>
+                <p>Kami baru mulai, tapi kami punya mimpi besar. Yuk, tumbuh bersama dari awal.</p>
                 <div class="btn-group">
                     <a href="#" class="btn-primary"><i class="fas fa-rocket"></i> Gabung Sekarang</a>
                     <a href="index.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
