@@ -182,7 +182,7 @@
         }
 
         /* ==============================================================
-           NAVBAR — clean, spacious, with consistent logo
+           NAVBAR — clean, spacious, with only logo image
            ============================================================== */
         .navbar {
             display: flex;
@@ -208,7 +208,6 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 18px;
             text-decoration: none;
             flex-shrink: 0;
         }
@@ -223,11 +222,6 @@
         .logo img:hover {
             filter: drop-shadow(0 0 60px rgba(0, 180, 255, 0.15));
             transform: scale(1.04);
-        }
-
-        /* logo text is now only the image, no extra text */
-        .logo .logo-text {
-            display: none;
         }
 
         .nav-links {
@@ -1230,7 +1224,7 @@
             <div class="inner-ambient inner-ambient-2"></div>
 
             <!-- ========================================================== -->
-            <!-- NAVBAR — logo only, no extra text -->
+            <!-- NAVBAR — only logo image, no text -->
             <!-- ========================================================== -->
             <nav class="navbar">
                 <a href="index.html" class="logo">
