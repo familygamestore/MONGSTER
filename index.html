@@ -10,57 +10,99 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ==============================================================
-           RESET & ROOT VARIABLES
-           ============================================================== */
-        * {
+               RESET & ROOT — ultra-premium dark UI with rich colors
+               ============================================================== */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         :root {
-            --bg-deep: #03050f;
-            --bg-surface: #0b0f1a;
-            --bg-card: rgba(255, 255, 255, 0.02);
-            --bg-card-hover: rgba(0, 180, 255, 0.03);
-            --border-subtle: rgba(255, 255, 255, 0.03);
-            --border-glow: rgba(0, 180, 255, 0.15);
+            /* --- core colors --- */
+            --bg-deep: #010208;
+            --bg-surface: #060a18;
+            --bg-card: rgba(255, 255, 255, 0.008);
+            --bg-card-hover: rgba(0, 180, 255, 0.015);
+
+            /* --- gradients & accents --- */
             --blue-primary: #00b4ff;
             --blue-secondary: #7b2ffc;
             --blue-gradient: linear-gradient(145deg, #00b4ff, #7b2ffc);
-            --blue-glow: rgba(0, 180, 255, 0.15);
+            --blue-glow: rgba(0, 180, 255, 0.10);
+
+            --purple-accent: #a855f7;
+            --purple-gradient: linear-gradient(145deg, #a855f7, #7b2ffc);
+
+            --cyan-accent: #22d3ee;
+            --cyan-gradient: linear-gradient(145deg, #22d3ee, #00b4ff);
+
             --green-accent: #00e676;
+            --green-glow: rgba(0, 230, 118, 0.06);
+
+            --gold-accent: #fbbf24;
+            --gold-gradient: linear-gradient(145deg, #fbbf24, #f59e0b);
+            --gold-glow: rgba(251, 191, 36, 0.06);
+
+            --pink-accent: #ec4899;
+            --pink-gradient: linear-gradient(145deg, #ec4899, #db2777);
+
             --white: #ffffff;
+            --gray-200: #c8d0dc;
             --gray-300: #8b97b0;
             --gray-400: #6a7a94;
             --gray-500: #4a5a74;
             --gray-600: #2a3a54;
-            --radius-xl: 48px;
-            --radius-lg: 32px;
-            --radius-md: 20px;
-            --radius-sm: 14px;
-            --shadow-heavy: 0 40px 80px rgba(0, 0, 0, 0.8);
-            --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.5);
-            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --gray-700: #1a2a44;
+
+            /* --- border & shadow --- */
+            --border-subtle: rgba(255, 255, 255, 0.012);
+            --border-glow: rgba(0, 180, 255, 0.04);
+
+            --shadow-heavy: 0 80px 180px rgba(0, 0, 0, 0.95);
+            --shadow-card: 0 28px 72px rgba(0, 0, 0, 0.65);
+            --shadow-glow: 0 0 140px rgba(0, 180, 255, 0.025);
+            --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.012);
+
+            /* --- radii --- */
+            --radius-xl: 68px;
+            --radius-lg: 48px;
+            --radius-md: 28px;
+            --radius-sm: 18px;
+            --radius-xs: 12px;
+
+            /* --- transitions --- */
+            --transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --transition-slow: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+
+            /* --- typography --- */
+            --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             background: var(--bg-deep);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: var(--font-display);
             color: var(--white);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 1.5rem;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             position: relative;
+            overflow-x: hidden;
         }
 
         /* ==============================================================
-           AMBIENT BACKGROUND
-           ============================================================== */
+               AMBIENT BACKGROUND — cinematic orbs with rich colors
+               ============================================================== */
         .bg-ambient {
             position: fixed;
             top: 0;
@@ -75,129 +117,235 @@
         .bg-ambient .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.15;
-            animation: orbFloat 28s ease-in-out infinite alternate;
+            filter: blur(220px);
+            opacity: 0.07;
+            animation: orbFloat 38s ease-in-out infinite alternate;
+            will-change: transform;
         }
 
         .bg-ambient .orb:nth-child(1) {
-            width: 700px;
-            height: 700px;
-            top: -250px;
-            right: -200px;
-            background: radial-gradient(circle, rgba(0, 180, 255, 0.15), transparent 70%);
-            animation-duration: 32s;
+            width: 1100px;
+            height: 1100px;
+            top: -450px;
+            right: -400px;
+            background: radial-gradient(circle, rgba(0, 180, 255, 0.08), transparent 70%);
+            animation-duration: 42s;
         }
 
         .bg-ambient .orb:nth-child(2) {
-            width: 500px;
-            height: 500px;
-            bottom: -200px;
-            left: -150px;
-            background: radial-gradient(circle, rgba(123, 47, 252, 0.10), transparent 70%);
-            animation-duration: 36s;
+            width: 1000px;
+            height: 1000px;
+            bottom: -400px;
+            left: -350px;
+            background: radial-gradient(circle, rgba(123, 47, 252, 0.06), transparent 70%);
+            animation-duration: 46s;
             animation-delay: 6s;
         }
 
         .bg-ambient .orb:nth-child(3) {
-            width: 400px;
-            height: 400px;
-            top: 20%;
-            left: 30%;
-            background: radial-gradient(circle, rgba(0, 230, 118, 0.04), transparent 70%);
-            animation-duration: 26s;
+            width: 800px;
+            height: 800px;
+            top: 5%;
+            left: 10%;
+            background: radial-gradient(circle, rgba(0, 230, 118, 0.02), transparent 70%);
+            animation-duration: 38s;
             animation-delay: 12s;
+        }
+
+        .bg-ambient .orb:nth-child(4) {
+            width: 700px;
+            height: 700px;
+            bottom: 5%;
+            right: 5%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.02), transparent 70%);
+            animation-duration: 40s;
+            animation-delay: 18s;
+        }
+
+        .bg-ambient .orb:nth-child(5) {
+            width: 600px;
+            height: 600px;
+            top: 35%;
+            right: 35%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.015), transparent 70%);
+            animation-duration: 44s;
+            animation-delay: 24s;
         }
 
         @keyframes orbFloat {
             0% {
-                transform: translate(0, 0) scale(1);
+                transform: translate(0, 0) scale(1) rotate(0deg);
             }
-            50% {
-                transform: translate(40px, -60px) scale(1.2);
+            33% {
+                transform: translate(80px, -100px) scale(1.25) rotate(6deg);
+            }
+            66% {
+                transform: translate(-60px, 80px) scale(0.75) rotate(-4deg);
             }
             100% {
-                transform: translate(-30px, 40px) scale(0.85);
+                transform: translate(50px, -50px) scale(1.1) rotate(3deg);
             }
         }
 
         /* ==============================================================
-           MAIN WRAPPER & CONTAINER
-           ============================================================== */
+               MAIN WRAPPER & CONTAINER — ultra-premium glass with rich border
+               ============================================================== */
         .main-wrapper {
-            max-width: 1200px;
+            max-width: 1400px;
             width: 100%;
             position: relative;
             z-index: 1;
         }
 
         .container {
-            background: rgba(11, 15, 26, 0.70);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            background: rgba(6, 10, 24, 0.40);
+            backdrop-filter: blur(48px) saturate(1.5);
+            -webkit-backdrop-filter: blur(48px) saturate(1.5);
             border-radius: var(--radius-xl);
-            padding: clamp(1.5rem, 4vw, 3.6rem);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            box-shadow: var(--shadow-heavy), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            padding: clamp(2.4rem, 6vw, 5.5rem);
+            border: 1px solid rgba(255, 255, 255, 0.006);
+            box-shadow: var(--shadow-heavy), var(--shadow-inner), var(--shadow-glow);
             position: relative;
             overflow: hidden;
         }
 
+        /* container border glow with multiple color layers */
         .container::before {
+            content: '';
+            position: absolute;
+            inset: -2.5px;
+            border-radius: var(--radius-xl);
+            background: linear-gradient(135deg,
+                    rgba(0, 180, 255, 0.03),
+                    rgba(123, 47, 252, 0.02) 25%,
+                    rgba(168, 85, 247, 0.015) 50%,
+                    rgba(34, 211, 238, 0.02) 75%,
+                    rgba(0, 180, 255, 0.025));
+            z-index: -1;
+            animation: borderPulseMulti 16s ease-in-out infinite alternate;
+        }
+
+        .container::after {
             content: '';
             position: absolute;
             inset: -1px;
             border-radius: var(--radius-xl);
-            background: linear-gradient(135deg, rgba(0, 180, 255, 0.06), transparent 40%, rgba(123, 47, 252, 0.04));
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.004), transparent 60%, rgba(123, 47, 252, 0.004));
             z-index: -1;
             pointer-events: none;
-            animation: borderPulse 8s ease-in-out infinite alternate;
         }
 
-        @keyframes borderPulse {
+        @keyframes borderPulseMulti {
             0% {
-                opacity: 0.2;
+                opacity: 0.1;
+            }
+            33% {
+                opacity: 0.4;
+            }
+            66% {
+                opacity: 0.6;
             }
             100% {
-                opacity: 0.7;
+                opacity: 0.2;
             }
         }
 
+        /* inner ambient glow — 5 color layers */
         .container .inner-ambient {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            filter: blur(120px);
-            opacity: 0.04;
+            filter: blur(200px);
+            opacity: 0.025;
         }
 
         .container .inner-ambient-1 {
-            top: -30%;
-            right: -20%;
-            width: 70%;
-            height: 70%;
-            background: radial-gradient(circle, rgba(0, 180, 255, 0.10), transparent 70%);
+            top: -20%;
+            right: -10%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(0, 180, 255, 0.04), transparent 70%);
+            animation: ambientDrift 30s ease-in-out infinite alternate;
         }
 
         .container .inner-ambient-2 {
-            bottom: -30%;
-            left: -20%;
+            bottom: -20%;
+            left: -10%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(123, 47, 252, 0.03), transparent 70%);
+            animation: ambientDrift 36s ease-in-out infinite alternate-reverse;
+        }
+
+        .container .inner-ambient-3 {
+            top: 30%;
+            left: 30%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.02), transparent 70%);
+            animation: ambientDrift 32s ease-in-out infinite alternate;
+        }
+
+        .container .inner-ambient-4 {
+            bottom: 25%;
+            right: 25%;
+            width: 45%;
+            height: 45%;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.015), transparent 70%);
+            animation: ambientDrift 34s ease-in-out infinite alternate-reverse;
+        }
+
+        .container .inner-ambient-5 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 60%;
             height: 60%;
-            background: radial-gradient(circle, rgba(123, 47, 252, 0.08), transparent 70%);
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.01), transparent 70%);
+            animation: ambientDrift 28s ease-in-out infinite alternate;
+        }
+
+        @keyframes ambientDrift {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(60px, -60px) scale(1.5);
+            }
         }
 
         /* ==============================================================
-           NAVBAR
-           ============================================================== */
+               SCROLLBAR — custom premium
+               ============================================================== */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--blue-gradient);
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--cyan-gradient);
+        }
+
+        /* ==============================================================
+               NAVBAR — elegant, spacious, with only logo image
+               ============================================================== */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.8rem 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            gap: 0.8rem 4rem;
+            padding-bottom: 2.4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.006);
             position: relative;
             z-index: 10;
         }
@@ -209,65 +357,50 @@
             left: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 180, 255, 0.08), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 180, 255, 0.025), rgba(123, 47, 252, 0.025), transparent);
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 16px;
             text-decoration: none;
             flex-shrink: 0;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border-radius: 28px;
+            background: radial-gradient(circle at center, rgba(0, 180, 255, 0.015), transparent 70%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .logo:hover::after {
+            opacity: 1;
         }
 
         .logo img {
-            height: clamp(52px, 6.5vw, 88px);
+            height: clamp(60px, 7.5vw, 115px);
             width: auto;
             display: block;
-            filter: drop-shadow(0 0 30px rgba(0, 180, 255, 0.12));
+            filter: drop-shadow(0 0 70px rgba(0, 180, 255, 0.03));
             transition: var(--transition);
-            border-radius: 12px;
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .logo img:hover {
-            filter: drop-shadow(0 0 50px rgba(0, 180, 255, 0.20));
-            transform: scale(1.03);
-        }
-
-        .logo .logo-text {
-            font-weight: 900;
-            font-size: clamp(1.6rem, 4.2vw, 3rem);
-            letter-spacing: -1px;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            line-height: 1;
-        }
-
-        .logo .logo-text span {
-            background: var(--blue-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .logo .badge {
-            font-size: 0.45rem;
-            background: rgba(0, 180, 255, 0.08);
-            color: var(--blue-primary);
-            padding: 0.15rem 1rem;
-            border-radius: 40px;
-            font-weight: 700;
-            border: 1px solid rgba(0, 180, 255, 0.06);
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            -webkit-text-fill-color: var(--blue-primary);
+            filter: drop-shadow(0 0 120px rgba(0, 180, 255, 0.08));
+            transform: scale(1.04) rotate(-1deg);
         }
 
         .nav-links {
             display: flex;
-            gap: clamp(1rem, 2.5vw, 3rem);
+            gap: clamp(1.8rem, 3.5vw, 5rem);
             align-items: center;
             flex-wrap: wrap;
         }
@@ -276,10 +409,11 @@
             text-decoration: none;
             color: var(--gray-300);
             font-weight: 500;
-            font-size: clamp(0.8rem, 1vw, 0.95rem);
+            font-size: clamp(0.85rem, 1vw, 1.05rem);
             transition: var(--transition);
             position: relative;
-            padding: 0.2rem 0;
+            padding: 0.3rem 0;
+            letter-spacing: 0.4px;
         }
 
         .nav-links a::after {
@@ -288,10 +422,11 @@
             bottom: -6px;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 2.5px;
             background: var(--blue-gradient);
             border-radius: 4px;
             transition: var(--transition);
+            box-shadow: 0 0 50px rgba(0, 180, 255, 0.03);
         }
 
         .nav-links a:hover {
@@ -304,7 +439,6 @@
 
         .nav-links a.active {
             color: var(--white);
-            text-shadow: 0 0 20px rgba(0, 180, 255, 0.05);
         }
 
         .nav-links a.active::after {
@@ -314,25 +448,22 @@
         .btn-nav {
             background: var(--blue-gradient);
             color: #fff !important;
-            padding: 0.4rem 1.8rem;
-            border-radius: 40px;
+            padding: 0.55rem 2.6rem;
+            border-radius: 60px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             transition: var(--transition);
-            box-shadow: 0 4px 24px var(--blue-glow);
+            box-shadow: 0 4px 48px var(--blue-glow);
+            border: none;
             position: relative;
             overflow: hidden;
-            border: none;
         }
 
         .btn-nav::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 60%);
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.03), transparent 60%);
             opacity: 0;
             transition: var(--transition);
         }
@@ -342,8 +473,8 @@
         }
 
         .btn-nav:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 36px var(--blue-glow);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 68px var(--blue-glow);
             color: #fff !important;
         }
 
@@ -352,13 +483,13 @@
         }
 
         /* ==============================================================
-           HERO
-           ============================================================== */
+               HERO — expanded, elegant, immersive with rich colors
+               ============================================================== */
         .hero {
             display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: clamp(2rem, 5vw, 4.5rem);
-            margin: clamp(2.2rem, 5vw, 4.5rem) 0;
+            grid-template-columns: 1fr 360px;
+            gap: clamp(4rem, 8.5vw, 7.5rem);
+            margin: clamp(4rem, 7vw, 6.5rem) 0;
             position: relative;
             z-index: 10;
             align-items: center;
@@ -371,27 +502,28 @@
         .hero-tag {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(0, 180, 255, 0.04);
-            border: 1px solid rgba(0, 180, 255, 0.06);
-            padding: 0.15rem 1.4rem;
-            border-radius: 40px;
-            font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+            gap: 18px;
+            background: rgba(0, 180, 255, 0.01);
+            border: 1px solid rgba(0, 180, 255, 0.02);
+            padding: 0.3rem 2.2rem;
+            border-radius: 60px;
+            font-size: clamp(0.75rem, 0.9vw, 0.85rem);
             font-weight: 600;
             color: var(--blue-primary);
-            margin-bottom: 1.4rem;
-            letter-spacing: 0.5px;
-            box-shadow: 0 0 30px rgba(0, 180, 255, 0.01);
+            margin-bottom: 2.2rem;
+            letter-spacing: 1.2px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .hero-tag .dot {
-            width: 6px;
-            height: 6px;
+            width: 10px;
+            height: 10px;
             background: var(--green-accent);
             border-radius: 50%;
             display: inline-block;
-            animation: pulseDot 2.2s infinite;
-            box-shadow: 0 0 12px rgba(0, 230, 118, 0.15);
+            animation: pulseDot 2.8s infinite;
+            box-shadow: 0 0 30px rgba(0, 230, 118, 0.06);
         }
 
         @keyframes pulseDot {
@@ -401,18 +533,18 @@
                 transform: scale(1);
             }
             50% {
-                opacity: 0.15;
-                transform: scale(0.6);
+                opacity: 0.03;
+                transform: scale(0.2);
             }
         }
 
         .hero h1 {
-            font-size: clamp(2.6rem, 7vw, 4.6rem);
+            font-size: clamp(3.4rem, 9vw, 6.2rem);
             font-weight: 900;
-            letter-spacing: -2.5px;
+            letter-spacing: -4.5px;
             line-height: 1.02;
             color: var(--white);
-            text-shadow: 0 0 60px rgba(0, 180, 255, 0.02);
+            text-shadow: 0 0 140px rgba(0, 180, 255, 0.008);
         }
 
         .hero h1 .gradient {
@@ -426,29 +558,67 @@
         .hero h1 .gradient::after {
             content: '';
             position: absolute;
-            bottom: 2px;
+            bottom: 4px;
             left: 0;
             width: 100%;
             height: 4px;
             background: var(--blue-gradient);
             border-radius: 4px;
-            opacity: 0.06;
-            filter: blur(6px);
+            opacity: 0.025;
+            filter: blur(14px);
+        }
+
+        .hero h1 .highlight {
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero h1 .highlight::before {
+            content: '';
+            position: absolute;
+            inset: -8px -20px;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 180, 255, 0.015), transparent 70%);
+            border-radius: 28px;
+            z-index: -1;
+            filter: blur(16px);
+        }
+
+        .hero h1 .accent-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
-            font-size: clamp(1rem, 1.3vw, 1.25rem);
+            font-size: clamp(1.05rem, 1.4vw, 1.5rem);
             color: var(--gray-300);
-            max-width: 520px;
-            margin: 1.2rem 0 2rem;
-            line-height: 1.8;
+            max-width: 620px;
+            margin: 2rem 0 2.8rem;
+            line-height: 2.2;
             font-weight: 400;
+            text-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .hero p .highlight-text {
+            color: var(--cyan-accent);
+            font-weight: 500;
+        }
+
+        .hero p .gold-text {
+            color: var(--gold-accent);
+            font-weight: 500;
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 1.6rem;
             align-items: center;
         }
 
@@ -456,17 +626,17 @@
             background: var(--blue-gradient);
             color: #fff;
             border: none;
-            padding: clamp(0.8rem, 1.2vw, 1rem) clamp(2.2rem, 3.5vw, 3.2rem);
+            padding: clamp(1rem, 1.4vw, 1.25rem) clamp(3rem, 4.5vw, 4.8rem);
             border-radius: 60px;
             font-weight: 700;
-            font-size: clamp(0.85rem, 1vw, 1.05rem);
+            font-size: clamp(0.9rem, 1.1vw, 1.2rem);
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 20px;
             text-decoration: none;
             transition: var(--transition);
             cursor: pointer;
-            box-shadow: 0 8px 40px var(--blue-glow);
+            box-shadow: 0 8px 64px var(--blue-glow);
             position: relative;
             overflow: hidden;
         }
@@ -475,7 +645,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.06), transparent 60%);
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.03), transparent 60%);
             opacity: 0;
             transition: var(--transition);
         }
@@ -485,37 +655,57 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 16px 56px var(--blue-glow);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 16px 88px var(--blue-glow);
+        }
+
+        .btn-primary i {
+            font-size: 1.1em;
         }
 
         .btn-outline {
             background: transparent;
             color: var(--gray-300);
-            border: 1.5px solid rgba(255, 255, 255, 0.04);
-            padding: clamp(0.75rem, 1vw, 0.95rem) clamp(1.8rem, 2.5vw, 2.6rem);
+            border: 1.5px solid rgba(255, 255, 255, 0.03);
+            padding: clamp(0.9rem, 1.2vw, 1.15rem) clamp(2.6rem, 3.5vw, 4rem);
             border-radius: 60px;
             font-weight: 600;
-            font-size: clamp(0.8rem, 0.9vw, 0.95rem);
+            font-size: clamp(0.85rem, 0.95vw, 1rem);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 16px;
             text-decoration: none;
             transition: var(--transition);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 180, 255, 0.01), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover::before {
+            opacity: 1;
         }
 
         .btn-outline:hover {
-            border-color: var(--blue-primary);
+            border-color: var(--cyan-accent);
             color: var(--white);
-            background: rgba(0, 180, 255, 0.02);
-            transform: translateY(-2px);
+            background: rgba(0, 180, 255, 0.008);
+            transform: translateY(-4px);
+            box-shadow: 0 0 100px rgba(0, 180, 255, 0.01);
         }
 
         .hero-stats {
             display: flex;
-            gap: clamp(2rem, 4vw, 4.5rem);
-            margin-top: clamp(2rem, 3vw, 3.2rem);
+            gap: clamp(4rem, 6vw, 6.5rem);
+            margin-top: clamp(3rem, 5vw, 5rem);
             flex-wrap: wrap;
         }
 
@@ -526,11 +716,12 @@
 
         .hero-stats .stat .num {
             font-weight: 900;
-            font-size: clamp(1.8rem, 3.2vw, 3rem);
+            font-size: clamp(2.6rem, 4.2vw, 4.6rem);
             color: var(--white);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 14px;
+            letter-spacing: -2px;
         }
 
         .hero-stats .stat .num i {
@@ -538,40 +729,69 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: clamp(1rem, 1.5vw, 1.8rem);
+            font-size: clamp(1.4rem, 2vw, 2.6rem);
         }
 
         .hero-stats .stat .label {
-            font-size: clamp(0.7rem, 0.8vw, 0.85rem);
+            font-size: clamp(0.75rem, 0.85vw, 0.9rem);
             color: var(--gray-500);
             font-weight: 500;
-            margin-top: 2px;
-            letter-spacing: 0.3px;
+            margin-top: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        /* Hero Card */
+        /* hero card — elegant dashboard with rich colors */
         .hero-card {
-            background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.005);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.008);
             border-radius: var(--radius-lg);
-            padding: clamp(1.2rem, 2vw, 2rem);
+            padding: clamp(2rem, 3vw, 3.6rem);
             transition: var(--transition);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            box-shadow: var(--shadow-inner), var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 180, 255, 0.006), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(123, 47, 252, 0.004), transparent 70%);
+            pointer-events: none;
         }
 
         .hero-card:hover {
-            border-color: rgba(0, 180, 255, 0.06);
+            border-color: rgba(0, 180, 255, 0.015);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card), var(--shadow-glow);
         }
 
         .hero-card .item {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 0.7rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            gap: 22px;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.006);
             transition: var(--transition);
+            position: relative;
+            z-index: 1;
         }
 
         .hero-card .item:last-child {
@@ -579,61 +799,86 @@
         }
 
         .hero-card .item:hover {
-            padding-left: 6px;
+            padding-left: 16px;
         }
 
         .hero-card .item .icon {
-            width: clamp(44px, 4.8vw, 52px);
-            height: clamp(44px, 4.8vw, 52px);
-            background: rgba(0, 180, 255, 0.02);
+            width: clamp(56px, 5.8vw, 68px);
+            height: clamp(56px, 5.8vw, 68px);
+            background: rgba(0, 180, 255, 0.008);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(1rem, 1.2vw, 1.3rem);
+            font-size: clamp(1.3rem, 1.5vw, 1.8rem);
             color: var(--blue-primary);
             flex-shrink: 0;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.008);
             transition: var(--transition);
         }
 
+        .hero-card .item:nth-child(2) .icon {
+            color: var(--purple-accent);
+        }
+
+        .hero-card .item:nth-child(3) .icon {
+            color: var(--gold-accent);
+        }
+
         .hero-card .item:hover .icon {
-            background: rgba(0, 180, 255, 0.04);
+            background: rgba(0, 180, 255, 0.01);
+            border-color: rgba(0, 180, 255, 0.02);
         }
 
         .hero-card .item .info .title {
             font-weight: 700;
-            font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+            font-size: clamp(1rem, 1.15vw, 1.35rem);
             color: var(--white);
+            letter-spacing: -0.3px;
         }
 
         .hero-card .item .info .desc {
-            font-size: clamp(0.65rem, 0.7vw, 0.75rem);
+            font-size: clamp(0.7rem, 0.75vw, 0.85rem);
             color: var(--gray-500);
+            margin-top: 2px;
         }
 
         /* ==============================================================
-           SECTION HEADER
-           ============================================================== */
+               SECTION HEADER — enhanced with rich colors
+               ============================================================== */
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             flex-wrap: wrap;
-            gap: 0.8rem 1.5rem;
-            margin-top: clamp(3rem, 6vw, 5rem);
-            margin-bottom: clamp(1.2rem, 2vw, 1.8rem);
+            gap: 0.8rem 3.5rem;
+            margin-top: clamp(5rem, 8vw, 7rem);
+            margin-bottom: clamp(2rem, 2.8vw, 2.6rem);
             position: relative;
             z-index: 10;
         }
 
+        .section-header .left {
+            position: relative;
+        }
+
+        .section-header .left .line {
+            display: block;
+            width: 56px;
+            height: 3.5px;
+            background: var(--blue-gradient);
+            border-radius: 4px;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 0 50px rgba(0, 180, 255, 0.03);
+        }
+
         .section-header .left h2 {
-            font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+            font-size: clamp(2.2rem, 4vw, 3.6rem);
             font-weight: 800;
             color: var(--white);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 20px;
             letter-spacing: -0.5px;
         }
 
@@ -642,188 +887,268 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            font-size: clamp(1.6rem, 2.4vw, 2.6rem);
         }
 
         .section-header .left p {
             color: var(--gray-300);
-            font-size: clamp(0.85rem, 1vw, 1.05rem);
-            margin-top: 4px;
+            font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+            margin-top: 8px;
+            max-width: 560px;
+            line-height: 1.9;
         }
 
         .section-header .right .chip {
-            background: rgba(0, 180, 255, 0.02);
-            color: var(--blue-primary);
-            padding: 0.25rem 1.4rem;
-            border-radius: 40px;
-            font-size: clamp(0.7rem, 0.8vw, 0.8rem);
+            background: rgba(0, 180, 255, 0.008);
+            color: var(--cyan-accent);
+            padding: 0.4rem 2.2rem;
+            border-radius: 60px;
+            font-size: clamp(0.75rem, 0.85vw, 0.85rem);
             font-weight: 600;
-            border: 1px solid rgba(0, 180, 255, 0.04);
+            border: 1px solid rgba(0, 180, 255, 0.012);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 14px;
             white-space: nowrap;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .section-header .right .chip i {
+            color: var(--gold-accent);
         }
 
         /* ==============================================================
-           SCRIM GRID
-           ============================================================== */
+               SCRIM GRID — upgraded with rich hover effects
+               ============================================================== */
         .scrim-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(160px, 18vw, 220px), 1fr));
-            gap: clamp(1rem, 1.5vw, 1.5rem);
+            grid-template-columns: repeat(auto-fit, minmax(clamp(210px, 24vw, 290px), 1fr));
+            gap: clamp(1.8rem, 2.4vw, 2.6rem);
             position: relative;
             z-index: 10;
         }
 
         .scrim-item {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.005);
+            border: 1px solid rgba(255, 255, 255, 0.008);
             border-radius: var(--radius-md);
-            padding: clamp(1.2rem, 1.8vw, 1.8rem) clamp(0.8rem, 1.2vw, 1.2rem);
+            padding: clamp(1.8rem, 2.4vw, 2.6rem) clamp(1.2rem, 1.6vw, 1.8rem);
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 22px;
             transition: var(--transition);
             cursor: default;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scrim-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 180, 255, 0.006), rgba(123, 47, 252, 0.004), transparent 50%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .scrim-item:hover::before {
+            opacity: 1;
         }
 
         .scrim-item:hover {
-            border-color: rgba(0, 180, 255, 0.08);
-            background: rgba(0, 180, 255, 0.01);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 180, 255, 0.02);
+            background: rgba(0, 180, 255, 0.004);
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 28px 72px rgba(0, 0, 0, 0.35);
         }
 
         .scrim-item .icon {
-            width: clamp(44px, 4.8vw, 52px);
-            height: clamp(44px, 4.8vw, 52px);
-            background: rgba(0, 180, 255, 0.02);
+            width: clamp(56px, 5.8vw, 66px);
+            height: clamp(56px, 5.8vw, 66px);
+            background: rgba(0, 180, 255, 0.008);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(1rem, 1.2vw, 1.3rem);
+            font-size: clamp(1.3rem, 1.5vw, 1.7rem);
             color: var(--blue-primary);
             flex-shrink: 0;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.008);
             transition: var(--transition);
         }
 
         .scrim-item:hover .icon {
-            background: rgba(0, 180, 255, 0.03);
+            background: rgba(0, 180, 255, 0.01);
+            border-color: rgba(0, 180, 255, 0.02);
+            transform: scale(1.06);
         }
 
         .scrim-item .info .day {
             font-weight: 700;
-            font-size: clamp(0.85rem, 1vw, 1rem);
+            font-size: clamp(1rem, 1.15vw, 1.25rem);
             color: var(--white);
+            letter-spacing: -0.2px;
         }
 
         .scrim-item .info .time {
-            font-size: clamp(0.7rem, 0.75vw, 0.8rem);
+            font-size: clamp(0.75rem, 0.8vw, 0.85rem);
             color: var(--gray-500);
+            margin-top: 2px;
+        }
+
+        .scrim-item .info .badge-scrim {
+            display: inline-block;
+            font-size: 0.6rem;
+            background: rgba(0, 180, 255, 0.03);
+            color: var(--cyan-accent);
+            padding: 0.05rem 1.2rem;
+            border-radius: 40px;
+            margin-top: 6px;
+            border: 1px solid rgba(0, 180, 255, 0.015);
         }
 
         .scrim-tags {
             display: flex;
-            gap: 0.8rem;
+            gap: 1.6rem;
             flex-wrap: wrap;
-            margin-top: 1.4rem;
+            margin-top: 2.2rem;
             position: relative;
             z-index: 10;
         }
 
         .scrim-tags span {
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(255, 255, 255, 0.005);
             color: var(--gray-300);
-            padding: 0.2rem 1.2rem;
-            border-radius: 40px;
-            font-size: clamp(0.65rem, 0.7vw, 0.75rem);
+            padding: 0.4rem 2rem;
+            border-radius: 60px;
+            font-size: clamp(0.7rem, 0.75vw, 0.8rem);
             font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.008);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: var(--transition);
+        }
+
+        .scrim-tags span:hover {
+            border-color: rgba(0, 180, 255, 0.015);
+            color: var(--gray-200);
         }
 
         .scrim-tags span i {
             color: var(--blue-primary);
-            margin-right: 4px;
+            margin-right: 12px;
+        }
+
+        .scrim-tags span:nth-child(2) i {
+            color: var(--gold-accent);
+        }
+
+        .scrim-tags span:nth-child(3) i {
+            color: var(--purple-accent);
         }
 
         /* ==============================================================
-           FEATURES GRID
-           ============================================================== */
+               FEATURES GRID — elegant cards with rich colors
+               ============================================================== */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 22vw, 260px), 1fr));
-            gap: clamp(1rem, 1.8vw, 1.8rem);
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 340px), 1fr));
+            gap: clamp(1.8rem, 2.6vw, 2.8rem);
             position: relative;
             z-index: 10;
         }
 
         .feature {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.005);
+            border: 1px solid rgba(255, 255, 255, 0.008);
             border-radius: var(--radius-md);
-            padding: clamp(1.6rem, 2.5vw, 2.6rem) clamp(1.2rem, 1.8vw, 2rem);
+            padding: clamp(2.4rem, 3.5vw, 4rem) clamp(1.8rem, 2.4vw, 2.8rem);
             transition: var(--transition);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 180, 255, 0.005), rgba(123, 47, 252, 0.003), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .feature:hover::before {
+            opacity: 1;
         }
 
         .feature:hover {
-            border-color: rgba(0, 180, 255, 0.06);
-            background: rgba(0, 180, 255, 0.01);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 180, 255, 0.015);
+            background: rgba(0, 180, 255, 0.004);
+            transform: translateY(-14px) scale(1.01);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3);
         }
 
         .feature .icon {
-            width: clamp(56px, 6vw, 68px);
-            height: clamp(56px, 6vw, 68px);
-            background: rgba(0, 180, 255, 0.02);
+            width: clamp(72px, 8vw, 84px);
+            height: clamp(72px, 8vw, 84px);
+            background: rgba(0, 180, 255, 0.008);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+            font-size: clamp(2.2rem, 2.8vw, 3.2rem);
             color: var(--blue-primary);
-            margin-bottom: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            margin-bottom: 1.4rem;
+            border: 1px solid rgba(255, 255, 255, 0.008);
             transition: var(--transition);
         }
 
+        .feature:nth-child(2) .icon {
+            color: var(--purple-accent);
+        }
+
+        .feature:nth-child(3) .icon {
+            color: var(--gold-accent);
+        }
+
         .feature:hover .icon {
-            background: rgba(0, 180, 255, 0.02);
+            background: rgba(0, 180, 255, 0.01);
+            border-color: rgba(0, 180, 255, 0.02);
+            transform: scale(1.06);
         }
 
         .feature h4 {
             font-weight: 700;
-            font-size: clamp(1rem, 1.1vw, 1.15rem);
+            font-size: clamp(1.2rem, 1.35vw, 1.5rem);
             color: var(--white);
-            margin-bottom: 0.1rem;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.2px;
         }
 
         .feature p {
-            font-size: clamp(0.8rem, 0.9vw, 0.95rem);
+            font-size: clamp(0.85rem, 0.95vw, 1.05rem);
             color: var(--gray-300);
-            line-height: 1.6;
+            line-height: 2;
         }
 
         /* ==============================================================
-           ACTIVITY FEED
-           ============================================================== */
+               ACTIVITY FEED — refined with rich colors
+               ============================================================== */
         .activity {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.005);
+            border: 1px solid rgba(255, 255, 255, 0.008);
             border-radius: var(--radius-lg);
-            padding: clamp(1.4rem, 2.8vw, 2.6rem);
-            margin-top: clamp(2rem, 4vw, 3.2rem);
+            padding: clamp(2.2rem, 3.8vw, 4rem);
+            margin-top: clamp(3.2rem, 6vw, 5rem);
             position: relative;
             z-index: 10;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .activity .head {
@@ -831,14 +1156,15 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 0.2rem;
+            gap: 0.8rem 3rem;
+            margin-bottom: 0.4rem;
         }
 
         .activity .head h3 {
-            font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+            font-size: clamp(1.6rem, 2.8vw, 2.6rem);
             font-weight: 800;
             color: var(--white);
+            letter-spacing: -0.3px;
         }
 
         .activity .head h3 span {
@@ -849,39 +1175,43 @@
         }
 
         .activity .head .live {
-            background: rgba(0, 230, 118, 0.02);
+            background: rgba(0, 230, 118, 0.008);
             color: var(--green-accent);
-            padding: 0.15rem 1.2rem;
-            border-radius: 40px;
-            font-size: clamp(0.6rem, 0.7vw, 0.75rem);
+            padding: 0.3rem 2rem;
+            border-radius: 60px;
+            font-size: clamp(0.65rem, 0.75vw, 0.8rem);
             font-weight: 600;
-            border: 1px solid rgba(0, 230, 118, 0.02);
+            border: 1px solid rgba(0, 230, 118, 0.008);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 14px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .activity .head .live .dot {
-            width: 5px;
-            height: 5px;
+            width: 9px;
+            height: 9px;
             background: var(--green-accent);
             border-radius: 50%;
             display: inline-block;
             animation: pulseDot 1.5s infinite;
+            box-shadow: 0 0 20px rgba(0, 230, 118, 0.04);
         }
 
         .activity .sub {
             color: var(--gray-300);
-            font-size: clamp(0.85rem, 1vw, 0.95rem);
-            margin-bottom: 1.4rem;
+            font-size: clamp(0.9rem, 1.05vw, 1.1rem);
+            margin-bottom: 2.2rem;
+            line-height: 1.8;
         }
 
         .feed-item {
             display: flex;
             align-items: center;
-            gap: clamp(14px, 1.8vw, 20px);
-            padding: clamp(0.6rem, 0.8vw, 0.9rem) 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            gap: clamp(22px, 2.6vw, 30px);
+            padding: clamp(0.9rem, 1.1vw, 1.2rem) 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.006);
             transition: var(--transition);
         }
 
@@ -890,21 +1220,39 @@
         }
 
         .feed-item:hover {
-            padding-left: 6px;
+            padding-left: 18px;
         }
 
         .feed-item .icon {
-            width: clamp(40px, 4.2vw, 48px);
-            height: clamp(40px, 4.2vw, 48px);
-            background: rgba(0, 180, 255, 0.02);
+            width: clamp(52px, 5.5vw, 60px);
+            height: clamp(52px, 5.5vw, 60px);
+            background: rgba(0, 180, 255, 0.008);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(0.9rem, 1vw, 1.1rem);
+            font-size: clamp(1.1rem, 1.2vw, 1.5rem);
             color: var(--blue-primary);
             flex-shrink: 0;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.008);
+            transition: var(--transition);
+        }
+
+        .feed-item:nth-child(2) .icon {
+            color: var(--purple-accent);
+        }
+
+        .feed-item:nth-child(3) .icon {
+            color: var(--gold-accent);
+        }
+
+        .feed-item:nth-child(4) .icon {
+            color: var(--green-accent);
+        }
+
+        .feed-item:hover .icon {
+            background: rgba(0, 180, 255, 0.01);
+            border-color: rgba(0, 180, 255, 0.015);
         }
 
         .feed-item .content {
@@ -915,67 +1263,173 @@
         .feed-item .content .name {
             font-weight: 600;
             color: var(--white);
-            font-size: clamp(0.85rem, 0.9vw, 0.95rem);
+            font-size: clamp(0.9rem, 0.95vw, 1.05rem);
         }
 
         .feed-item .content .action {
             color: var(--gray-500);
-            font-size: clamp(0.7rem, 0.75vw, 0.85rem);
+            font-size: clamp(0.75rem, 0.8vw, 0.85rem);
+            margin-top: 2px;
         }
 
         .feed-item .time {
             color: var(--gray-600);
-            font-size: clamp(0.6rem, 0.65vw, 0.75rem);
+            font-size: clamp(0.65rem, 0.7vw, 0.8rem);
             font-weight: 500;
             flex-shrink: 0;
         }
 
+        .feed-item .time i {
+            margin-right: 8px;
+            font-size: 0.7em;
+            color: var(--gray-600);
+        }
+
         .btn-more {
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(255, 255, 255, 0.005);
             color: var(--gray-300);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            padding: 0.5rem 2.2rem;
-            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.008);
+            padding: 0.7rem 3rem;
+            border-radius: 60px;
             font-weight: 600;
-            font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+            font-size: clamp(0.85rem, 0.95vw, 0.95rem);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 16px;
             text-decoration: none;
             transition: var(--transition);
             cursor: pointer;
-            margin-top: 0.5rem;
+            margin-top: 1.2rem;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .btn-more:hover {
-            background: rgba(0, 180, 255, 0.01);
-            border-color: rgba(0, 180, 255, 0.06);
+            background: rgba(0, 180, 255, 0.005);
+            border-color: rgba(0, 180, 255, 0.012);
             color: var(--white);
-            transform: translateX(6px);
+            transform: translateX(14px);
+            box-shadow: 0 0 80px rgba(0, 180, 255, 0.005);
         }
 
         /* ==============================================================
-           FOOTER
-           ============================================================== */
+               TESTIMONIALS — new section
+               ============================================================== */
+        .testimonials-section {
+            margin-top: clamp(3.5rem, 6vw, 5rem);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 28vw, 320px), 1fr));
+            gap: clamp(1.6rem, 2.4vw, 2.6rem);
+            position: relative;
+            z-index: 10;
+        }
+
+        .testimonial-item {
+            background: rgba(255, 255, 255, 0.005);
+            border: 1px solid rgba(255, 255, 255, 0.008);
+            border-radius: var(--radius-md);
+            padding: clamp(1.8rem, 2.6vw, 2.8rem) clamp(1.4rem, 2vw, 2.2rem);
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 180, 255, 0.02), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .testimonial-item:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-item:hover {
+            border-color: rgba(0, 180, 255, 0.015);
+            background: rgba(0, 180, 255, 0.004);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-item .quote-icon {
+            color: var(--cyan-accent);
+            font-size: 1.8rem;
+            opacity: 0.3;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-item blockquote {
+            font-size: clamp(0.9rem, 1vw, 1.05rem);
+            color: var(--gray-300);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-item .author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 1rem;
+        }
+
+        .testimonial-item .author .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--blue-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--white);
+            box-shadow: 0 0 30px rgba(0, 180, 255, 0.05);
+        }
+
+        .testimonial-item .author .info .name {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-item .author .info .role {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        /* ==============================================================
+               FOOTER — elegant, spacious with rich colors
+               ============================================================== */
         .footer {
-            margin-top: clamp(3rem, 5.5vw, 5rem);
-            padding-top: clamp(1.2rem, 2vw, 2rem);
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            margin-top: clamp(5rem, 8vw, 7rem);
+            padding-top: clamp(2rem, 3vw, 3rem);
+            border-top: 1px solid rgba(255, 255, 255, 0.006);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 0.8rem 3rem;
             position: relative;
             z-index: 10;
         }
 
         .footer .copy {
             color: var(--gray-500);
-            font-size: clamp(0.7rem, 0.8vw, 0.85rem);
+            font-size: clamp(0.75rem, 0.85vw, 0.9rem);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -986,61 +1440,93 @@
         }
 
         .footer .copy .tag:hover {
-            color: var(--blue-primary);
-            text-shadow: 0 0 20px rgba(0, 180, 255, 0.04);
+            color: var(--cyan-accent);
+            text-shadow: 0 0 50px rgba(0, 180, 255, 0.02);
+        }
+
+        .footer .copy .separator {
+            color: var(--gray-600);
         }
 
         .footer .social {
             display: flex;
-            gap: clamp(0.8rem, 1.2vw, 1.5rem);
+            gap: clamp(1.6rem, 2vw, 2.6rem);
             flex-wrap: wrap;
         }
 
         .footer .social a {
             color: var(--gray-500);
-            font-size: clamp(1rem, 1.3vw, 1.4rem);
+            font-size: clamp(1.1rem, 1.4vw, 1.6rem);
             transition: var(--transition);
             position: relative;
-            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.006);
+            background: rgba(255, 255, 255, 0.005);
+            transition: var(--transition);
         }
 
         .footer .social a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
-            left: 50%;
-            width: 0;
-            height: 2px;
+            inset: -3px;
+            border-radius: 50%;
             background: var(--blue-gradient);
-            border-radius: 4px;
+            opacity: 0;
             transition: var(--transition);
-            transform: translateX(-50%);
+            z-index: -1;
         }
 
         .footer .social a:hover::after {
-            width: 50%;
+            opacity: 0.03;
         }
 
         .footer .social a:hover {
             color: var(--blue-primary);
-            transform: translateY(-3px);
-            text-shadow: 0 0 30px rgba(0, 180, 255, 0.04);
+            transform: translateY(-5px) scale(1.05);
+            border-color: rgba(0, 180, 255, 0.025);
+            box-shadow: 0 0 80px rgba(0, 180, 255, 0.01);
+        }
+
+        .footer .social a:nth-child(2):hover {
+            color: var(--purple-accent);
+        }
+
+        .footer .social a:nth-child(3):hover {
+            color: var(--pink-accent);
+        }
+
+        .footer .social a:nth-child(4):hover {
+            color: var(--green-accent);
         }
 
         /* ==============================================================
-           RESPONSIVE
-           ============================================================== */
+               RESPONSIVE — comprehensive breakpoints
+               ============================================================== */
+        @media (max-width: 1024px) {
+            .hero {
+                gap: 4rem;
+            }
+            .hero-card {
+                padding: 2rem;
+            }
+        }
+
         @media (max-width: 860px) {
             .hero {
                 grid-template-columns: 1fr;
-                gap: 2.2rem;
+                gap: 3.5rem;
             }
 
             .hero-card {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 0.5rem;
-                padding: 1.2rem;
+                padding: 2rem;
             }
 
             .hero-card .item {
@@ -1052,45 +1538,48 @@
             }
 
             .hero-card .item .icon {
-                width: 40px;
-                height: 40px;
+                width: 48px;
+                height: 48px;
                 margin: 0 auto;
             }
 
             .hero-card .item .info .title {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
 
             .hero-card .item .info .desc {
-                font-size: 0.65rem;
+                font-size: 0.7rem;
             }
 
             .logo img {
-                height: clamp(44px, 6vw, 64px);
+                height: clamp(48px, 6vw, 72px);
             }
 
-            .logo .logo-text {
-                font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-            }
-
-            .logo .badge {
-                font-size: 0.4rem;
-                padding: 0.1rem 0.7rem;
-            }
-
-            .bg-ambient .orb:nth-child(3) {
+            .bg-ambient .orb:nth-child(3),
+            .bg-ambient .orb:nth-child(4),
+            .bg-ambient .orb:nth-child(5) {
                 display: none;
+            }
+
+            .container .inner-ambient-3,
+            .container .inner-ambient-4,
+            .container .inner-ambient-5 {
+                display: none;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 640px) {
             body {
-                padding: 0.5rem;
+                padding: 0.6rem;
             }
 
             .container {
-                padding: 1rem;
-                border-radius: 32px;
+                padding: 1.2rem;
+                border-radius: 36px;
             }
 
             .navbar {
@@ -1110,12 +1599,12 @@
             }
 
             .btn-nav {
-                font-size: 0.65rem;
-                padding: 0.25rem 0.8rem;
+                font-size: 0.7rem;
+                padding: 0.3rem 1rem;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
 
             .hero p {
@@ -1134,31 +1623,31 @@
             }
 
             .hero-stats {
-                gap: 1.2rem;
+                gap: 1.6rem;
             }
 
             .hero-stats .stat .num {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
             }
 
             .hero-card {
                 grid-template-columns: repeat(3, 1fr);
-                padding: 0.8rem;
+                padding: 1rem;
                 gap: 0.3rem;
             }
 
             .hero-card .item .icon {
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
+                width: 38px;
+                height: 38px;
+                font-size: 0.85rem;
             }
 
             .hero-card .item .info .title {
-                font-size: 0.75rem;
+                font-size: 0.8rem;
             }
 
             .hero-card .item .info .desc {
-                font-size: 0.55rem;
+                font-size: 0.6rem;
             }
 
             .scrim-grid {
@@ -1169,13 +1658,21 @@
                 grid-template-columns: 1fr;
             }
 
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
             .section-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
 
+            .section-header .left .line {
+                width: 40px;
+            }
+
             .activity {
-                padding: 1rem;
+                padding: 1.2rem;
             }
 
             .activity .head {
@@ -1184,22 +1681,22 @@
             }
 
             .feed-item {
-                gap: 10px;
+                gap: 12px;
                 flex-wrap: wrap;
             }
 
             .feed-item .content .name {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
             }
 
             .feed-item .content .action {
-                font-size: 0.7rem;
+                font-size: 0.75rem;
             }
 
             .footer {
                 flex-direction: column;
                 text-align: center;
-                gap: 0.6rem;
+                gap: 0.8rem;
             }
 
             .footer .social {
@@ -1211,20 +1708,11 @@
             }
 
             .logo {
-                gap: 10px;
+                gap: 12px;
             }
 
             .logo img {
-                height: clamp(32px, 5vw, 44px);
-            }
-
-            .logo .logo-text {
-                font-size: clamp(1.2rem, 3.5vw, 1.6rem);
-            }
-
-            .logo .badge {
-                font-size: 0.35rem;
-                padding: 0.08rem 0.5rem;
+                height: clamp(36px, 5vw, 48px);
             }
 
             .container .inner-ambient-1,
@@ -1236,11 +1724,11 @@
         @media (max-width: 400px) {
             .container {
                 padding: 0.8rem;
-                border-radius: 24px;
+                border-radius: 28px;
             }
 
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .scrim-grid {
@@ -1264,57 +1752,53 @@
             }
 
             .logo img {
-                height: 28px;
-            }
-
-            .logo .logo-text {
-                font-size: 1rem;
-            }
-
-            .logo .badge {
-                font-size: 0.3rem;
-                padding: 0.05rem 0.4rem;
+                height: 30px;
             }
 
             .btn-nav {
-                font-size: 0.55rem;
-                padding: 0.2rem 0.6rem;
+                font-size: 0.6rem;
+                padding: 0.2rem 0.7rem;
             }
 
             .logo {
                 gap: 8px;
             }
+
+            .hero-tag {
+                font-size: 0.65rem;
+                padding: 0.15rem 1rem;
+            }
         }
 
         @media (max-height: 500px) and (orientation: landscape) {
             .hero {
-                margin: 1rem 0;
-                gap: 1.2rem;
+                margin: 1.2rem 0;
+                gap: 1.6rem;
             }
 
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .hero p {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
                 margin: 0.4rem 0 0.8rem;
             }
 
             .hero-stats {
-                margin-top: 0.8rem;
+                margin-top: 1rem;
             }
 
             .hero-stats .stat .num {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
 
             .section-header {
-                margin-top: 1.2rem;
+                margin-top: 1.6rem;
             }
 
             .section-header .left h2 {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
 
             .scrim-grid {
@@ -1325,53 +1809,53 @@
                 grid-template-columns: repeat(3, 1fr);
             }
 
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
             .activity {
-                padding: 0.8rem;
-                margin-top: 1rem;
+                padding: 1rem;
+                margin-top: 1.2rem;
             }
 
             .footer {
-                margin-top: 1.2rem;
+                margin-top: 1.6rem;
                 padding-top: 0.8rem;
             }
 
             .logo img {
-                height: clamp(36px, 5vw, 52px);
-            }
-
-            .logo .logo-text {
-                font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+                height: clamp(38px, 5vw, 56px);
             }
 
             .bg-ambient .orb {
-                opacity: 0.06;
+                opacity: 0.02;
             }
         }
 
         @media (min-width: 1600px) {
             .main-wrapper {
-                max-width: 1400px;
+                max-width: 1600px;
             }
 
             .container {
-                padding: 4.2rem;
+                padding: 6rem;
             }
 
             .hero h1 {
-                font-size: 5.2rem;
+                font-size: 6.8rem;
             }
 
             .hero p {
-                font-size: 1.35rem;
-                max-width: 600px;
+                font-size: 1.6rem;
+                max-width: 760px;
             }
 
             .hero-stats .stat .num {
-                font-size: 3.2rem;
+                font-size: 4.8rem;
             }
 
             .section-header .left h2 {
-                font-size: 3rem;
+                font-size: 4.2rem;
             }
 
             .scrim-grid {
@@ -1383,62 +1867,96 @@
             }
 
             .logo img {
-                height: 110px;
-            }
-
-            .logo .logo-text {
-                font-size: 3.8rem;
-            }
-
-            .logo .badge {
-                font-size: 0.6rem;
-                padding: 0.25rem 1.2rem;
-            }
-
-            .logo {
-                gap: 24px;
+                height: 150px;
             }
 
             .bg-ambient .orb:nth-child(1) {
-                width: 900px;
-                height: 900px;
+                width: 1300px;
+                height: 1300px;
             }
 
             .bg-ambient .orb:nth-child(2) {
-                width: 700px;
-                height: 700px;
+                width: 1200px;
+                height: 1200px;
             }
         }
 
         @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
             .container {
-                padding: 2.5rem;
+                padding: 3.5rem;
             }
 
             .hero h1 {
-                font-size: 3.4rem;
+                font-size: 4.2rem;
             }
 
             .hero-card {
-                padding: 1.5rem;
+                padding: 2.2rem;
             }
 
             .logo img {
-                height: clamp(50px, 5vw, 68px);
+                height: clamp(56px, 5.5vw, 84px);
             }
+        }
 
-            .logo .logo-text {
-                font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-            }
+        /* ==============================================================
+               SELECTION — custom
+               ============================================================== */
+        ::selection {
+            background: rgba(0, 180, 255, 0.10);
+            color: var(--white);
+        }
+
+        ::-moz-selection {
+            background: rgba(0, 180, 255, 0.10);
+            color: var(--white);
+        }
+
+        /* ==============================================================
+               FOCUS — accessibility
+               ============================================================== */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--cyan-accent);
+            outline-offset: 4px;
+        }
+
+        /* ==============================================================
+               UTILITY — glass morphism extras
+               ============================================================== */
+        .glass-subtle {
+            background: rgba(255, 255, 255, 0.005);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.006);
+        }
+
+        .gradient-text {
+            background: var(--blue-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ==============================================================
+               EXTRA — decorative glow line for sections
+               ============================================================== */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 180, 255, 0.025), rgba(123, 47, 252, 0.025), transparent);
+            margin: 3rem 0;
         }
     </style>
 </head>
 <body>
 
     <!-- ============================================================== -->
-    <!-- AMBIENT ORBS -->
+    <!-- AMBIENT ORBS — 5 layers for cinematic depth -->
     <!-- ============================================================== -->
     <div class="bg-ambient">
+        <div class="orb"></div>
+        <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
@@ -1450,99 +1968,114 @@
     <div class="main-wrapper">
         <div class="container">
 
-            <!-- inner ambient -->
+            <!-- inner ambient — 5 color layers -->
             <div class="inner-ambient inner-ambient-1"></div>
             <div class="inner-ambient inner-ambient-2"></div>
+            <div class="inner-ambient inner-ambient-3"></div>
+            <div class="inner-ambient inner-ambient-4"></div>
+            <div class="inner-ambient inner-ambient-5"></div>
 
             <!-- ========================================================== -->
-            <!-- NAVBAR -->
+            <!-- NAVBAR — only logo image, no text -->
             <!-- ========================================================== -->
             <nav class="navbar">
                 <a href="index.html" class="logo">
                     <img src="assets/mongster.png" alt="MONGSTER Logo" />
-                    <span class="logo-text">MONG<span>STER</span></span>
-                    <span class="badge">MLBB</span>
                 </a>
                 <div class="nav-links">
                     <a href="index.html" class="active">Beranda</a>
                     <a href="tentang.html">Tentang</a>
                     <a href="#">Jadwal</a>
                     <a href="#">Member</a>
-                    <a href="#" class="btn-nav"><i class="fas fa-user-plus" style="margin-right:6px;"></i>Gabung</a>
+                    <a href="member.html">Member</a>
+                    <a href="#" class="btn-nav"><i class="fas fa-user-plus" style="margin-right:14px;"></i>Gabung</a>
                 </div>
             </nav>
 
             <!-- ========================================================== -->
-            <!-- HERO -->
+            <!-- HERO — expanded, elegant, immersive with rich colors -->
             <!-- ========================================================== -->
             <section class="hero">
-
-                <!-- LEFT -->
                 <div class="hero-left">
                     <div class="hero-tag">
                         <span class="dot"></span>
-                        Komunitas MLBB · 24/7
+                        Komunitas MLBB · 24/7 · Scrim Rutin
                     </div>
-                    <h1>MONGSTER · <span class="gradient">MLBB</span> <br />Community</h1>
+                    <h1>
+                        MONGSTER · <span class="gradient">MLBB</span>
+                        <br /><span class="highlight">Community</span>
+                        <span style="display:block; font-size:0.5em; letter-spacing:2px; color:var(--gray-500); margin-top:4px;">
+                            <span class="accent-text">#RiseTogether</span>
+                        </span>
+                    </h1>
                     <p>
-                        Komunitas MLBB yang solid. Scrim rutin, cari tim, dan nongkrong di Litmatch.
-                        Dari Epic sampai Mythic, semua diterima.
+                        Tempat berkumpulnya para pejuang Mobile Legends dari berbagai rank.
+                        <strong>Scrim 4x sebulan</strong>, cari duo/tim kapan saja, dan ngobrol santai di Litmatch.
+                        Dari Epic sampai Mythic, semua diterima dengan tangan terbuka.
+                        <br /><br />
+                        <span style="color:var(--gray-400); font-size:0.9em;">
+                            <i class="fas fa-check-circle" style="color:var(--green-accent);"></i> 30+ member aktif
+                            &nbsp;·&nbsp;
+                            <i class="fas fa-check-circle" style="color:var(--cyan-accent);"></i> 4x scrim / bulan
+                            &nbsp;·&nbsp;
+                            <i class="fas fa-check-circle" style="color:var(--gold-accent);"></i> 24/7 online
+                        </span>
                     </p>
                     <div class="hero-actions">
-                        <a href="#" class="btn-primary"><i class="fas fa-rocket"></i> Gabung sekarang</a>
+                        <a href="#" class="btn-primary"><i class="fas fa-rocket"></i> Gabung Sekarang</a>
                         <a href="tentang.html" class="btn-outline"><i class="fas fa-info-circle"></i> Tentang Kami</a>
                     </div>
 
                     <div class="hero-stats">
                         <div class="stat">
                             <span class="num"><i class="fas fa-users"></i> 30+</span>
-                            <span class="label">Member aktif</span>
+                            <span class="label">Member Aktif</span>
                         </div>
                         <div class="stat">
                             <span class="num"><i class="fas fa-clock"></i> 24/7</span>
-                            <span class="label">Online tiap hari</span>
+                            <span class="label">Online Setiap Hari</span>
                         </div>
                         <div class="stat">
                             <span class="num"><i class="fas fa-trophy"></i> 4x</span>
-                            <span class="label">Scrim per bulan</span>
+                            <span class="label">Scrim per Bulan</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- RIGHT CARD -->
+                <!-- RIGHT CARD — elegant dashboard with rich colors -->
                 <div class="hero-card">
                     <div class="item">
                         <div class="icon"><i class="fas fa-gamepad"></i></div>
                         <div class="info">
                             <div class="title">MLBB</div>
-                            <div class="desc">Game utama</div>
+                            <div class="desc">Game utama kami</div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="icon"><i class="fas fa-comment-dots"></i></div>
                         <div class="info">
                             <div class="title">Litmatch</div>
-                            <div class="desc">Tempat ngumpul</div>
+                            <div class="desc">Voice chat &amp; ngobrol</div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="icon"><i class="fas fa-calendar-check"></i></div>
                         <div class="info">
                             <div class="title">4x / bulan</div>
-                            <div class="desc">Scrim rutin</div>
+                            <div class="desc">Scrim rutin setiap minggu</div>
                         </div>
                     </div>
                 </div>
-
             </section>
 
             <!-- ========================================================== -->
-            <!-- SCRIM -->
+            <!-- SCRIM — upgraded with badges and rich colors -->
             <!-- ========================================================== -->
             <div class="section-header">
                 <div class="left">
+                    <span class="line"></span>
                     <h2><i class="fas fa-calendar-alt"></i> Jadwal Scrim</h2>
-                    <p>4x scrim setiap bulan — 1x setiap minggu. Semua member bisa ikut.</p>
+                    <p>4x scrim setiap bulan — 1x setiap minggu. Semua member bisa ikut serta.</p>
                 </div>
                 <div class="right">
                     <span class="chip"><i class="fas fa-flag"></i> 4 scrim tersedia</span>
@@ -1554,128 +2087,204 @@
                     <div class="icon"><i class="fas fa-calendar-day"></i></div>
                     <div class="info">
                         <div class="day">Minggu 1</div>
-                        <div class="time">Minggu · 19.00</div>
+                        <div class="time">Minggu · 19.00 WIB</div>
+                        <span class="badge-scrim">slot open</span>
                     </div>
                 </div>
                 <div class="scrim-item">
                     <div class="icon"><i class="fas fa-calendar-day"></i></div>
                     <div class="info">
                         <div class="day">Minggu 2</div>
-                        <div class="time">Minggu · 19.00</div>
+                        <div class="time">Minggu · 19.00 WIB</div>
+                        <span class="badge-scrim">slot open</span>
                     </div>
                 </div>
                 <div class="scrim-item">
                     <div class="icon"><i class="fas fa-calendar-day"></i></div>
                     <div class="info">
                         <div class="day">Minggu 3</div>
-                        <div class="time">Minggu · 19.00</div>
+                        <div class="time">Minggu · 19.00 WIB</div>
+                        <span class="badge-scrim">slot open</span>
                     </div>
                 </div>
                 <div class="scrim-item">
                     <div class="icon"><i class="fas fa-calendar-day"></i></div>
                     <div class="info">
                         <div class="day">Minggu 4</div>
-                        <div class="time">Minggu · 19.00</div>
+                        <div class="time">Minggu · 19.00 WIB</div>
+                        <span class="badge-scrim">slot open</span>
                     </div>
                 </div>
             </div>
 
             <div class="scrim-tags">
                 <span><i class="fas fa-trophy"></i> 4x scrim / bulan</span>
-                <span><i class="fas fa-clock"></i> Setiap Minggu jam 19.00</span>
+                <span><i class="fas fa-clock"></i> Setiap Minggu jam 19.00 WIB</span>
                 <span><i class="fas fa-users"></i> Semua rank boleh ikut</span>
+                <span><i class="fas fa-tshirt"></i> Sistem subs &amp; rotasi</span>
+                <span><i class="fas fa-star" style="color:var(--gold-accent);"></i> Free untuk semua member</span>
             </div>
 
             <!-- ========================================================== -->
-            <!-- FEATURES -->
+            <!-- FEATURES — more descriptive with rich icons -->
             <!-- ========================================================== -->
-            <div class="section-header" style="margin-top: clamp(3rem, 6vw, 5rem);">
+            <div class="section-header" style="margin-top: clamp(5rem, 8vw, 7rem);">
                 <div class="left">
-                    <h2><i class="fas fa-star"></i> Kenapa gabung?</h2>
-                    <p>Kegiatan seru setiap hari buat member MONGSTER.</p>
+                    <span class="line"></span>
+                    <h2><i class="fas fa-star"></i> Kenapa Harus Gabung?</h2>
+                    <p>Lebih dari sekadar komunitas — ini rumah kedua bagi para pejuang MLBB.</p>
                 </div>
             </div>
 
             <div class="features-grid">
                 <div class="feature">
                     <div class="icon"><i class="fas fa-crosshairs"></i></div>
-                    <h4>Scrim rutin</h4>
-                    <p>4x sebulan, cari tim atau ikut sebagai subs.</p>
+                    <h4>Scrim Rutin &amp; Terjadwal</h4>
+                    <p>4x sebulan, cari tim atau ikut sebagai subs. Pengalaman bertanding yang konsisten dan terstruktur.</p>
                 </div>
                 <div class="feature">
                     <div class="icon"><i class="fas fa-users"></i></div>
-                    <h4>Cari duo / tim</h4>
-                    <p>Butuh tank, mage, atau gold? tinggal chat di grup.</p>
+                    <h4>Cari Duo / Tim Kapan Saja</h4>
+                    <p>Butuh tank, mage, atau gold? tinggal chat di grup, pasti ada yang respon. Temukan partner sepadan.</p>
                 </div>
                 <div class="feature">
                     <div class="icon"><i class="fas fa-comment-dots"></i></div>
                     <h4>Nongkrong di Litmatch</h4>
-                    <p>Voice chat, ngobrol santai, atau sekedar rebahan.</p>
+                    <p>Voice chat, ngobrol santai, atau sekedar rebahan sambil sharing skill dan strategi terbaru.</p>
                 </div>
             </div>
 
             <!-- ========================================================== -->
-            <!-- ACTIVITY -->
+            <!-- TESTIMONIALS — new section -->
+            <!-- ========================================================== -->
+            <div class="testimonials-section">
+                <div class="section-header">
+                    <div class="left">
+                        <span class="line"></span>
+                        <h2><i class="fas fa-quote-left"></i> Kata Mereka</h2>
+                        <p>Apa yang dirasakan member tentang MONGSTER.</p>
+                    </div>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-item">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <blockquote>"Komunitasnya ramah banget, semua rank diterima. Scrim rutin bikin skill makin naik!"</blockquote>
+                        <div class="author">
+                            <div class="avatar">R</div>
+                            <div class="info">
+                                <div class="name">Rangga_ML</div>
+                                <div class="role">Member sejak 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <blockquote>"Cari tim jadi gampang. Di sini saya nemu duo yang cocok buat push rank."</blockquote>
+                        <div class="author">
+                            <div class="avatar" style="background: var(--purple-gradient);">A</div>
+                            <div class="info">
+                                <div class="name">Aulia_GL</div>
+                                <div class="role">Member sejak 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <blockquote>"Litmatch jadi tempat favorit buat ngobrol dan cari tim. Suasananya santai dan asik."</blockquote>
+                        <div class="author">
+                            <div class="avatar" style="background: var(--gold-gradient);">B</div>
+                            <div class="info">
+                                <div class="name">Bima_99</div>
+                                <div class="role">Member sejak 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================================== -->
+            <!-- ACTIVITY — richer feed with rich colors -->
             <!-- ========================================================== -->
             <div class="activity">
                 <div class="head">
                     <h3>Aktivitas <span>MONGSTER</span></h3>
                     <span class="live"><span class="dot"></span> 24/7 Aktif</span>
                 </div>
-                <p class="sub">Yang lagi rame hari ini — member selalu online.</p>
+                <p class="sub">Yang lagi rame hari ini — member selalu online dan siap beraksi.</p>
 
                 <div class="feed-item">
                     <div class="icon"><i class="fas fa-crosshairs"></i></div>
                     <div class="content">
                         <span class="name">Rangga_ML</span>
-                        <span class="action">cari 1 orang untuk scrim minggu ini</span>
+                        <span class="action">cari 1 orang untuk scrim minggu ini (role flexible)</span>
                     </div>
-                    <span class="time">5m</span>
+                    <span class="time"><i class="fas fa-clock"></i> 5m</span>
                 </div>
                 <div class="feed-item">
                     <div class="icon"><i class="fas fa-comment"></i></div>
                     <div class="content">
                         <span class="name">Voice chat Litmatch</span>
-                        <span class="action">lagi rame 12 orang ngobrol &amp; cari tim</span>
+                        <span class="action">lagi rame 14 orang ngobrol &amp; cari tim ranked</span>
                     </div>
-                    <span class="time">12m</span>
+                    <span class="time"><i class="fas fa-clock"></i> 12m</span>
                 </div>
                 <div class="feed-item">
                     <div class="icon"><i class="fas fa-trophy"></i></div>
                     <div class="content">
                         <span class="name">Scrim Minggu ini</span>
-                        <span class="action">slot masih tersisa 2 tim</span>
+                        <span class="action">slot masih tersisa 2 tim — daftar sekarang!</span>
                     </div>
-                    <span class="time">1j</span>
+                    <span class="time"><i class="fas fa-clock"></i> 1j</span>
                 </div>
                 <div class="feed-item">
                     <div class="icon"><i class="fas fa-user-plus"></i></div>
                     <div class="content">
                         <span class="name">3 member baru</span>
-                        <span class="action">gabung hari ini, selamat datang!</span>
+                        <span class="action">gabung hari ini, selamat datang di keluarga MONGSTER!</span>
                     </div>
-                    <span class="time">2j</span>
+                    <span class="time"><i class="fas fa-clock"></i> 2j</span>
+                </div>
+                <div class="feed-item">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="content">
+                        <span class="name">Tips &amp; Trik</span>
+                        <span class="action">ada diskusi seru tentang meta terbaru di grup</span>
+                    </div>
+                    <span class="time"><i class="fas fa-clock"></i> 3j</span>
+                </div>
+                <div class="feed-item">
+                    <div class="icon"><i class="fas fa-gamepad"></i></div>
+                    <div class="content">
+                        <span class="name">Ranked Party</span>
+                        <span class="action">ada 2 tim yang lagi cari 1 orang untuk push rank</span>
+                    </div>
+                    <span class="time"><i class="fas fa-clock"></i> 4j</span>
                 </div>
 
                 <a href="#" class="btn-more"><i class="fas fa-arrow-right"></i> Lihat semua aktivitas</a>
             </div>
 
             <!-- ========================================================== -->
-            <!-- FOOTER -->
+            <!-- FOOTER — enriched with rich colors -->
             <!-- ========================================================== -->
             <footer class="footer">
                 <span class="copy">
-                    <i class="fas fa-shield-alt" style="color:var(--blue-primary); margin-right:4px;"></i>
-                    © 2026 MONGSTER ·
-                    <span class="tag">30+ member</span> ·
-                    <span class="tag">24/7</span> ·
+                    <i class="fas fa-shield-alt" style="color:var(--blue-primary); margin-right:12px;"></i>
+                    © 2026 MONGSTER
+                    <span class="separator">·</span>
+                    <span class="tag">30+ member</span>
+                    <span class="separator">·</span>
+                    <span class="tag">24/7 aktif</span>
+                    <span class="separator">·</span>
                     <span class="tag">4x scrim/bulan</span>
                 </span>
                 <div class="social">
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </footer>
 
