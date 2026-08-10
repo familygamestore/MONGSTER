@@ -16,10 +16,9 @@
         }
 
         body {
-            background: #e8edf7;
+            background: #0b1120;
             font-family: 'Inter', -apple-system, sans-serif;
-            color: #0a1628;
-            line-height: 1.6;
+            color: #e8edf5;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -28,27 +27,26 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1050px;
             width: 100%;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 32px;
-            padding: 2.8rem 3rem 2.5rem;
-            box-shadow: 0 20px 60px rgba(0, 30, 80, 0.10);
-            border: 1px solid rgba(37, 99, 235, 0.08);
+            background: #111b2e;
+            border-radius: 40px;
+            padding: 2.5rem 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
             position: relative;
             overflow: hidden;
         }
 
-        /* accent decoration */
+        /* background glow */
         .container::before {
             content: '';
             position: absolute;
-            top: -120px;
-            right: -120px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, transparent 70%);
+            top: -200px;
+            right: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -56,11 +54,11 @@
         .container::after {
             content: '';
             position: absolute;
-            bottom: -80px;
-            left: -80px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            bottom: -150px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -71,9 +69,9 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem 1.5rem;
-            padding-bottom: 1.2rem;
-            border-bottom: 2px solid #eef3fa;
+            gap: 1rem 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             z-index: 2;
         }
@@ -82,27 +80,29 @@
             font-weight: 900;
             font-size: 2.2rem;
             letter-spacing: -0.5px;
-            color: #0a1628;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         .logo span {
-            color: #2563eb;
-            position: relative;
+            color: #3b82f6;
         }
-        .logo span::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: #2563eb;
-            border-radius: 4px;
-            opacity: 0.2;
+        .logo .badge-logo {
+            font-size: 0.6rem;
+            background: #3b82f620;
+            color: #3b82f6;
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            border: 1px solid #3b82f630;
+            margin-left: 4px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.2rem;
             align-items: center;
             font-size: 0.95rem;
             flex-wrap: wrap;
@@ -110,185 +110,270 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #3a4a6a;
+            color: #94a3b8;
             font-weight: 500;
             transition: 0.2s;
             position: relative;
         }
-        .nav-links a::after {
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+        .nav-links a.active {
+            color: #ffffff;
+        }
+        .nav-links a.active::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -6px;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: #2563eb;
-            transition: 0.2s;
-        }
-        .nav-links a:hover::after {
             width: 100%;
-        }
-        .nav-links a:hover {
-            color: #2563eb;
+            height: 2px;
+            background: #3b82f6;
+            border-radius: 4px;
         }
 
         .btn-join {
-            background: #2563eb;
+            background: #3b82f6;
             color: #fff !important;
-            padding: 0.5rem 1.6rem;
+            padding: 0.6rem 1.8rem;
             border-radius: 40px;
             font-weight: 600;
             font-size: 0.9rem;
             transition: 0.25s;
-            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
-        }
-        .btn-join::after {
-            display: none !important;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
         }
         .btn-join:hover {
-            background: #1d4ed8 !important;
+            background: #2563eb !important;
             color: #fff !important;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
         }
 
         /* ===== HERO ===== */
         .hero {
-            margin: 2.2rem 0 2.8rem;
+            margin: 2.5rem 0 3rem;
             position: relative;
             z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-left {
+            flex: 1 1 55%;
         }
 
         .hero-badge {
-            display: inline-block;
-            background: #2563eb0c;
-            border: 1px solid #2563eb20;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.2);
             padding: 0.3rem 1.2rem;
             border-radius: 40px;
             font-size: 0.8rem;
             font-weight: 600;
-            color: #2563eb;
+            color: #60a5fa;
             letter-spacing: 0.3px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.4rem;
             font-weight: 900;
             letter-spacing: -1px;
-            line-height: 1.1;
-            color: #0a1628;
+            line-height: 1.05;
+            color: #ffffff;
         }
 
         .hero h1 .highlight {
-            color: #2563eb;
-            position: relative;
-        }
-        .hero h1 .highlight::before {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: #2563eb20;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
-            font-size: 1.15rem;
-            color: #4a5a7a;
-            max-width: 520px;
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 480px;
             margin: 1rem 0 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
         }
 
         .btn-primary {
-            background: #2563eb;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: #fff;
             border: none;
             padding: 0.9rem 2.6rem;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1rem;
             display: inline-flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
             transition: 0.25s;
             cursor: pointer;
-            box-shadow: 0 6px 24px rgba(37, 99, 235, 0.30);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.35);
         }
         .btn-primary:hover {
-            background: #1d4ed8;
             transform: translateY(-3px);
-            box-shadow: 0 10px 36px rgba(37, 99, 235, 0.40);
+            box-shadow: 0 12px 44px rgba(59, 130, 246, 0.5);
         }
 
-        .hero-stats {
+        .btn-outline {
+            background: transparent;
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            border-color: #3b82f6;
+            color: #ffffff;
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .hero-right {
+            flex: 0 1 200px;
             display: flex;
-            gap: 3.5rem;
-            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .hero-stats-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 28px;
+            padding: 2rem 2rem;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-stats-card .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .hero-stats-card .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .hero-stats-card .stat-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(59, 130, 246, 0.12);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #60a5fa;
+        }
+
+        .hero-stats-card .stat-info .number {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+        .hero-stats-card .stat-info .label {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .hero-stats-row {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
         }
 
-        .hero-stats .stat {
+        .hero-stats-row .stat {
             display: flex;
             flex-direction: column;
         }
-        .hero-stats .number {
+        .hero-stats-row .number {
             font-weight: 900;
-            font-size: 2.4rem;
-            color: #0a1628;
+            font-size: 2.2rem;
+            color: #ffffff;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .hero-stats .number i {
-            color: #2563eb;
-            font-size: 1.6rem;
+        .hero-stats-row .number i {
+            color: #3b82f6;
+            font-size: 1.4rem;
         }
-        .hero-stats .label {
-            font-size: 0.9rem;
-            color: #5a6a8a;
+        .hero-stats-row .label {
+            font-size: 0.85rem;
+            color: #64748b;
             font-weight: 500;
         }
 
-        /* ===== SECTION TITLE ===== */
+        /* ===== SECTION ===== */
         .section-title {
             font-size: 1.8rem;
             font-weight: 800;
-            margin: 3rem 0 0.5rem;
-            color: #0a1628;
+            margin: 3.5rem 0 0.5rem;
+            color: #ffffff;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         .section-title i {
-            color: #2563eb;
+            color: #3b82f6;
             font-size: 1.6rem;
         }
         .section-desc {
-            color: #4a5a7a;
+            color: #94a3b8;
             margin-bottom: 2rem;
             font-size: 1.05rem;
         }
 
-        /* ===== JADWAL SCRIM ===== */
-        .schedule-box {
-            background: #f6faff;
+        /* ===== SCRIM ===== */
+        .scrim-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 28px;
             padding: 2.2rem 2.5rem;
             margin: 1.5rem 0 0.5rem;
-            border: 1px solid #e4edf8;
             position: relative;
             z-index: 2;
-            transition: 0.2s;
-        }
-        .schedule-box:hover {
-            border-color: #2563eb40;
+            backdrop-filter: blur(10px);
         }
 
-        .schedule-box .header-schedule {
+        .scrim-box .scrim-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -297,137 +382,133 @@
             margin-bottom: 1.5rem;
         }
 
-        .schedule-box h4 {
-            font-size: 1.25rem;
+        .scrim-box h4 {
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #0a1628;
+            color: #ffffff;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .schedule-box h4 i {
-            color: #2563eb;
+        .scrim-box h4 i {
+            color: #3b82f6;
         }
 
-        .schedule-grid {
+        .scrim-badge {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .scrim-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1rem;
         }
 
-        .schedule-item {
-            background: #ffffff;
+        .scrim-item {
+            background: rgba(255, 255, 255, 0.03);
             padding: 1.2rem 1.4rem;
             border-radius: 18px;
-            border: 1px solid #e4edf8;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             gap: 14px;
-            transition: 0.2s;
+            transition: 0.25s;
         }
-        .schedule-item:hover {
-            border-color: #2563eb;
-            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
+        .scrim-item:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(59, 130, 246, 0.05);
             transform: translateY(-2px);
         }
 
-        .schedule-item .icon-wrap {
+        .scrim-item .week-icon {
             width: 44px;
             height: 44px;
-            background: #2563eb10;
+            background: rgba(59, 130, 246, 0.1);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            color: #2563eb;
+            font-size: 1.2rem;
+            color: #60a5fa;
         }
 
-        .schedule-item .day {
+        .scrim-item .week-name {
             font-weight: 700;
-            font-size: 1rem;
-            color: #0a1628;
+            font-size: 0.95rem;
+            color: #ffffff;
         }
-        .schedule-item .time {
-            font-size: 0.85rem;
-            color: #4a5a7a;
-        }
-
-        .badge-scrim {
-            background: #2563eb;
-            color: #fff;
-            font-weight: 600;
+        .scrim-item .week-time {
             font-size: 0.8rem;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            display: inline-block;
-            margin-top: 1.2rem;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+            color: #64748b;
         }
 
-        /* ===== GRID ===== */
-        .grid-2 {
+        /* ===== GRID CARD ===== */
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             margin: 1.5rem 0 0.5rem;
         }
 
         .card {
-            background: #f6faff;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             padding: 1.8rem 1.6rem;
             border-radius: 24px;
-            border: 1px solid #e4edf8;
-            transition: 0.25s;
+            transition: 0.3s;
             position: relative;
             z-index: 2;
+            backdrop-filter: blur(10px);
         }
         .card:hover {
-            border-color: #2563eb;
-            background: #ffffff;
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(59, 130, 246, 0.04);
             transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
         }
 
         .card .icon-box {
             width: 52px;
             height: 52px;
-            background: #2563eb10;
+            background: rgba(59, 130, 246, 0.1);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            color: #2563eb;
+            font-size: 1.6rem;
+            color: #60a5fa;
             margin-bottom: 0.8rem;
         }
         .card h4 {
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 0.2rem;
-            color: #0a1628;
+            color: #ffffff;
         }
         .card p {
             font-size: 0.95rem;
-            color: #4a5a7a;
+            color: #94a3b8;
+            line-height: 1.5;
         }
 
-        /* ===== COMMUNITY BOX ===== */
+        /* ===== COMMUNITY ===== */
         .community-box {
-            background: #f6faff;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 28px;
             padding: 2.2rem 2.5rem;
             margin: 2.5rem 0 1rem;
-            border: 1px solid #e4edf8;
             position: relative;
             z-index: 2;
-            transition: 0.2s;
-        }
-        .community-box:hover {
-            border-color: #2563eb40;
+            backdrop-filter: blur(10px);
         }
 
-        .community-box .header-com {
+        .community-box .com-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -439,22 +520,42 @@
         .community-box h3 {
             font-weight: 800;
             font-size: 1.6rem;
-            color: #0a1628;
+            color: #ffffff;
         }
         .community-box h3 span {
-            color: #2563eb;
+            color: #3b82f6;
         }
 
         .community-box .sub {
-            color: #4a5a7a;
+            color: #94a3b8;
             margin-bottom: 1.8rem;
+        }
+
+        .online-badge {
+            background: rgba(34, 197, 94, 0.12);
+            color: #4ade80;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .online-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: #4ade80;
+            border-radius: 50%;
+            display: inline-block;
         }
 
         .feed-item {
             display: flex;
             align-items: center;
             gap: 16px;
-            border-bottom: 1px solid #e4edf8;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             padding: 0.8rem 0;
         }
         .feed-item:last-child {
@@ -464,35 +565,35 @@
         .feed-item .feed-icon {
             width: 40px;
             height: 40px;
-            background: #2563eb10;
+            background: rgba(59, 130, 246, 0.08);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            color: #2563eb;
+            font-size: 1.1rem;
+            color: #60a5fa;
         }
         .feed-item .info {
             flex: 1;
         }
         .feed-item .info strong {
             font-weight: 600;
-            color: #0a1628;
+            color: #ffffff;
         }
         .feed-item .info small {
-            color: #5a6a8a;
+            color: #64748b;
             font-size: 0.85rem;
         }
         .feed-item .time {
-            color: #7a8aaa;
-            font-size: 0.8rem;
+            color: #475569;
+            font-size: 0.75rem;
             font-weight: 500;
         }
 
-        .btn-secondary {
-            background: #0a1628;
-            color: #fff;
-            border: none;
+        .btn-dark {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.06);
             padding: 0.6rem 2rem;
             border-radius: 40px;
             font-weight: 600;
@@ -505,66 +606,90 @@
             cursor: pointer;
             margin-top: 0.5rem;
         }
-        .btn-secondary:hover {
-            background: #1a2a4a;
-            transform: translateY(-2px);
+        .btn-dark:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: #ffffff;
         }
 
         /* ===== FOOTER ===== */
         .footer {
             margin-top: 3.5rem;
             padding-top: 2rem;
-            border-top: 2px solid #eef3fa;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            color: #5a6a8a;
-            font-size: 0.9rem;
+            color: #475569;
+            font-size: 0.85rem;
             position: relative;
             z-index: 2;
         }
 
         .footer .social a {
-            color: #5a6a8a;
+            color: #475569;
             margin-left: 1.4rem;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             transition: 0.2s;
         }
         .footer .social a:hover {
-            color: #2563eb;
+            color: #60a5fa;
             transform: translateY(-2px);
         }
 
+        .footer .footer-tag {
+            color: #3b82f6;
+        }
+
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
+        @media (max-width: 820px) {
             .container {
                 padding: 1.8rem 1.5rem;
             }
+            .hero {
+                flex-direction: column;
+            }
+            .hero-left {
+                flex: 1 1 100%;
+            }
+            .hero-right {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+            .hero-stats-card {
+                max-width: 300px;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+        }
+
+        @media (max-width: 640px) {
             .navbar {
                 flex-direction: column;
                 align-items: stretch;
             }
             .nav-links {
-                gap: 1rem;
+                gap: 1.2rem;
             }
             .hero h1 {
-                font-size: 2.4rem;
+                font-size: 2.2rem;
             }
-            .hero-stats {
-                gap: 2rem;
+            .hero-stats-row {
+                gap: 1.5rem;
             }
-            .hero-stats .number {
-                font-size: 2rem;
+            .hero-stats-row .number {
+                font-size: 1.8rem;
             }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .schedule-grid {
+            .scrim-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .schedule-box {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .scrim-box {
                 padding: 1.5rem;
             }
             .community-box {
@@ -577,28 +702,35 @@
             .footer .social a {
                 margin: 0 0.8rem;
             }
-            .schedule-box .header-schedule {
+            .scrim-box .scrim-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .community-box .com-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
         }
 
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .schedule-grid {
+        @media (max-width: 420px) {
+            .scrim-grid {
                 grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
             }
             .container {
                 padding: 1.2rem;
-                border-radius: 24px;
+                border-radius: 28px;
             }
-            .hero-stats {
-                gap: 1.2rem;
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
             }
-            .hero-stats .number {
-                font-size: 1.6rem;
+            .hero-actions .btn-primary,
+            .hero-actions .btn-outline {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -607,87 +739,129 @@
     <div class="container">
         <!-- ===== NAVBAR ===== -->
         <nav class="navbar">
-            <div class="logo">MONG<span>STER</span></div>
+            <div class="logo">
+                MONG<span>STER</span>
+                <span class="badge-logo">MLBB</span>
+            </div>
             <div class="nav-links">
-                <a href="#">Beranda</a>
-                <a href="#">Tentang</a>
+                <a href="#" class="active">Beranda</a>
                 <a href="#">Jadwal</a>
                 <a href="#">Member</a>
+                <a href="#">Tentang</a>
                 <a href="#" class="btn-join"><i class="fas fa-user-plus" style="margin-right:6px;"></i> Gabung</a>
             </div>
         </nav>
 
         <!-- ===== HERO ===== -->
         <section class="hero">
-            <div class="hero-badge"><i class="fas fa-gamepad" style="margin-right:6px;"></i> Komunitas MLBB</div>
-            <h1>MONGSTER · <span class="highlight">MLBB</span> <br />Community</h1>
-            <p>Komunitas MLBB yang solid. Scrim rutin, cari tim, dan nongkrong di Litmatch. Dari Epic sampai Mythic, semua diterima.</p>
-            <a href="#" class="btn-primary"><i class="fas fa-rocket"></i> Gabung sekarang</a>
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    Komunitas MLBB · 24/7 Aktif
+                </div>
+                <h1>MONGSTER · <span class="highlight">MLBB</span> <br />Community</h1>
+                <p>Komunitas MLBB yang solid. Scrim rutin, cari tim, dan nongkrong di Litmatch. Dari Epic sampai Mythic, semua diterima.</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn-primary"><i class="fas fa-rocket"></i> Gabung sekarang</a>
+                    <a href="#" class="btn-outline"><i class="fas fa-play-circle"></i> Lihat jadwal</a>
+                </div>
 
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="number"><i class="fas fa-users"></i> 30+</span>
-                    <span class="label">Member aktif</span>
+                <div class="hero-stats-row">
+                    <div class="stat">
+                        <span class="number"><i class="fas fa-users"></i> 30+</span>
+                        <span class="label">Member aktif</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number"><i class="fas fa-clock"></i> 24/7</span>
+                        <span class="label">Online tiap hari</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number"><i class="fas fa-trophy"></i> 4x</span>
+                        <span class="label">Scrim per bulan</span>
+                    </div>
                 </div>
-                <div class="stat">
-                    <span class="number"><i class="fas fa-clock"></i> 24/7</span>
-                    <span class="label">Online tiap hari</span>
-                </div>
-                <div class="stat">
-                    <span class="number"><i class="fas fa-trophy"></i> 4x</span>
-                    <span class="label">Scrim per bulan</span>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-stats-card">
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-gamepad"></i></div>
+                        <div class="stat-info">
+                            <div class="number">MLBB</div>
+                            <div class="label">Game utama</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-comment-dots"></i></div>
+                        <div class="stat-info">
+                            <div class="number">Litmatch</div>
+                            <div class="label">Tempat ngumpul</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="stat-info">
+                            <div class="number">4x / bln</div>
+                            <div class="label">Scrim rutin</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== JADWAL SCRIM ===== -->
+        <!-- ===== SCRIM ===== -->
         <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Jadwal Scrim</h2>
         <p class="section-desc">4x scrim setiap bulan — 1x setiap minggu. Semua member bisa ikut.</p>
 
-        <div class="schedule-box">
-            <div class="header-schedule">
+        <div class="scrim-box">
+            <div class="scrim-header">
                 <h4><i class="fas fa-clock"></i> Scrim MLBB — Bulan Ini</h4>
-                <span style="background: #2563eb10; padding: 0.3rem 1rem; border-radius: 40px; font-size:0.85rem; color:#2563eb; font-weight:600;">
-                    <i class="fas fa-flag"></i> 4 scrim tersedia
+                <span class="scrim-badge"><i class="fas fa-flag"></i> 4 scrim tersedia</span>
+            </div>
+            <div class="scrim-grid">
+                <div class="scrim-item">
+                    <div class="week-icon"><i class="fas fa-calendar-day"></i></div>
+                    <div>
+                        <div class="week-name">Minggu 1</div>
+                        <div class="week-time">Minggu · 19.00</div>
+                    </div>
+                </div>
+                <div class="scrim-item">
+                    <div class="week-icon"><i class="fas fa-calendar-day"></i></div>
+                    <div>
+                        <div class="week-name">Minggu 2</div>
+                        <div class="week-time">Minggu · 19.00</div>
+                    </div>
+                </div>
+                <div class="scrim-item">
+                    <div class="week-icon"><i class="fas fa-calendar-day"></i></div>
+                    <div>
+                        <div class="week-name">Minggu 3</div>
+                        <div class="week-time">Minggu · 19.00</div>
+                    </div>
+                </div>
+                <div class="scrim-item">
+                    <div class="week-icon"><i class="fas fa-calendar-day"></i></div>
+                    <div>
+                        <div class="week-name">Minggu 4</div>
+                        <div class="week-time">Minggu · 19.00</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:1.2rem; display:flex; gap:0.8rem; flex-wrap:wrap;">
+                <span style="background:rgba(59,130,246,0.12); color:#60a5fa; padding:0.2rem 1rem; border-radius:40px; font-size:0.75rem; font-weight:600; border:1px solid rgba(59,130,246,0.15);">
+                    <i class="fas fa-trophy"></i> 4x scrim / bulan
+                </span>
+                <span style="background:rgba(255,255,255,0.04); color:#94a3b8; padding:0.2rem 1rem; border-radius:40px; font-size:0.75rem; font-weight:500;">
+                    <i class="fas fa-clock"></i> Setiap Minggu jam 19.00
                 </span>
             </div>
-            <div class="schedule-grid">
-                <div class="schedule-item">
-                    <div class="icon-wrap"><i class="fas fa-calendar-day"></i></div>
-                    <div>
-                        <div class="day">Minggu 1</div>
-                        <div class="time">Minggu · 19.00</div>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="icon-wrap"><i class="fas fa-calendar-day"></i></div>
-                    <div>
-                        <div class="day">Minggu 2</div>
-                        <div class="time">Minggu · 19.00</div>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="icon-wrap"><i class="fas fa-calendar-day"></i></div>
-                    <div>
-                        <div class="day">Minggu 3</div>
-                        <div class="time">Minggu · 19.00</div>
-                    </div>
-                </div>
-                <div class="schedule-item">
-                    <div class="icon-wrap"><i class="fas fa-calendar-day"></i></div>
-                    <div>
-                        <div class="day">Minggu 4</div>
-                        <div class="time">Minggu · 19.00</div>
-                    </div>
-                </div>
-            </div>
-            <div class="badge-scrim"><i class="fas fa-trophy"></i> 4x scrim / bulan · setiap minggu 1x</div>
         </div>
 
-        <!-- ===== VALUE / FITUR ===== -->
+        <!-- ===== VALUE ===== -->
         <h2 class="section-title"><i class="fas fa-star"></i> Kenapa gabung?</h2>
         <p class="section-desc">Kegiatan seru setiap hari buat member MONGSTER.</p>
-        <div class="grid-2">
+        <div class="grid-3">
             <div class="card">
                 <div class="icon-box"><i class="fas fa-crosshairs"></i></div>
                 <h4>Scrim rutin</h4>
@@ -703,20 +877,13 @@
                 <h4>Nongkrong di Litmatch</h4>
                 <p>Voice chat, ngobrol santai, atau sekedar rebahan.</p>
             </div>
-            <div class="card">
-                <div class="icon-box"><i class="fas fa-comment-dots"></i></div>
-                <h4>Diskusi meta</h4>
-                <p>Share build, counter hero, dan strategi MLBB.</p>
-            </div>
         </div>
 
         <!-- ===== COMMUNITY ===== -->
         <div class="community-box">
-            <div class="header-com">
+            <div class="com-header">
                 <h3>Aktivitas <span>MONGSTER</span></h3>
-                <span style="background: #2563eb10; padding: 0.3rem 1rem; border-radius: 40px; font-size:0.8rem; color:#2563eb; font-weight:600;">
-                    <i class="fas fa-circle" style="font-size:0.5rem; color:#22c55e; margin-right:4px;"></i> 24/7 aktif
-                </span>
+                <span class="online-badge"><span class="dot"></span> 24/7 Aktif</span>
             </div>
             <p class="sub">Yang lagi rame hari ini — member selalu online.</p>
 
@@ -749,12 +916,12 @@
                 <span class="time">2j</span>
             </div>
 
-            <a href="#" class="btn-secondary"><i class="fas fa-arrow-right"></i> Lihat semua aktivitas</a>
+            <a href="#" class="btn-dark"><i class="fas fa-arrow-right"></i> Lihat semua aktivitas</a>
         </div>
 
         <!-- ===== FOOTER ===== -->
         <footer class="footer">
-            <span><i class="fas fa-shield-alt" style="color:#2563eb; margin-right:6px;"></i> © 2026 MONGSTER · 30+ member · 24/7 · 4x scrim/bulan</span>
+            <span><i class="fas fa-shield-alt" style="color:#3b82f6; margin-right:6px;"></i> © 2026 MONGSTER · <span class="footer-tag">30+ member</span> · <span class="footer-tag">24/7</span> · <span class="footer-tag">4x scrim/bulan</span></span>
             <div class="social">
                 <a href="#"><i class="fab fa-discord"></i></a>
                 <a href="#"><i class="fab fa-tiktok"></i></a>
