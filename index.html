@@ -124,29 +124,47 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: clamp(36px, 4vw, 48px);
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.15));
+            transition: var(--transition);
+        }
+        .logo img:hover {
+            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.25));
+            transform: scale(1.02);
+        }
+
+        .logo .logo-text {
             font-weight: 900;
-            font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
             letter-spacing: -0.5px;
             color: var(--white);
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-decoration: none;
+            gap: 8px;
         }
-        .logo span {
+        .logo .logo-text span {
             background: var(--blue-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .logo .badge {
-            font-size: 0.45rem;
+            font-size: 0.4rem;
             background: rgba(59, 130, 246, 0.12);
             color: var(--blue-light);
-            padding: 0.15rem 0.7rem;
+            padding: 0.1rem 0.7rem;
             border-radius: 40px;
             font-weight: 700;
-            border: 1px solid rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.12);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             -webkit-text-fill-color: var(--blue-light);
@@ -920,12 +938,15 @@
             .nav-links a {
                 font-size: 0.6rem;
             }
-            .logo {
-                font-size: 1.2rem;
+            .logo img {
+                height: 28px;
+            }
+            .logo .logo-text {
+                font-size: 1rem;
             }
             .logo .badge {
-                font-size: 0.35rem;
-                padding: 0.1rem 0.5rem;
+                font-size: 0.3rem;
+                padding: 0.05rem 0.4rem;
             }
             .btn-nav {
                 font-size: 0.55rem;
@@ -999,6 +1020,9 @@
             .features-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+            .logo img {
+                height: 56px;
+            }
         }
 
         @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
@@ -1028,8 +1052,11 @@
             <!-- ========================================================== -->
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    MONG<span>STER</span>
-                    <span class="badge">MLBB</span>
+                    <img src="assets/mongster.png" alt="MONGSTER Logo" />
+                    <span class="logo-text">
+                        MONG<span>STER</span>
+                        <span class="badge">MLBB</span>
+                    </span>
                 </a>
                 <div class="nav-links">
                     <a href="index.html" class="active">Beranda</a>
