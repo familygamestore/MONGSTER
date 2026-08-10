@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MONGSTER · Komunitas Game</title>
+  <title>MONGSTER · MLBB & Litmatch</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    /* Reset & dasar */
     * {
       margin: 0;
       padding: 0;
@@ -17,7 +16,7 @@
     }
 
     body {
-      background: #f5f7fa;
+      background: #f4f6fa;
       font-family: 'Inter', -apple-system, sans-serif;
       color: #1e293b;
       line-height: 1.6;
@@ -25,7 +24,7 @@
     }
 
     .container {
-      max-width: 960px;
+      max-width: 920px;
       margin: 0 auto;
       background: #ffffff;
       border-radius: 24px;
@@ -34,7 +33,7 @@
       border: 1px solid #e9edf2;
     }
 
-    /* === Navbar sederhana === */
+    /* navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -60,6 +59,7 @@
       gap: 1.8rem;
       align-items: center;
       font-size: 0.95rem;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -84,13 +84,13 @@
       color: #fff !important;
     }
 
-    /* === Hero === */
+    /* hero */
     .hero {
       margin: 2rem 0 2.5rem;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       font-weight: 700;
       letter-spacing: -0.5px;
       line-height: 1.2;
@@ -148,7 +148,7 @@
       color: #64748b;
     }
 
-    /* === fitur / value === */
+    /* section */
     .section-title {
       font-size: 1.6rem;
       font-weight: 700;
@@ -162,7 +162,7 @@
 
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
       margin: 1.5rem 0 0.5rem;
     }
@@ -194,32 +194,42 @@
       color: #475569;
     }
 
-    /* === game list === */
-    .game-list {
+    /* main game highlight */
+    .game-highlight {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem 1.2rem;
+      gap: 1rem 2rem;
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
       margin: 1.5rem 0 0.5rem;
+      border: 1px solid #eef2f6;
     }
 
-    .game-tag {
-      background: #f1f4f9;
-      padding: 0.4rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #1e293b;
-      display: inline-flex;
+    .game-highlight .item {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      border: 1px solid #e2e8f0;
-    }
-    .game-tag i {
-      color: #d97706;
-      font-size: 0.9rem;
+      gap: 12px;
     }
 
-    /* === community section === */
+    .game-highlight .item i {
+      font-size: 2rem;
+      color: #d97706;
+      width: 40px;
+      text-align: center;
+    }
+
+    .game-highlight .item strong {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .game-highlight .item span {
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+
+    /* community box */
     .community-box {
       background: #f8fafc;
       border-radius: 24px;
@@ -274,7 +284,7 @@
       font-size: 0.8rem;
     }
 
-    /* === footer === */
+    /* footer */
     .footer {
       margin-top: 3rem;
       padding-top: 1.8rem;
@@ -298,17 +308,17 @@
       color: #d97706;
     }
 
-    /* responsive */
     @media (max-width: 640px) {
       .container { padding: 1.5rem; }
       .navbar { flex-direction: column; align-items: stretch; }
-      .nav-links { flex-wrap: wrap; gap: 1rem; }
+      .nav-links { gap: 1rem; }
       .hero h1 { font-size: 2rem; }
       .grid-2 { grid-template-columns: 1fr; }
       .hero-stats { gap: 1.5rem; }
       .community-box { padding: 1.5rem; }
       .footer { flex-direction: column; text-align: center; }
       .footer .social a { margin: 0 0.8rem; }
+      .game-highlight { flex-direction: column; gap: 0.8rem; }
     }
   </style>
 </head>
@@ -320,79 +330,86 @@
     <div class="nav-links">
       <a href="#">Beranda</a>
       <a href="#">Tentang</a>
-      <a href="#">Game</a>
+      <a href="#">Event</a>
       <a href="#" class="btn-join"><i class="fas fa-user-plus" style="margin-right:5px;"></i> Gabung</a>
     </div>
   </nav>
 
   <!-- hero -->
   <section class="hero">
-    <h1>Komunitas <span>MONGSTER</span> · <br />main bareng jadi seru</h1>
-    <p>Tempat ngumpulnya pemain game online dari berbagai latar. Mulai dari yang iseng sampai yang serius, semua diterima.</p>
-    <a href="#" class="btn-primary"><i class="fas fa-gamepad"></i> Ikut gabung</a>
+    <h1>MONGSTER · <span>MLBB</span> & <span>Litmatch</span></h1>
+    <p>Komunitas kecil buat yang suka main Mobile Legends dan nongkrong di Litmatch. Santai, tanpa drama, cari teman main atau sekedar ngobrol.</p>
+    <a href="#" class="btn-primary"><i class="fas fa-gamepad"></i> Gabung komunitas</a>
 
     <div class="hero-stats">
-      <div class="stat"><span class="number">80+</span><span class="label">Member aktif</span></div>
-      <div class="stat"><span class="number">12</span><span class="label">Game favorit</span></div>
-      <div class="stat"><span class="number">4</span><span class="label">Event mingguan</span></div>
+      <div class="stat"><span class="number">60+</span><span class="label">Member</span></div>
+      <div class="stat"><span class="number">20+</span><span class="label">Aktif tiap hari</span></div>
+      <div class="stat"><span class="number">4</span><span class="label">Mabar mingguan</span></div>
     </div>
   </section>
 
+  <!-- fokus utama -->
+  <h2 class="section-title">Fokus utama kami</h2>
+  <p class="section-desc">Dua hal yang menyatukan MONGSTER.</p>
+
+  <div class="game-highlight">
+    <div class="item">
+      <i class="fas fa-crosshairs"></i>
+      <div>
+        <strong>Mobile Legends: Bang Bang</strong><br />
+        <span>Ranked, classic, atau custom — cari teman satu tim.</span>
+      </div>
+    </div>
+    <div class="item">
+      <i class="fas fa-comment-dots"></i>
+      <div>
+        <strong>Litmatch</strong><br />
+        <span>Tempat ngumpul, chat, voice, dan kenalan sesama member.</span>
+      </div>
+    </div>
+  </div>
+
   <!-- value / fitur -->
-  <h2 class="section-title">Ngapain aja di sini?</h2>
-  <p class="section-desc">Santai, tanpa tekanan. Yang penting main dan kenalan.</p>
+  <h2 class="section-title" style="margin-top: 2.5rem;">Ngapain aja di sini?</h2>
+  <p class="section-desc">Kegiatan sehari-hari member MONGSTER.</p>
   <div class="grid-2">
-    <div class="card"><i class="fas fa-users"></i><h4>Cari teman main</h4><p>Ranked, classic, atau custom — tinggal chat di grup.</p></div>
-    <div class="card"><i class="fas fa-calendar-alt"></i><h4>Event santai</h4><p>Tournament kecil atau mabar bareng tiap minggu.</p></div>
-    <div class="card"><i class="fas fa-comment-dots"></i><h4>Diskusi & strategi</h4><p>Share tips, roster, atau sekedar ngobrol soal game.</p></div>
-    <div class="card"><i class="fas fa-smile"></i><h4>Ramah pemula</h4><p>Gak perlu jago, yang penting mau belajar dan enjoy.</p></div>
+    <div class="card"><i class="fas fa-users"></i><h4>Cari duo / tim</h4><p>Butuh tank, gold, atau roam? tinggal chat di grup Litmatch.</p></div>
+    <div class="card"><i class="fas fa-calendar-alt"></i><h4>Mabar rutin</h4><p>Setiap Jumat & Minggu malam, kita main bareng.</p></div>
+    <div class="card"><i class="fas fa-chart-simple"></i><h4>Diskusi meta</h4><p>Share build, counter hero, dan strategi MLBB.</p></div>
+    <div class="card"><i class="fas fa-smile"></i><h4>Nongkrong di Litmatch</h4><p>Voice chat, ngobrol santai, atau sekedar rebahan.</p></div>
   </div>
 
-  <!-- game list -->
-  <h2 class="section-title" style="margin-top: 2.8rem;">Game yang sering dimainkan</h2>
-  <p class="section-desc">Beberapa game yang rame di komunitas, tapi kami terbuka untuk game lain juga.</p>
-  <div class="game-list">
-    <span class="game-tag"><i class="fas fa-crosshairs"></i> Valorant</span>
-    <span class="game-tag"><i class="fas fa-crown"></i> Mobile Legends</span>
-    <span class="game-tag"><i class="fas fa-skull"></i> PUBG Mobile</span>
-    <span class="game-tag"><i class="fas fa-dragon"></i> Genshin Impact</span>
-    <span class="game-tag"><i class="fas fa-fist-raised"></i> Free Fire</span>
-    <span class="game-tag"><i class="fas fa-chess-queen"></i> Dota 2</span>
-    <span class="game-tag"><i class="fas fa-plus"></i> lainnya</span>
-  </div>
-
-  <!-- community preview -->
+  <!-- aktivitas terkini -->
   <div class="community-box">
-    <h3>Update dari <span>MONGSTER</span></h3>
-    <p>Aktivitas terbaru dari anggota — biar gak ketinggalan.</p>
+    <h3>Aktivitas <span>MONGSTER</span></h3>
+    <p>Yang lagi rame hari ini.</p>
 
     <div class="feed-item">
-      <i class="fas fa-user-circle"></i>
-      <div class="info"><strong>Rizky_M</strong> <small>mencari 2 orang untuk ranked</small></div>
-      <span class="time">10m</span>
+      <i class="fas fa-crosshairs"></i>
+      <div class="info"><strong>Rangga_ML</strong> <small>cari 1 orang untuk push rank (Epic)</small></div>
+      <span class="time">5m</span>
+    </div>
+    <div class="feed-item">
+      <i class="fas fa-comment"></i>
+      <div class="info"><strong>Voice chat Litmatch</strong> <small>lagi rame 8 orang ngobrol</small></div>
+      <span class="time">15m</span>
     </div>
     <div class="feed-item">
       <i class="fas fa-trophy"></i>
-      <div class="info"><strong>Tournament mingguan</strong> <small>daftar dibuka sampai Jumat</small></div>
-      <span class="time">1j</span>
-    </div>
-    <div class="feed-item">
-      <i class="fas fa-gamepad"></i>
-      <div class="info"><strong>Mabar PUBG</strong> <small>kumpul jam 8 malam</small></div>
-      <span class="time">3j</span>
+      <div class="info"><strong>Mabar malam Minggu</strong> <small>daftar via Litmatch</small></div>
+      <span class="time">2j</span>
     </div>
     <div style="margin-top: 1.2rem;">
-      <a href="#" class="btn-primary" style="background: #1e293b; padding: 0.5rem 1.8rem; font-size: 0.9rem;"><i class="fas fa-arrow-right"></i> Lihat semua</a>
+      <a href="#" class="btn-primary" style="background: #1e293b; padding: 0.5rem 1.8rem; font-size: 0.9rem;"><i class="fas fa-arrow-right"></i> Lihat selengkapnya</a>
     </div>
   </div>
 
   <!-- footer -->
   <footer class="footer">
-    <span>© 2026 MONGSTER · masih kecil tapi solid</span>
+    <span>© 2026 MONGSTER · main MLBB, ngumpul di Litmatch</span>
     <div class="social">
       <a href="#"><i class="fab fa-discord"></i></a>
-      <a href="#"><i class="fab fa-twitch"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
       <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
