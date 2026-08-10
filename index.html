@@ -109,7 +109,7 @@
         }
 
         /* ==============================================================
-                   NAVBAR
+                   NAVBAR - LOGO DIPERBESAR
                    ============================================================== */
         .navbar {
             display: flex;
@@ -126,31 +126,33 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 18px;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .logo img {
-            height: clamp(48px, 5.5vw, 72px);
+            height: clamp(64px, 8vw, 100px);
             width: auto;
             display: block;
-            filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.20));
+            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.25));
             transition: var(--transition);
-            border-radius: 8px;
+            border-radius: 10px;
         }
         .logo img:hover {
-            filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.35));
-            transform: scale(1.04);
+            filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.40));
+            transform: scale(1.05);
         }
 
         .logo .logo-text {
             font-weight: 900;
-            font-size: clamp(1.6rem, 4vw, 2.6rem);
-            letter-spacing: -0.5px;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            letter-spacing: -1px;
             color: var(--white);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            line-height: 1;
         }
         .logo .logo-text span {
             background: var(--blue-gradient);
@@ -159,17 +161,18 @@
             background-clip: text;
         }
         .logo .badge {
-            font-size: 0.45rem;
+            font-size: 0.5rem;
             background: rgba(59, 130, 246, 0.14);
             color: var(--blue-light);
-            padding: 0.15rem 0.8rem;
+            padding: 0.2rem 1rem;
             border-radius: 40px;
             font-weight: 700;
             border: 1px solid rgba(59, 130, 246, 0.15);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             -webkit-text-fill-color: var(--blue-light);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.05);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.06);
+            align-self: center;
         }
 
         .nav-links {
@@ -814,10 +817,14 @@
                 font-size: 0.65rem;
             }
             .logo img {
-                height: clamp(40px, 5vw, 56px);
+                height: clamp(54px, 7vw, 80px);
             }
             .logo .logo-text {
-                font-size: clamp(1.3rem, 3.5vw, 2rem);
+                font-size: clamp(1.6rem, 4vw, 2.6rem);
+            }
+            .logo .badge {
+                font-size: 0.4rem;
+                padding: 0.12rem 0.7rem;
             }
         }
 
@@ -921,11 +928,14 @@
             .scrim-tags {
                 justify-content: center;
             }
+            .logo {
+                gap: 12px;
+            }
             .logo img {
-                height: clamp(32px, 4.5vw, 44px);
+                height: clamp(40px, 6vw, 56px);
             }
             .logo .logo-text {
-                font-size: clamp(1.1rem, 3vw, 1.6rem);
+                font-size: clamp(1.3rem, 4vw, 1.8rem);
             }
             .logo .badge {
                 font-size: 0.35rem;
@@ -957,7 +967,7 @@
                 font-size: 0.6rem;
             }
             .logo img {
-                height: 28px;
+                height: 32px;
             }
             .logo .logo-text {
                 font-size: 1rem;
@@ -969,6 +979,9 @@
             .btn-nav {
                 font-size: 0.55rem;
                 padding: 0.2rem 0.6rem;
+            }
+            .logo {
+                gap: 8px;
             }
         }
 
@@ -1010,6 +1023,12 @@
                 margin-top: 1.2rem;
                 padding-top: 0.8rem;
             }
+            .logo img {
+                height: clamp(40px, 6vw, 60px);
+            }
+            .logo .logo-text {
+                font-size: clamp(1.2rem, 3vw, 2rem);
+            }
         }
 
         @media (min-width: 1600px) {
@@ -1039,10 +1058,17 @@
                 grid-template-columns: repeat(3, 1fr);
             }
             .logo img {
-                height: 80px;
+                height: 110px;
             }
             .logo .logo-text {
-                font-size: 3rem;
+                font-size: 3.8rem;
+            }
+            .logo .badge {
+                font-size: 0.6rem;
+                padding: 0.25rem 1.2rem;
+            }
+            .logo {
+                gap: 24px;
             }
         }
 
@@ -1057,7 +1083,10 @@
                 padding: 1.5rem;
             }
             .logo img {
-                height: clamp(44px, 4.5vw, 60px);
+                height: clamp(56px, 6vw, 76px);
+            }
+            .logo .logo-text {
+                font-size: clamp(1.8rem, 4vw, 2.8rem);
             }
         }
     </style>
