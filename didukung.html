@@ -382,6 +382,107 @@
         }
 
         /* ==============================================================
+           LOGO PARTNER - TCC & FAMILY
+           ============================================================== */
+        .partner-logos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-lg);
+            transition: var(--transition);
+        }
+
+        .partner-logos:hover {
+            border-color: rgba(59, 130, 246, 0.04);
+        }
+
+        .partner-logos .partner-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid transparent;
+        }
+
+        .partner-logos .partner-item:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(59, 130, 246, 0.04);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+        }
+
+        .partner-logos .partner-item .logo-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .partner-logos .partner-item:hover .logo-wrapper {
+            border-color: rgba(59, 130, 246, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.02);
+        }
+
+        .partner-logos .partner-item .logo-wrapper img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.04));
+            transition: var(--transition);
+        }
+
+        .partner-logos .partner-item:hover .logo-wrapper img {
+            filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.08));
+            transform: scale(1.02);
+        }
+
+        .partner-logos .partner-item .partner-label {
+            margin-top: 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gray-400);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 0.15rem 1rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: var(--transition);
+        }
+
+        .partner-logos .partner-item:hover .partner-label {
+            color: var(--blue-light);
+            border-color: rgba(59, 130, 246, 0.06);
+            background: rgba(59, 130, 246, 0.02);
+        }
+
+        .partner-logos .partner-item .partner-desc {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-top: 0.2rem;
+            font-weight: 400;
+        }
+
+        /* ==============================================================
            SECTION HEADER
            ============================================================== */
         .section-header {
@@ -754,6 +855,17 @@
            RESPONSIVE
            ============================================================== */
         @media (max-width: 860px) {
+            .partner-logos {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            .partner-logos .partner-item .logo-wrapper {
+                max-width: 200px;
+            }
+            .partner-logos .partner-item .logo-wrapper img {
+                max-width: 150px;
+            }
             .tentang-content {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -844,6 +956,15 @@
             .tentang-visi {
                 padding: 1.2rem;
             }
+            .partner-logos {
+                padding: 1rem;
+            }
+            .partner-logos .partner-item .logo-wrapper {
+                max-width: 160px;
+            }
+            .partner-logos .partner-item .logo-wrapper img {
+                max-width: 120px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -879,6 +1000,10 @@
             .hero-tentang .sub {
                 font-size: 0.75rem;
                 margin: 0.3rem auto 0;
+            }
+            .partner-logos {
+                grid-template-columns: 1fr 1fr;
+                padding: 1rem;
             }
             .tentang-content {
                 grid-template-columns: 1fr 1fr;
@@ -986,6 +1111,26 @@
                     menjadi tempat <span class="highlight-blue">nongkrong, mabar, dan scrim</span>
                     bagi para pemain dari berbagai rank.
                 </p>
+            </div>
+
+            <!-- ========================================================== -->
+            <!-- PARTNER LOGOS - TCC & FAMILY -->
+            <!-- ========================================================== -->
+            <div class="partner-logos">
+                <div class="partner-item">
+                    <div class="logo-wrapper">
+                        <img src="assets/tcc.png" alt="TCC Logo" />
+                    </div>
+                    <span class="partner-label">TCC · Partner</span>
+                    <span class="partner-desc">Mitra resmi MONGSTER</span>
+                </div>
+                <div class="partner-item">
+                    <div class="logo-wrapper">
+                        <img src="assets/family.webp" alt="Family Logo" />
+                    </div>
+                    <span class="partner-label">Family · Partner</span>
+                    <span class="partner-desc">Keluarga besar MONGSTER</span>
+                </div>
             </div>
 
             <!-- ========================================================== -->
