@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ==============================================================
-               RESET & ROOT — ultra-premium dark UI with rich colors
-               ============================================================== */
+           RESET & ROOT
+           ============================================================== */
         *,
         *::before,
         *::after {
@@ -21,13 +21,11 @@
         }
 
         :root {
-            /* --- core colors --- */
             --bg-deep: #010208;
             --bg-surface: #060a18;
             --bg-card: rgba(255, 255, 255, 0.008);
             --bg-card-hover: rgba(0, 180, 255, 0.015);
 
-            /* --- gradients & accents --- */
             --blue-primary: #00b4ff;
             --blue-secondary: #7b2ffc;
             --blue-gradient: linear-gradient(145deg, #00b4ff, #7b2ffc);
@@ -57,7 +55,6 @@
             --gray-600: #2a3a54;
             --gray-700: #1a2a44;
 
-            /* --- border & shadow --- */
             --border-subtle: rgba(255, 255, 255, 0.012);
             --border-glow: rgba(0, 180, 255, 0.04);
 
@@ -66,18 +63,15 @@
             --shadow-glow: 0 0 140px rgba(0, 180, 255, 0.025);
             --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.012);
 
-            /* --- radii --- */
             --radius-xl: 68px;
             --radius-lg: 48px;
             --radius-md: 28px;
             --radius-sm: 18px;
             --radius-xs: 12px;
 
-            /* --- transitions --- */
             --transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             --transition-slow: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 
-            /* --- typography --- */
             --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
@@ -90,9 +84,6 @@
             font-family: var(--font-display);
             color: var(--white);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 1.5rem;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -101,8 +92,8 @@
         }
 
         /* ==============================================================
-               AMBIENT BACKGROUND — cinematic orbs with rich colors
-               ============================================================== */
+           AMBIENT BACKGROUND
+           ============================================================== */
         .bg-ambient {
             position: fixed;
             top: 0;
@@ -162,16 +153,6 @@
             animation-delay: 18s;
         }
 
-        .bg-ambient .orb:nth-child(5) {
-            width: 600px;
-            height: 600px;
-            top: 35%;
-            right: 35%;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.015), transparent 70%);
-            animation-duration: 44s;
-            animation-delay: 24s;
-        }
-
         @keyframes orbFloat {
             0% {
                 transform: translate(0, 0) scale(1) rotate(0deg);
@@ -188,11 +169,12 @@
         }
 
         /* ==============================================================
-               MAIN WRAPPER & CONTAINER — ultra-premium glass with rich border
-               ============================================================== */
+           MAIN WRAPPER & CONTAINER
+           ============================================================== */
         .main-wrapper {
             max-width: 1400px;
             width: 100%;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
         }
@@ -209,7 +191,6 @@
             overflow: hidden;
         }
 
-        /* container border glow with multiple color layers */
         .container::before {
             content: '';
             position: absolute;
@@ -222,7 +203,7 @@
                     rgba(34, 211, 238, 0.02) 75%,
                     rgba(0, 180, 255, 0.025));
             z-index: -1;
-            animation: borderPulseMulti 16s ease-in-out infinite alternate;
+            animation: borderPulse 16s ease-in-out infinite alternate;
         }
 
         .container::after {
@@ -235,7 +216,7 @@
             pointer-events: none;
         }
 
-        @keyframes borderPulseMulti {
+        @keyframes borderPulse {
             0% {
                 opacity: 0.1;
             }
@@ -250,7 +231,6 @@
             }
         }
 
-        /* inner ambient glow — 5 color layers */
         .container .inner-ambient {
             position: absolute;
             border-radius: 50%;
@@ -295,16 +275,6 @@
             animation: ambientDrift 34s ease-in-out infinite alternate-reverse;
         }
 
-        .container .inner-ambient-5 {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.01), transparent 70%);
-            animation: ambientDrift 28s ease-in-out infinite alternate;
-        }
-
         @keyframes ambientDrift {
             0% {
                 transform: translate(0, 0) scale(1);
@@ -315,29 +285,26 @@
         }
 
         /* ==============================================================
-               SCROLLBAR — custom premium
-               ============================================================== */
+           SCROLLBAR
+           ============================================================== */
         ::-webkit-scrollbar {
             width: 5px;
             height: 5px;
         }
-
         ::-webkit-scrollbar-track {
             background: var(--bg-deep);
         }
-
         ::-webkit-scrollbar-thumb {
             background: var(--blue-gradient);
             border-radius: 20px;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: var(--cyan-gradient);
         }
 
         /* ==============================================================
-               NAVBAR — elegant, spacious, with only logo image
-               ============================================================== */
+           NAVBAR
+           ============================================================== */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -366,20 +333,6 @@
             text-decoration: none;
             flex-shrink: 0;
             position: relative;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            inset: -12px;
-            border-radius: 28px;
-            background: radial-gradient(circle at center, rgba(0, 180, 255, 0.015), transparent 70%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .logo:hover::after {
-            opacity: 1;
         }
 
         .logo img {
@@ -432,15 +385,12 @@
         .nav-links a:hover {
             color: var(--white);
         }
-
         .nav-links a:hover::after {
             width: 100%;
         }
-
         .nav-links a.active {
             color: var(--white);
         }
-
         .nav-links a.active::after {
             width: 100%;
         }
@@ -478,13 +428,9 @@
             color: #fff !important;
         }
 
-        .btn-nav::after {
-            display: none !important;
-        }
-
         /* ==============================================================
-               HERO — expanded, elegant, immersive with rich colors
-               ============================================================== */
+           HERO
+           ============================================================== */
         .hero {
             display: grid;
             grid-template-columns: 1fr 360px;
@@ -568,21 +514,6 @@
             filter: blur(14px);
         }
 
-        .hero h1 .highlight {
-            display: inline-block;
-            position: relative;
-        }
-
-        .hero h1 .highlight::before {
-            content: '';
-            position: absolute;
-            inset: -8px -20px;
-            background: radial-gradient(circle at 30% 30%, rgba(0, 180, 255, 0.015), transparent 70%);
-            border-radius: 28px;
-            z-index: -1;
-            filter: blur(16px);
-        }
-
         .hero h1 .accent-text {
             background: var(--gold-gradient);
             -webkit-background-clip: text;
@@ -603,16 +534,6 @@
         .hero p strong {
             color: var(--white);
             font-weight: 600;
-        }
-
-        .hero p .highlight-text {
-            color: var(--cyan-accent);
-            font-weight: 500;
-        }
-
-        .hero p .gold-text {
-            color: var(--gold-accent);
-            font-weight: 500;
         }
 
         .hero-actions {
@@ -657,10 +578,6 @@
         .btn-primary:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 16px 88px var(--blue-glow);
-        }
-
-        .btn-primary i {
-            font-size: 1.1em;
         }
 
         .btn-outline {
@@ -741,7 +658,7 @@
             text-transform: uppercase;
         }
 
-        /* hero card — elegant dashboard with rich colors */
+        /* Hero Card */
         .hero-card {
             background: rgba(255, 255, 255, 0.005);
             backdrop-filter: blur(24px);
@@ -844,8 +761,8 @@
         }
 
         /* ==============================================================
-               SECTION HEADER — enhanced with rich colors
-               ============================================================== */
+           SECTION HEADER
+           ============================================================== */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -919,8 +836,8 @@
         }
 
         /* ==============================================================
-               SCRIM GRID — upgraded with rich hover effects
-               ============================================================== */
+           SCRIM GRID
+           ============================================================== */
         .scrim-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(clamp(210px, 24vw, 290px), 1fr));
@@ -1051,8 +968,8 @@
         }
 
         /* ==============================================================
-               FEATURES GRID — elegant cards with rich colors
-               ============================================================== */
+           FEATURES GRID
+           ============================================================== */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 340px), 1fr));
@@ -1137,8 +1054,104 @@
         }
 
         /* ==============================================================
-               ACTIVITY FEED — refined with rich colors
-               ============================================================== */
+           TESTIMONIALS
+           ============================================================== */
+        .testimonials-section {
+            margin-top: clamp(3.5rem, 6vw, 5rem);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 28vw, 320px), 1fr));
+            gap: clamp(1.6rem, 2.4vw, 2.6rem);
+            position: relative;
+            z-index: 10;
+        }
+
+        .testimonial-item {
+            background: rgba(255, 255, 255, 0.005);
+            border: 1px solid rgba(255, 255, 255, 0.008);
+            border-radius: var(--radius-md);
+            padding: clamp(1.8rem, 2.6vw, 2.8rem) clamp(1.4rem, 2vw, 2.2rem);
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 180, 255, 0.02), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .testimonial-item:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-item:hover {
+            border-color: rgba(0, 180, 255, 0.015);
+            background: rgba(0, 180, 255, 0.004);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-item .quote-icon {
+            color: var(--cyan-accent);
+            font-size: 1.8rem;
+            opacity: 0.3;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-item blockquote {
+            font-size: clamp(0.9rem, 1vw, 1.05rem);
+            color: var(--gray-300);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-item .author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 1rem;
+        }
+
+        .testimonial-item .author .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--blue-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--white);
+            box-shadow: 0 0 30px rgba(0, 180, 255, 0.05);
+        }
+
+        .testimonial-item .author .info .name {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-item .author .info .role {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        /* ==============================================================
+           ACTIVITY FEED
+           ============================================================== */
         .activity {
             background: rgba(255, 255, 255, 0.005);
             border: 1px solid rgba(255, 255, 255, 0.008);
@@ -1313,104 +1326,8 @@
         }
 
         /* ==============================================================
-               TESTIMONIALS — new section
-               ============================================================== */
-        .testimonials-section {
-            margin-top: clamp(3.5rem, 6vw, 5rem);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 28vw, 320px), 1fr));
-            gap: clamp(1.6rem, 2.4vw, 2.6rem);
-            position: relative;
-            z-index: 10;
-        }
-
-        .testimonial-item {
-            background: rgba(255, 255, 255, 0.005);
-            border: 1px solid rgba(255, 255, 255, 0.008);
-            border-radius: var(--radius-md);
-            padding: clamp(1.8rem, 2.6vw, 2.8rem) clamp(1.4rem, 2vw, 2.2rem);
-            transition: var(--transition);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-item::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 180, 255, 0.02), transparent 60%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .testimonial-item:hover::before {
-            opacity: 1;
-        }
-
-        .testimonial-item:hover {
-            border-color: rgba(0, 180, 255, 0.015);
-            background: rgba(0, 180, 255, 0.004);
-            transform: translateY(-8px);
-            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonial-item .quote-icon {
-            color: var(--cyan-accent);
-            font-size: 1.8rem;
-            opacity: 0.3;
-            margin-bottom: 0.3rem;
-        }
-
-        .testimonial-item blockquote {
-            font-size: clamp(0.9rem, 1vw, 1.05rem);
-            color: var(--gray-300);
-            line-height: 1.8;
-            font-style: italic;
-        }
-
-        .testimonial-item .author {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-top: 1rem;
-        }
-
-        .testimonial-item .author .avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--blue-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--white);
-            box-shadow: 0 0 30px rgba(0, 180, 255, 0.05);
-        }
-
-        .testimonial-item .author .info .name {
-            font-weight: 600;
-            color: var(--white);
-            font-size: 0.9rem;
-        }
-
-        .testimonial-item .author .info .role {
-            font-size: 0.75rem;
-            color: var(--gray-500);
-        }
-
-        /* ==============================================================
-               FOOTER — elegant, spacious with rich colors
-               ============================================================== */
+           FOOTER
+           ============================================================== */
         .footer {
             margin-top: clamp(5rem, 8vw, 7rem);
             padding-top: clamp(2rem, 3vw, 3rem);
@@ -1458,7 +1375,6 @@
             color: var(--gray-500);
             font-size: clamp(1.1rem, 1.4vw, 1.6rem);
             transition: var(--transition);
-            position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -1467,7 +1383,9 @@
             border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.006);
             background: rgba(255, 255, 255, 0.005);
+            text-decoration: none;
             transition: var(--transition);
+            position: relative;
         }
 
         .footer .social a::after {
@@ -1505,8 +1423,8 @@
         }
 
         /* ==============================================================
-               RESPONSIVE — comprehensive breakpoints
-               ============================================================== */
+           RESPONSIVE
+           ============================================================== */
         @media (max-width: 1024px) {
             .hero {
                 gap: 4rem;
@@ -1556,14 +1474,12 @@
             }
 
             .bg-ambient .orb:nth-child(3),
-            .bg-ambient .orb:nth-child(4),
-            .bg-ambient .orb:nth-child(5) {
+            .bg-ambient .orb:nth-child(4) {
                 display: none;
             }
 
             .container .inner-ambient-3,
-            .container .inner-ambient-4,
-            .container .inner-ambient-5 {
+            .container .inner-ambient-4 {
                 display: none;
             }
 
@@ -1707,10 +1623,6 @@
                 justify-content: center;
             }
 
-            .logo {
-                gap: 12px;
-            }
-
             .logo img {
                 height: clamp(36px, 5vw, 48px);
             }
@@ -1758,10 +1670,6 @@
             .btn-nav {
                 font-size: 0.6rem;
                 padding: 0.2rem 0.7rem;
-            }
-
-            .logo {
-                gap: 8px;
             }
 
             .hero-tag {
@@ -1881,27 +1789,9 @@
             }
         }
 
-        @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
-            .container {
-                padding: 3.5rem;
-            }
-
-            .hero h1 {
-                font-size: 4.2rem;
-            }
-
-            .hero-card {
-                padding: 2.2rem;
-            }
-
-            .logo img {
-                height: clamp(56px, 5.5vw, 84px);
-            }
-        }
-
         /* ==============================================================
-               SELECTION — custom
-               ============================================================== */
+           SELECTION & FOCUS
+           ============================================================== */
         ::selection {
             background: rgba(0, 180, 255, 0.10);
             color: var(--white);
@@ -1912,50 +1802,19 @@
             color: var(--white);
         }
 
-        /* ==============================================================
-               FOCUS — accessibility
-               ============================================================== */
         a:focus-visible,
         button:focus-visible {
             outline: 2px solid var(--cyan-accent);
             outline-offset: 4px;
-        }
-
-        /* ==============================================================
-               UTILITY — glass morphism extras
-               ============================================================== */
-        .glass-subtle {
-            background: rgba(255, 255, 255, 0.005);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.006);
-        }
-
-        .gradient-text {
-            background: var(--blue-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* ==============================================================
-               EXTRA — decorative glow line for sections
-               ============================================================== */
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 180, 255, 0.025), rgba(123, 47, 252, 0.025), transparent);
-            margin: 3rem 0;
         }
     </style>
 </head>
 <body>
 
     <!-- ============================================================== -->
-    <!-- AMBIENT ORBS — 5 layers for cinematic depth -->
+    <!-- AMBIENT ORBS -->
     <!-- ============================================================== -->
     <div class="bg-ambient">
-        <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
@@ -1968,15 +1827,14 @@
     <div class="main-wrapper">
         <div class="container">
 
-            <!-- inner ambient — 5 color layers -->
+            <!-- inner ambient -->
             <div class="inner-ambient inner-ambient-1"></div>
             <div class="inner-ambient inner-ambient-2"></div>
             <div class="inner-ambient inner-ambient-3"></div>
             <div class="inner-ambient inner-ambient-4"></div>
-            <div class="inner-ambient inner-ambient-5"></div>
 
             <!-- ========================================================== -->
-            <!-- NAVBAR — only logo image, no text -->
+            <!-- NAVBAR -->
             <!-- ========================================================== -->
             <nav class="navbar">
                 <a href="index.html" class="logo">
@@ -1992,7 +1850,7 @@
             </nav>
 
             <!-- ========================================================== -->
-            <!-- HERO — expanded, elegant, immersive with rich colors -->
+            <!-- HERO -->
             <!-- ========================================================== -->
             <section class="hero">
                 <div class="hero-left">
@@ -2002,7 +1860,7 @@
                     </div>
                     <h1>
                         MONGSTER · <span class="gradient">MLBB</span>
-                        <br /><span class="highlight">Community</span>
+                        <br />Community
                         <span style="display:block; font-size:0.5em; letter-spacing:2px; color:var(--gray-500); margin-top:4px;">
                             <span class="accent-text">#RiseTogether</span>
                         </span>
@@ -2011,14 +1869,6 @@
                         Tempat berkumpulnya para pejuang Mobile Legends dari berbagai rank.
                         <strong>Scrim 4x sebulan</strong>, cari duo/tim kapan saja, dan ngobrol santai di Litmatch.
                         Dari Epic sampai Mythic, semua diterima dengan tangan terbuka.
-                        <br /><br />
-                        <span style="color:var(--gray-400); font-size:0.9em;">
-                            <i class="fas fa-check-circle" style="color:var(--green-accent);"></i> 30+ member aktif
-                            &nbsp;·&nbsp;
-                            <i class="fas fa-check-circle" style="color:var(--cyan-accent);"></i> 4x scrim / bulan
-                            &nbsp;·&nbsp;
-                            <i class="fas fa-check-circle" style="color:var(--gold-accent);"></i> 24/7 online
-                        </span>
                     </p>
                     <div class="hero-actions">
                         <a href="#" class="btn-primary"><i class="fas fa-rocket"></i> Gabung Sekarang</a>
@@ -2041,7 +1891,7 @@
                     </div>
                 </div>
 
-                <!-- RIGHT CARD — elegant dashboard with rich colors -->
+                <!-- Hero Card -->
                 <div class="hero-card">
                     <div class="item">
                         <div class="icon"><i class="fas fa-gamepad"></i></div>
@@ -2068,7 +1918,7 @@
             </section>
 
             <!-- ========================================================== -->
-            <!-- SCRIM — upgraded with badges and rich colors -->
+            <!-- SCRIM -->
             <!-- ========================================================== -->
             <div class="section-header">
                 <div class="left">
@@ -2120,12 +1970,11 @@
                 <span><i class="fas fa-trophy"></i> 4x scrim / bulan</span>
                 <span><i class="fas fa-clock"></i> Setiap Minggu jam 19.00 WIB</span>
                 <span><i class="fas fa-users"></i> Semua rank boleh ikut</span>
-                <span><i class="fas fa-tshirt"></i> Sistem subs &amp; rotasi</span>
                 <span><i class="fas fa-star" style="color:var(--gold-accent);"></i> Free untuk semua member</span>
             </div>
 
             <!-- ========================================================== -->
-            <!-- FEATURES — more descriptive with rich icons -->
+            <!-- FEATURES -->
             <!-- ========================================================== -->
             <div class="section-header" style="margin-top: clamp(5rem, 8vw, 7rem);">
                 <div class="left">
@@ -2154,7 +2003,7 @@
             </div>
 
             <!-- ========================================================== -->
-            <!-- TESTIMONIALS — new section -->
+            <!-- TESTIMONIALS -->
             <!-- ========================================================== -->
             <div class="testimonials-section">
                 <div class="section-header">
@@ -2203,7 +2052,7 @@
             </div>
 
             <!-- ========================================================== -->
-            <!-- ACTIVITY — richer feed with rich colors -->
+            <!-- ACTIVITY -->
             <!-- ========================================================== -->
             <div class="activity">
                 <div class="head">
@@ -2265,7 +2114,7 @@
             </div>
 
             <!-- ========================================================== -->
-            <!-- FOOTER — enriched with rich colors -->
+            <!-- FOOTER -->
             <!-- ========================================================== -->
             <footer class="footer">
                 <span class="copy">
@@ -2279,11 +2128,9 @@
                     <span class="tag">4x scrim/bulan</span>
                 </span>
                 <div class="social">
-                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mongster_official" target="_blank" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@mongster-x7o" target="_blank" class="youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@mongster_official" target="_blank" class="tiktok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                 </div>
             </footer>
 
